@@ -1,0 +1,22 @@
+.SideBarContainer {
+  display: flex;
+  position: relative;
+  width: 400px;
+  height: 100vh;
+  background-color: #8c1d18;
+  transition: width 0.2 ease;
+}
+
+.collapsed {
+  width: 60px;
+}
+
+.contents {
+  display: flex;
+}
+
+.button {
+  border-radius: 50%;
+  top: 50%;
+  right: -20px;
+}
