@@ -3,7 +3,7 @@
 import styles from "./styles.module.css";
 import { useState } from "react";
 
-const SideBar = ({ children }: { children: React.ReactNode }) => {
+export const SideBar = ({ children }: { children: React.ReactNode }) => {
   const [collapse, setCollapsed] = useState<boolean>(false);
 
   return (
