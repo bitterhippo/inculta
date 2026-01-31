@@ -15,6 +15,7 @@ export const ExpandableContainer = ({
       className={styles.ParentContainer}
       onClick={() => setExpanded((prev) => !prev)}
     >
+      <span>{categoryName}</span>
       <button>
         {expanded ? (
           <ArrowUp className={styles.ExpandibleContainerButton} />
