@@ -11,19 +11,21 @@ export const ExpandableContainer = ({
   const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
-    <div
-      className={styles.ParentContainer}
-      onClick={() => setExpanded((prev) => !prev)}
-    >
-      <span>{categoryName}</span>
-      <button>
-        {expanded ? (
-          <ArrowUp className={styles.ExpandibleContainerButton} />
-        ) : (
-          <ArrowDown className={styles.ExpandibleContainerButton} />
-        )}
-      </button>
-      {expanded && <div className={styles.ChildContainer}>Content</div>}
-    </div>
+    <>
+      <div
+        className={styles.ClickableContainer}
+        onClick={() => setExpanded((prev) => !prev)}
+      >
+        <span>{categoryName}</span>
+        <button>
+          {expanded ? (
+            <ArrowUp className={styles.ExpandableContainerButton} />
+          ) : (
+            <ArrowDown className={styles.ExpandableContainerButton} />
+          )}
+        </button>
+      </div>
+      {expanded && <div className={styles.ContentContainer}>Content</div>}
+    </>
   );
 };
