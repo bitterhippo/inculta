@@ -1,0 +1,12 @@
+.ParentContainer {
+  display: flex;
+}
+
+.ChildContainer {
+  flex: 1;
+}
+
+.ExpandableContainerButton {
+  height: 14px;
+  width: 14px;
+}
