@@ -7,6 +7,7 @@ import styles from "./styles.module.css";
 
 export const ExpandableContainer = ({
   categoryName,
+  children,
 }: ExpandableContainerProps) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
@@ -25,7 +26,7 @@ export const ExpandableContainer = ({
           )}
         </button>
       </div>
-      {expanded && <div className={styles.ContentContainer}>Content</div>}
+      {expanded && <div className={styles.ContentContainer}>{children}</div>}
     </>
   );
 };
