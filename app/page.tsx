@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { SideBar } from "@/components/SideBar/SideBar";
 import { ExpandableContainer } from "@/components/ExpandableContainer/ExpandableContainer";
 import { DragIcon } from "@/components/DragIcon/DragIcon";
@@ -9,9 +10,13 @@ import {
   PointerSensor,
   useSensor,
   useSensors,
+  DragOverlay,
+  DragEndEvent,
 } from "@dnd-kit/core";
 
 export default function Home() {
+  const [activeId, setActiveId] = useState<string | null>(null);
+
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -20,8 +25,28 @@ export default function Home() {
     }),
   );
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (over) {
+      // Something was dropped on a target
+      console.log(`${active.id} was dropped over ${over.id}`);
+      // Here you could:
+      // - create a new instance in your grid
+      // - call an API to save state
+    }
+
+    // Reset active item for DragOverlay
+    setActiveId(null);
+  };
+
   return (
-    <DndContext sensors={sensors}>
+    <DndContext
+      sensors={sensors}
+      onDragStart={(event) => setActiveId(event.active.id as string)}
+      onDragEnd={() => setActiveId(null)}
+      onDragCancel={() => setActiveId(null)}
+    >
       <div className={styles.MainViewContainer}>
         <SideBar>
           <ExpandableContainer categoryName="test">
@@ -30,6 +55,7 @@ export default function Home() {
         </SideBar>
         <div className={styles.ViewContainer}>This is the content</div>
       </div>
+      <DragOverlay>{activeId ? <DragIcon id={activeId} /> : null}</DragOverlay>
     </DndContext>
   );
 }
