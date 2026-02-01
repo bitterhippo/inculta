@@ -13,6 +13,7 @@
   "dependencies": {
     "next": "16.1.6",
     "react": "19.2.3",
+    "react-dnd": "^16.0.1",
     "react-dom": "19.2.3",
     "react-feather": "^2.0.10"
   },
