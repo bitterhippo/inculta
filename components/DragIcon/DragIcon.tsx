@@ -1,14 +1,8 @@
-"use client";
-
-import { useSortable } from "@dnd-kit/sortable";
+import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
 
-interface DummyIconProps {
-  id: string;
-}
-
-export const DragIcon = ({ id }: DummyIconProps) => {
-  const { attributes, listeners, setNodeRef, transform } = useSortable({ id });
+export function DragIcon({ id }: { id: string }) {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
 
   const style = {
     transform: CSS.Translate.toString(transform),
@@ -16,10 +10,10 @@ export const DragIcon = ({ id }: DummyIconProps) => {
     height: 40,
     backgroundColor: "limegreen",
     borderRadius: "8px",
-    display: "inline-block",
-    margin: "4px",
     cursor: "grab",
+    display: "inline-block",
+    margin: 4,
   };
 
   return <div ref={setNodeRef} style={style} {...attributes} {...listeners} />;
-};
+}
