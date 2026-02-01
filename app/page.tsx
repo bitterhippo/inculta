@@ -3,13 +3,13 @@
 import { SideBar } from "@/components/SideBar/SideBar";
 import { ExpandableContainer } from "@/components/ExpandableContainer/ExpandableContainer";
 import { DragIcon } from "@/components/DragIcon/DragIcon";
+import styles from "./styles.module.css";
 import {
   DndContext,
   PointerSensor,
   useSensor,
   useSensors,
 } from "@dnd-kit/core";
-import { SortableContext, useSortable } from "@dnd-kit/sortable";
 
 export default function Home() {
   const sensors = useSensors(
@@ -22,13 +22,14 @@ export default function Home() {
 
   return (
     <DndContext sensors={sensors}>
-      <SideBar>
-        <ExpandableContainer categoryName="test">
-          <SortableContext items={["dummy-icon"]}>
+      <div className={styles.MainViewContainer}>
+        <SideBar>
+          <ExpandableContainer categoryName="test">
             <DragIcon id={"dummy-icon"} />
-          </SortableContext>
-        </ExpandableContainer>
-      </SideBar>
+          </ExpandableContainer>
+        </SideBar>
+        <div className={styles.ViewContainer}>This is the content</div>
+      </div>
     </DndContext>
   );
 }

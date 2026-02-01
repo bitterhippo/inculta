@@ -1,0 +1,9 @@
+.MainViewContainer {
+  display: flex;
+  justify-content: row;
+  flex: 1;
+}
+
+.ViewContainer {
+  width: 100%;
+}
