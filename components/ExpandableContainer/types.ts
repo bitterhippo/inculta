@@ -1,4 +1,4 @@
 export interface ExpandableContainerProps {
   categoryName: string;
-  children?: React.ReactNode[];
+  children?: React.ReactNode | React.ReactNode[];
 }

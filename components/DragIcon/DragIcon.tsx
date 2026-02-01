@@ -3,5 +3,5 @@
 import { AlertTriangle } from "react-feather";
 
 export const DragIcon = () => {
-  return <AlertTriangle size={16} color={"green"} />;
+  return <AlertTriangle size={32} color={"green"} />;
 };
