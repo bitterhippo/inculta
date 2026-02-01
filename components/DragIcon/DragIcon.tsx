@@ -1,7 +1,25 @@
 "use client";
 
-import { AlertTriangle } from "react-feather";
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 
-export const DragIcon = () => {
-  return <AlertTriangle size={32} color={"green"} />;
+interface DummyIconProps {
+  id: string;
+}
+
+export const DragIcon = ({ id }: DummyIconProps) => {
+  const { attributes, listeners, setNodeRef, transform } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Translate.toString(transform),
+    width: 40,
+    height: 40,
+    backgroundColor: "limegreen",
+    borderRadius: "8px",
+    display: "inline-block",
+    margin: "4px",
+    cursor: "grab",
+  };
+
+  return <div ref={setNodeRef} style={style} {...attributes} {...listeners} />;
 };
