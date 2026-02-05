@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SideBar, ExpandableContainer, DragIcon } from "@/components";
+import { SideBar, ExpandableContainer, DragIcon, Canvas } from "@/components";
 import styles from "./styles.module.css";
 import {
   DndContext,
@@ -53,7 +53,11 @@ export default function Home() {
             <DragIcon id={"dummy-icon"} />
           </ExpandableContainer>
         </SideBar>
-        <div className={styles.ViewContainer}>This is the content</div>
+        <div className={styles.ViewContainer}>
+          <div className={styles.CanvasContainer}>
+            <Canvas></Canvas>
+          </div>
+        </div>
       </div>
       <DragOverlay>{activeId ? <DragIcon id={activeId} /> : null}</DragOverlay>
     </DndContext>
