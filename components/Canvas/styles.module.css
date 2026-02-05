@@ -1,7 +1,7 @@
 .Canvas {
   border: 2px solid blue;
   margin: 48px;
-  height: 100%;
-  width: 100%;
+  height: calc(100% - 96px);
+  width: calc(100% - 96px);
   background-color: white;
 }
