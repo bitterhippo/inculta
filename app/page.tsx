@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { SideBar } from "@/components/SideBar/SideBar";
-import { ExpandableContainer } from "@/components/ExpandableContainer/ExpandableContainer";
-import { DragIcon } from "@/components/DragIcon/DragIcon";
+import { SideBar, ExpandableContainer, DragIcon } from "@/components";
 import styles from "./styles.module.css";
 import {
   DndContext,
@@ -17,6 +15,7 @@ import {
 export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
 
+  //TODO: Extract into helpers
   const sensors = useSensors(
     useSensor(PointerSensor, {
       activationConstraint: {
@@ -25,6 +24,7 @@ export default function Home() {
     }),
   );
 
+  //TODO: Extract into helpers
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
 
