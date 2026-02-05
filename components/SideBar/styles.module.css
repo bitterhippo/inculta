@@ -17,12 +17,23 @@
 }
 
 .ToggleButton {
+  padding-left: 5px;
   position: absolute;
   top: 50%;
-  right: -20px;
+  right: -30px;
   transform: translateY(-50%);
-  width: 40px;
+  width: 30px;
   height: 40px;
-  border-radius: 50%;
+  border-top-left-radius: 0;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 0;
+
   cursor: pointer;
+  background-color: white;
+
+  border-top: 2px solid #d8c3a5;
+  border-right: 2px solid #d8c3a5;
+  border-bottom: 2px solid #d8c3a5;
+  border-left: 0px;
 }
