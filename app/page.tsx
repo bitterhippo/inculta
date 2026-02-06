@@ -14,6 +14,7 @@ import {
 
 export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
+  const [items, setItems] = useState<string[]>([]);
 
   //TODO: Extract into helpers
   const sensors = useSensors(
@@ -26,25 +27,32 @@ export default function Home() {
 
   //TODO: Extract into helpers
   const handleDragEnd = (event: DragEndEvent) => {
-    const { active, over } = event;
+    const { active, over, delta } = event;
 
     if (over) {
-      // Something was dropped on a target
       console.log(`${active.id} was dropped over ${over.id}`);
-      // Here you could:
-      // - create a new instance in your grid
-      // - call an API to save state
+    }
+
+    //Initialize the component into state for the purpose of mapping it out
+    if (over?.id === "canvas") {
+      let currentDragObject = {
+        name: active.id,
+        delta: delta,
+      };
+      setItems((prev) => [...prev, currentDragObject]);
     }
 
     // Reset active item for DragOverlay
     setActiveId(null);
   };
 
+  console.log(items);
+
   return (
     <DndContext
       sensors={sensors}
       onDragStart={(event) => setActiveId(event.active.id as string)}
-      onDragEnd={() => setActiveId(null)}
+      onDragEnd={handleDragEnd}
       onDragCancel={() => setActiveId(null)}
     >
       <div className={styles.MainViewContainer}>

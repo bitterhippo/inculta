@@ -1,3 +1,4 @@
+import styles from "./styles.module.css";
 import { useDraggable } from "@dnd-kit/core";
 
 export const DragIcon = ({ id }: { id: string }) => {
@@ -5,17 +6,10 @@ export const DragIcon = ({ id }: { id: string }) => {
 
   return (
     <div
+      className={styles.DragIcon}
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      style={{
-        width: 40,
-        height: 40,
-        backgroundColor: "limegreen",
-        borderRadius: 8,
-        cursor: "grab",
-        margin: 4,
-      }}
     />
   );
 };
