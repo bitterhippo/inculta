@@ -1,4 +1,4 @@
-import { useDraggable, DndContext, DragOverlay } from "@dnd-kit/core";
+import { useDraggable } from "@dnd-kit/core";
 
 export const DragIcon = ({ id }: { id: string }) => {
   const { attributes, listeners, setNodeRef } = useDraggable({ id });
