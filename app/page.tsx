@@ -63,7 +63,15 @@ export default function Home() {
         </SideBar>
         <div className={styles.ViewContainer}>
           <div className={styles.CanvasContainer}>
-            <Canvas></Canvas>
+            <Canvas>
+              {items.map((currentItem) => (
+                <DragIcon
+                  key={`${items.name}`}
+                  // transform={`transform: x${currentItem.delta.x} y${currentItem.delta.y}`}
+                  transform={`transform: x(600) y(200)`}
+                ></DragIcon>
+              ))}
+            </Canvas>
           </div>
         </div>
       </div>
