@@ -37,7 +37,7 @@ export default function Home() {
     if (over?.id === "canvas") {
       let currentDragObject = {
         name: active.id,
-        delta: delta,
+        delta,
       };
       setItems((prev) => [...prev, currentDragObject]);
     }
@@ -66,9 +66,8 @@ export default function Home() {
             <Canvas>
               {items.map((currentItem) => (
                 <DragIcon
-                  key={`${items.name}`}
-                  // transform={`transform: x${currentItem.delta.x} y${currentItem.delta.y}`}
-                  transform={`transform: x(600) y(200)`}
+                  key={`${currentItem?.name}`}
+                  transform={currentItem?.delta}
                 ></DragIcon>
               ))}
             </Canvas>
