@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { SideBar, ExpandableContainer, DragIcon, Canvas } from "@/components";
 import styles from "./styles.module.css";
 import {
@@ -15,6 +15,8 @@ import {
 export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [items, setItems] = useState<string[]>([]);
+
+  const canvasRef = useRef<HTMLDivElement>(null);
 
   //TODO: Extract into helpers
   const sensors = useSensors(
@@ -32,6 +34,10 @@ export default function Home() {
     if (over) {
       console.log(`${active.id} was dropped over ${over.id}`);
     }
+
+    const canvasRect = canvasRef.current.getBoundingClientRect();
+    const x = event.activatorEvent.clientX - canvasRect.left;
+    const y = event.activatorEvent.clientY - canvasRect.top;
 
     //Initialize the component into state for the purpose of mapping it out
     if (over?.id === "canvas") {
@@ -63,10 +69,10 @@ export default function Home() {
         </SideBar>
         <div className={styles.ViewContainer}>
           <div className={styles.CanvasContainer}>
-            <Canvas>
-              {items.map((currentItem) => (
+            <Canvas ref={canvasRef}>
+              {items.map((currentItem, i) => (
                 <DragIcon
-                  key={`${currentItem?.name}`}
+                  key={`${currentItem?.name}-${i}`}
                   transform={currentItem?.delta}
                 ></DragIcon>
               ))}
