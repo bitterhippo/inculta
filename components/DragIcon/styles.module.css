@@ -1,9 +1,9 @@
 .DragIcon {
-  position: absolute;
   width: 40;
   height: 40;
   background-color: green;
   border-radius: 8;
   cursor: grab;
   margin: 4;
+  z-index: 10;
 }

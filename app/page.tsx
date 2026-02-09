@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { SideBar, ExpandableContainer, DragIcon, Canvas } from "@/components";
+import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
   DndContext,
@@ -14,7 +15,9 @@ import {
 
 export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [items, setItems] = useState<string[]>([]);
+  const [items, setItems] = useState<PlacedItem[]>([]);
+
+  const [pos, setPos] = useState({ x: 0, y: 0 });
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
@@ -35,15 +38,15 @@ export default function Home() {
       console.log(`${active.id} was dropped over ${over.id}`);
     }
 
-    const canvasRect = canvasRef.current.getBoundingClientRect();
-    const x = event.activatorEvent.clientX - canvasRect.left;
-    const y = event.activatorEvent.clientY - canvasRect.top;
+    const canvasRect = canvasRef?.current.getBoundingClientRect();
+    const x = pos.x - canvasRect.left;
+    const y = pos.y - canvasRect.top;
 
     //Initialize the component into state for the purpose of mapping it out
     if (over?.id === "canvas") {
       let currentDragObject = {
-        name: active.id,
-        delta,
+        x,
+        y,
       };
       setItems((prev) => [...prev, currentDragObject]);
     }
@@ -52,7 +55,17 @@ export default function Home() {
     setActiveId(null);
   };
 
-  console.log(items);
+  useEffect(() => {
+    const handler = (e) => {
+      setPos({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener("mousemove", handler);
+    return () => window.removeEventListener("mousemove", handler);
+  }, []);
+
+  console.log(pos);
+  console.log(canvasRef);
 
   return (
     <DndContext
@@ -73,7 +86,8 @@ export default function Home() {
               {items.map((currentItem, i) => (
                 <DragIcon
                   key={`${currentItem?.name}-${i}`}
-                  transform={currentItem?.delta}
+                  xValue={currentItem?.x}
+                  yValue={currentItem?.y}
                 ></DragIcon>
               ))}
             </Canvas>
