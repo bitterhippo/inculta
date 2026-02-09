@@ -8,7 +8,7 @@ export const DragIcon = ({ id, transform }: DragIconProps) => {
     <div
       className={styles.DragIcon}
       ref={setNodeRef}
-      style={{ top: transform.x, left: transform.y }}
+      style={{ top: transform?.x, left: transform?.y }}
       {...listeners}
       {...attributes}
     />
