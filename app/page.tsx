@@ -39,8 +39,8 @@ export default function Home() {
     }
 
     const canvasRect = canvasRef?.current.getBoundingClientRect();
-    const x = pos.x - canvasRect.left;
-    const y = pos.y - canvasRect.top;
+    const x = pos.x - canvasRect.left - 20;
+    const y = pos.y - canvasRect.top - 20;
 
     //Initialize the component into state for the purpose of mapping it out
     if (over?.id === "canvas") {
@@ -55,6 +55,7 @@ export default function Home() {
     setActiveId(null);
   };
 
+  //TODO: Remove this and associated state handler
   useEffect(() => {
     const handler = (e) => {
       setPos({ x: e.clientX, y: e.clientY });
@@ -86,6 +87,7 @@ export default function Home() {
               {items.map((currentItem, i) => (
                 <DragIcon
                   key={`${currentItem?.name}-${i}`}
+                  id={"dummy-icon"}
                   xValue={currentItem?.x}
                   yValue={currentItem?.y}
                 ></DragIcon>
