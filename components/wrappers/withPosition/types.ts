@@ -1,6 +1,8 @@
-export interface withPositionProps {
+import { ReactNode } from "react";
+
+export interface WithPositionProps {
   id: string;
-  component: React.ReactNode;
+  component: ReactNode;
   x: number;
   y: number;
 }

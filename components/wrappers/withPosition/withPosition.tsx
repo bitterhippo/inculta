@@ -1,12 +1,20 @@
-import styles from "./styles.module.css";
-import { withPositionProps } from "./types";
 import { useDraggable } from "@dnd-kit/core";
+import { WithPositionProps } from "./types";
 
-export const withPosition = ({ component }: withPositionProps) => {
-  const { attributes, listeners, setNodeRef } = useDraggable({ id });
-  return (
-    <div {...listeners} {...attributes} ref={setNodeRef}>
-      {component}
-    </div>
-  );
+// HOC: wraps any component
+export const WithPosition = <P extends object>(
+  WrappedComponent: React.ComponentType<P>,
+) => {
+  const ComponentWithPosition = (props: P & WithPositionProps) => {
+    const { id, ...rest } = props;
+    const { attributes, listeners, setNodeRef } = useDraggable({ id });
+
+    return (
+      <div {...listeners} {...attributes} ref={setNodeRef}>
+        <WrappedComponent {...(rest as P)} />
+      </div>
+    );
+  };
+
+  return ComponentWithPosition;
 };

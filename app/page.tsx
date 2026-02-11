@@ -1,7 +1,13 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { SideBar, ExpandableContainer, DragIcon, Canvas } from "@/components";
+import {
+  SideBar,
+  ExpandableContainer,
+  DragIcon,
+  Canvas,
+  WithPosition,
+} from "@/components";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
@@ -78,7 +84,9 @@ export default function Home() {
       <div className={styles.MainViewContainer}>
         <SideBar>
           <ExpandableContainer categoryName="test">
-            <DragIcon id={"dummy-icon"} />
+            <WithPosition id={"dummy-icon"}>
+              <DragIcon />
+            </WithPosition>
           </ExpandableContainer>
         </SideBar>
         <div className={styles.ViewContainer}>
