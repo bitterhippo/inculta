@@ -2,6 +2,7 @@
 
 import styles from "./styles.module.css";
 import { useDroppable } from "@dnd-kit/core";
+//TODO: fix this
 import { CanvasProps } from "./types";
 import { forwardRef } from "react";
 

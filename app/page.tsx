@@ -86,7 +86,7 @@ export default function Home() {
             <Canvas ref={canvasRef}>
               {items.map((currentItem, i) => (
                 <DragIcon
-                  key={`${currentItem?.name}-${i}`}
+                  key={`${currentItem?.id}-${i}`}
                   id={"dummy-icon"}
                   xValue={currentItem?.x}
                   yValue={currentItem?.y}
