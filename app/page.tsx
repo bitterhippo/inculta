@@ -4,9 +4,9 @@ import { useState, useRef, useEffect } from "react";
 import {
   SideBar,
   ExpandableContainer,
-  DragIcon,
+  Icon,
   Canvas,
-  WithPosition,
+  DraggableWrapper,
 } from "@/components";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
@@ -84,27 +84,35 @@ export default function Home() {
       <div className={styles.MainViewContainer}>
         <SideBar>
           <ExpandableContainer categoryName="test">
-            <WithPosition id={"dummy-icon"}>
-              <DragIcon />
-            </WithPosition>
+            <DraggableWrapper id="dummy-id">
+              <Icon />
+            </DraggableWrapper>
           </ExpandableContainer>
         </SideBar>
         <div className={styles.ViewContainer}>
           <div className={styles.CanvasContainer}>
             <Canvas ref={canvasRef}>
               {items.map((currentItem, i) => (
-                <DragIcon
+                <DraggableWrapper
                   key={`${currentItem?.id}-${i}`}
                   id={"dummy-icon"}
-                  xValue={currentItem?.x}
-                  yValue={currentItem?.y}
-                ></DragIcon>
+                  x={currentItem.x}
+                  y={currentItem.y}
+                >
+                  <Icon key={`${currentItem?.id}-${i}`}></Icon>
+                </DraggableWrapper>
               ))}
             </Canvas>
           </div>
         </div>
       </div>
-      <DragOverlay>{activeId ? <DragIcon id={activeId} /> : null}</DragOverlay>
+      <DragOverlay>
+        {activeId ? (
+          <DraggableWrapper id={activeId}>
+            <Icon />
+          </DraggableWrapper>
+        ) : null}
+      </DragOverlay>
     </DndContext>
   );
 }
