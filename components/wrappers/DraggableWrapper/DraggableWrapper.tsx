@@ -17,7 +17,7 @@ export function DraggableWrapper({
       {...listeners}
       {...attributes}
       className={styles.DraggableWrapper}
-      style={{ top: `${y}`, left: `${x}` }}
+      style={{ top: `${y}px`, left: `${x}px` }}
     >
       {children}
     </div>
