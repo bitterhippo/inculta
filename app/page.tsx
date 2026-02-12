@@ -44,7 +44,8 @@ export default function Home() {
       console.log(`${active.id} was dropped over ${over.id}`);
     }
 
-    const canvasRect = canvasRef?.current.getBoundingClientRect();
+    if (!canvasRef.current) return;
+    const canvasRect = canvasRef.current?.getBoundingClientRect();
     const x = pos.x - canvasRect.left - 20;
     const y = pos.y - canvasRect.top - 20;
 
