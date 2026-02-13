@@ -1,6 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
 import { DraggableWrapperProps } from "./types";
-import styles from "./styles.module.css";
 
 // HOC: wraps any component
 export function DraggableWrapper({
@@ -8,16 +7,16 @@ export function DraggableWrapper({
   children,
   x,
   y,
+  inToolbar,
 }: DraggableWrapperProps) {
   const { attributes, listeners, setNodeRef } = useDraggable({ id });
-
+  const stylePosition = inToolbar ? "relative" : "absolute";
   return (
     <div
       ref={setNodeRef}
       {...listeners}
       {...attributes}
-      className={styles.DraggableWrapper}
-      style={{ top: `${y}px`, left: `${x}px` }}
+      style={{ position: stylePosition, top: `${y}px`, left: `${x}px` }}
     >
       {children}
     </div>

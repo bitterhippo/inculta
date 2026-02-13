@@ -5,4 +5,5 @@ export interface DraggableWrapperProps {
   children: React.ReactNode;
   x?: number;
   y?: number;
+  inToolbar?: boolean;
 }

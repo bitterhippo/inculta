@@ -85,7 +85,7 @@ export default function Home() {
       <div className={styles.MainViewContainer}>
         <SideBar>
           <ExpandableContainer categoryName="test">
-            <DraggableWrapper id="dummy-id">
+            <DraggableWrapper id="dummy-id" inToolbar={true}>
               <Icon />
             </DraggableWrapper>
           </ExpandableContainer>
