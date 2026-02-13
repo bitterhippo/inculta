@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
+import { nanoid } from "nanoid";
 import {
   SideBar,
   ExpandableContainer,
@@ -44,17 +45,26 @@ export default function Home() {
 
     if (!canvasRef.current) return;
     const canvasRect = canvasRef.current?.getBoundingClientRect();
+    //TODO: Clean up the magic numbers (they are workable for now)
     const x = delta.x - canvasRect.left + 10;
     const y = delta.y - canvasRect.top + 52;
 
     //Initialize the component into state for the purpose of mapping it out
     if (over?.id === "canvas") {
       let currentDragObject: PlacedItem = {
-        id: String(active.id),
+        id: String(nanoid()),
         x,
         y,
       };
       setItems((prev) => [...prev, currentDragObject]);
+    }
+
+    if (over?.id !== "canvas") {
+      setItems((prev) => {
+        let newArr = prev.filter((currentItem) => currentItem.id !== active.id);
+        console.log(newArr);
+        return prev;
+      });
     }
 
     // Reset active item for DragOverlay
@@ -71,7 +81,7 @@ export default function Home() {
       <div className={styles.MainViewContainer}>
         <SideBar>
           <ExpandableContainer categoryName="test">
-            <DraggableWrapper id="dummy-id" inToolbar={true}>
+            <DraggableWrapper id="test-icon" inToolbar={true}>
               <Icon />
             </DraggableWrapper>
           </ExpandableContainer>
@@ -82,7 +92,7 @@ export default function Home() {
               {items.map((currentItem, i) => (
                 <DraggableWrapper
                   key={`${currentItem?.id}-${i}`}
-                  id={"dummy-icon"}
+                  id={`${currentItem?.id}-${i}`}
                   x={currentItem.x}
                   y={currentItem.y}
                 >
