@@ -23,8 +23,6 @@ export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [items, setItems] = useState<PlacedItem[]>([]);
 
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-
   const canvasRef = useRef<HTMLDivElement>(null);
 
   //TODO: Extract into helpers
@@ -46,8 +44,8 @@ export default function Home() {
 
     if (!canvasRef.current) return;
     const canvasRect = canvasRef.current?.getBoundingClientRect();
-    const x = pos.x - canvasRect.left - 20;
-    const y = pos.y - canvasRect.top - 20;
+    const x = delta.x - canvasRect.left + 10;
+    const y = delta.y - canvasRect.top + 52;
 
     //Initialize the component into state for the purpose of mapping it out
     if (over?.id === "canvas") {
@@ -61,19 +59,6 @@ export default function Home() {
     // Reset active item for DragOverlay
     setActiveId(null);
   };
-
-  //TODO: Remove this and associated state handler
-  useEffect(() => {
-    const handler = (e) => {
-      setPos({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handler);
-    return () => window.removeEventListener("mousemove", handler);
-  }, []);
-
-  console.log(pos);
-  console.log(canvasRef);
 
   return (
     <DndContext
