@@ -49,7 +49,8 @@ export default function Home() {
 
     //Initialize the component into state for the purpose of mapping it out
     if (over?.id === "canvas") {
-      let currentDragObject = {
+      let currentDragObject: PlacedItem = {
+        id: String(active.id),
         x,
         y,
       };
