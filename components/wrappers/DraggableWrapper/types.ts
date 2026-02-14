@@ -1,4 +1,6 @@
-import { ReactNode } from "react";
+export interface DragData {
+  source: "palette" | "canvas";
+}
 
 export interface DraggableWrapperProps {
   id: string;

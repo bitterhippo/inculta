@@ -39,6 +39,8 @@ export default function Home() {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over, delta } = event;
 
+    console.log(active.data.current?.source);
+
     if (over) {
       console.log(`${active.id} was dropped over ${over.id}`);
     }
@@ -61,12 +63,9 @@ export default function Home() {
 
     if (over?.id !== "canvas") {
       setItems((prev) => {
-        console.log(active.id);
-        console.log("prev", prev);
         let newArr = prev.filter(
           (item) => String(item.id) !== String(active.id),
         );
-        console.log("newArr", newArr);
         return newArr;
       });
     }
@@ -85,7 +84,7 @@ export default function Home() {
       <div className={styles.MainViewContainer}>
         <SideBar>
           <ExpandableContainer categoryName="test">
-            <DraggableWrapper id="test-icon" inToolbar={true}>
+            <DraggableWrapper id="dropdown-icon" inToolbar={true}>
               <Icon />
             </DraggableWrapper>
           </ExpandableContainer>

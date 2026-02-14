@@ -1,5 +1,5 @@
 import { useDraggable } from "@dnd-kit/core";
-import { DraggableWrapperProps } from "./types";
+import { DraggableWrapperProps, DragData } from "./types";
 
 // HOC: wraps any component
 export function DraggableWrapper({
@@ -9,7 +9,12 @@ export function DraggableWrapper({
   y,
   inToolbar,
 }: DraggableWrapperProps) {
-  const { attributes, listeners, setNodeRef } = useDraggable({ id });
+  const { attributes, listeners, setNodeRef } = useDraggable({
+    id,
+    data: {
+      source: inToolbar ? "palette" : "canvas",
+    } satisfies DragData,
+  });
   const stylePosition = inToolbar ? "relative" : "absolute";
   return (
     <div
