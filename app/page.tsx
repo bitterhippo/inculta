@@ -61,9 +61,13 @@ export default function Home() {
 
     if (over?.id !== "canvas") {
       setItems((prev) => {
-        let newArr = prev.filter((currentItem) => currentItem.id !== active.id);
-        console.log(newArr);
-        return prev;
+        console.log(active.id);
+        console.log("prev", prev);
+        let newArr = prev.filter(
+          (item) => String(item.id) !== String(active.id),
+        );
+        console.log("newArr", newArr);
+        return newArr;
       });
     }
 
@@ -92,7 +96,7 @@ export default function Home() {
               {items.map((currentItem, i) => (
                 <DraggableWrapper
                   key={`${currentItem?.id}-${i}`}
-                  id={`${currentItem?.id}-${i}`}
+                  id={`${currentItem?.id}`}
                   x={currentItem.x}
                   y={currentItem.y}
                 >
