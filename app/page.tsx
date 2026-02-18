@@ -56,6 +56,7 @@ export default function Home() {
     const y = delta.y - canvasRect.top + 52;
 
     //Initialize the component into state for the purpose of mapping it out
+    // creates new object from palette
     if (over?.id === "canvas" && source === "palette") {
       let currentDragObject: PlacedItem = {
         id: String(nanoid()),
@@ -65,6 +66,7 @@ export default function Home() {
       setItems((prev) => [...prev, currentDragObject]);
     }
 
+    // removes an object after it is draggedd off canvas
     if (over?.id !== "canvas" && source === "canvas") {
       setItems((prev) => {
         let newArr = prev.filter(
@@ -73,6 +75,13 @@ export default function Home() {
         return newArr;
       });
     }
+
+    //repositions an object
+    // if (over?.id === "canvas" && source === "canvas") {
+    //   setItems((prev) => {
+    //     console.log(prev);
+    //   });
+    // }
 
     // Reset active item for DragOverlay
     setActiveId(null);

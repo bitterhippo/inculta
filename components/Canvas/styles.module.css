@@ -1,5 +1,6 @@
 .Canvas {
   position: relative;
+  overflow: hidden;
   border: 2px solid black;
   margin: 48px;
   height: calc(100% - 96px);
