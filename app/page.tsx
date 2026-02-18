@@ -24,6 +24,8 @@ export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [items, setItems] = useState<PlacedItem[]>([]);
 
+  console.log("itemState", items);
+
   const canvasRef = useRef<HTMLDivElement>(null);
 
   //TODO: Extract into helpers
@@ -39,7 +41,9 @@ export default function Home() {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over, delta } = event;
 
-    console.log(active.data.current?.source);
+    const source = active.data.current?.source;
+
+    console.log("source", source);
 
     if (over) {
       console.log(`${active.id} was dropped over ${over.id}`);
@@ -52,7 +56,7 @@ export default function Home() {
     const y = delta.y - canvasRect.top + 52;
 
     //Initialize the component into state for the purpose of mapping it out
-    if (over?.id === "canvas") {
+    if (over?.id === "canvas" && source === "palette") {
       let currentDragObject: PlacedItem = {
         id: String(nanoid()),
         x,
@@ -61,7 +65,7 @@ export default function Home() {
       setItems((prev) => [...prev, currentDragObject]);
     }
 
-    if (over?.id !== "canvas") {
+    if (over?.id !== "canvas" && source === "canvas") {
       setItems((prev) => {
         let newArr = prev.filter(
           (item) => String(item.id) !== String(active.id),
