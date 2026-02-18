@@ -45,10 +45,6 @@ export default function Home() {
 
     console.log("source", source);
 
-    if (over) {
-      console.log(`${active.id} was dropped over ${over.id}`);
-    }
-
     if (!canvasRef.current) return;
     const canvasRect = canvasRef.current?.getBoundingClientRect();
     //TODO: Clean up the magic numbers (they are workable for now)
@@ -77,11 +73,19 @@ export default function Home() {
     }
 
     //repositions an object
-    // if (over?.id === "canvas" && source === "canvas") {
-    //   setItems((prev) => {
-    //     console.log(prev);
-    //   });
-    // }
+    if (over?.id === "canvas" && source === "canvas") {
+      setItems((prev) => {
+        let newArr = [...prev];
+        let targetItem = newArr.findIndex((item) => item.id === active.id);
+        let updatedItem = (newArr[targetItem] = {
+          id: newArr[targetItem].id,
+          x: delta.x + newArr[targetItem].x,
+          y: delta.y + newArr[targetItem].y,
+        });
+        newArr[targetItem] = updatedItem;
+        return newArr;
+      });
+    }
 
     // Reset active item for DragOverlay
     setActiveId(null);
