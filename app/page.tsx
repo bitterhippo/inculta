@@ -100,7 +100,7 @@ export default function Home() {
     >
       <div className={styles.MainViewContainer}>
         <SideBar>
-          <ExpandableContainer categoryName="Items">
+          <ExpandableContainer categoryName="Game Assets">
             <DraggableWrapper id="dropdown-icon" inToolbar={true}>
               <Icon />
             </DraggableWrapper>
