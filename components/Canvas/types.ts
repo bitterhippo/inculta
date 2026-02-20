@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export type CanvasProps = {
-  children?: ReactNode;
-};
+export interface CanvasProps extends React.HTMLAttributes<HTMLDivElement> {
+  children: ReactNode[];
+}

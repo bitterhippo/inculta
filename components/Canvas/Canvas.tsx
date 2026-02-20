@@ -1,13 +1,12 @@
 "use client";
 
+import { forwardRef } from "react";
 import styles from "./styles.module.css";
 import { useDroppable } from "@dnd-kit/core";
-//TODO: fix this
 import { CanvasProps } from "./types";
-import { forwardRef } from "react";
 
-export const Canvas = forwardRef<HTMLDivElement, { children: React.ReactNode }>(
-  ({ children }, ref) => {
+export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(
+  ({ children, ...rest }, ref) => {
     const { setNodeRef } = useDroppable({ id: "canvas" });
 
     const combinedRef = (node: HTMLDivElement | null) => {
@@ -17,7 +16,7 @@ export const Canvas = forwardRef<HTMLDivElement, { children: React.ReactNode }>(
     };
 
     return (
-      <div ref={combinedRef} className={styles.Canvas}>
+      <div ref={combinedRef} className={styles.Canvas} {...rest}>
         {children}
       </div>
     );
