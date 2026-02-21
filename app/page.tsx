@@ -1,7 +1,7 @@
 "use client";
 
 import { createPortal } from "react-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { nanoid } from "nanoid";
 import {
   SideBar,
@@ -9,6 +9,7 @@ import {
   Icon,
   Canvas,
   DraggableWrapper,
+  Dialog,
 } from "@/components";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
