@@ -1,5 +1,5 @@
 "use client";
 import "react";
-export const Dialog = () => {
-  return <div> lol </div>;
+export const Dialog = ({ onClose }) => {
+  return <div onClick={onClose}> lol </div>;
 };

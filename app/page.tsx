@@ -102,10 +102,15 @@ export default function Home() {
       >
         <div className={styles.MainViewContainer}>
           <SideBar>
+            {/*TODO: Break this out into isolated component after it becomes too cubersome */}
             <ExpandableContainer categoryName="Game Assets">
               <DraggableWrapper id="dropdown-icon" inToolbar={true}>
                 <Icon />
               </DraggableWrapper>
+              <Icon
+                label={"Click me"}
+                onClick={() => setDialogOpen((prev) => !prev)}
+              />
             </ExpandableContainer>
           </SideBar>
           <div className={styles.ViewContainer}>

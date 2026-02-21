@@ -1,6 +1,10 @@
 import styles from "./styles.module.css";
+import { IconTypes } from "./types";
 
-//TODO: Determine if ID is needed in this component
-export const Icon = ({}) => {
-  return <div className={styles.Icon} />;
+export const Icon = ({ label, onClick }: IconTypes) => {
+  return (
+    <div onClick={onClick} className={styles.Icon}>
+      {label}
+    </div>
+  );
 };
