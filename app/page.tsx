@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { createPortal } from "react-dom";
+import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 import {
   SideBar,
@@ -23,8 +24,7 @@ import {
 export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [items, setItems] = useState<PlacedItem[]>([]);
-
-  console.log("itemState", items);
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
@@ -92,44 +92,51 @@ export default function Home() {
   };
 
   return (
-    <DndContext
-      sensors={sensors}
-      onDragStart={(event) => setActiveId(event.active.id as string)}
-      onDragEnd={handleDragEnd}
-      onDragCancel={() => setActiveId(null)}
-    >
-      <div className={styles.MainViewContainer}>
-        <SideBar>
-          <ExpandableContainer categoryName="Game Assets">
-            <DraggableWrapper id="dropdown-icon" inToolbar={true}>
-              <Icon />
-            </DraggableWrapper>
-          </ExpandableContainer>
-        </SideBar>
-        <div className={styles.ViewContainer}>
-          <div className={styles.CanvasContainer}>
-            <Canvas ref={canvasRef}>
-              {items.map((currentItem, i) => (
-                <DraggableWrapper
-                  key={`${currentItem?.id}-${i}`}
-                  id={`${currentItem?.id}`}
-                  x={currentItem.x}
-                  y={currentItem.y}
-                >
-                  <Icon key={`${currentItem?.id}-${i}`}></Icon>
-                </DraggableWrapper>
-              ))}
-            </Canvas>
+    <>
+      <DndContext
+        sensors={sensors}
+        onDragStart={(event) => setActiveId(event.active.id as string)}
+        onDragEnd={handleDragEnd}
+        onDragCancel={() => setActiveId(null)}
+      >
+        <div className={styles.MainViewContainer}>
+          <SideBar>
+            <ExpandableContainer categoryName="Game Assets">
+              <DraggableWrapper id="dropdown-icon" inToolbar={true}>
+                <Icon />
+              </DraggableWrapper>
+            </ExpandableContainer>
+          </SideBar>
+          <div className={styles.ViewContainer}>
+            <div className={styles.CanvasContainer}>
+              <Canvas ref={canvasRef}>
+                {items.map((currentItem, i) => (
+                  <DraggableWrapper
+                    key={`${currentItem?.id}-${i}`}
+                    id={`${currentItem?.id}`}
+                    x={currentItem.x}
+                    y={currentItem.y}
+                  >
+                    <Icon key={`${currentItem?.id}-${i}`}></Icon>
+                  </DraggableWrapper>
+                ))}
+              </Canvas>
+            </div>
           </div>
         </div>
-      </div>
-      <DragOverlay>
-        {activeId ? (
-          <DraggableWrapper id={activeId}>
-            <Icon />
-          </DraggableWrapper>
-        ) : null}
-      </DragOverlay>
-    </DndContext>
+        <DragOverlay>
+          {activeId ? (
+            <DraggableWrapper id={activeId}>
+              <Icon />
+            </DraggableWrapper>
+          ) : null}
+        </DragOverlay>
+      </DndContext>
+      {dialogOpen &&
+        createPortal(
+          <Dialog onClose={() => setDialogOpen(false)} />,
+          document.body,
+        )}
+    </>
   );
 }
