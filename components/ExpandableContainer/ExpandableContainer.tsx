@@ -20,14 +20,10 @@ export const ExpandableContainer = ({
         <div className={styles.ExpandableContainerLabelWrapper}>
           <span>{categoryName}</span>
         </div>
-        <div>
+        <div className={styles.ExpanableContainerCounterWrapper}>
           <span>{Children.count(children)}</span>
-          <button>
-            {expanded ? (
-              <ArrowUp className={styles.ExpandableContainerButton} />
-            ) : (
-              <ArrowDown className={styles.ExpandableContainerButton} />
-            )}
+          <button className={styles.ExpandableContainerButton}>
+            {expanded ? <ArrowUp size={18} /> : <ArrowDown size={18} />}
           </button>
         </div>
       </div>
