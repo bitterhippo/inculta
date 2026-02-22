@@ -1,0 +1,15 @@
+.DialogOverlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.DialogContainer {
+  width: 500px;
+  height: 500px;
+  border: 2px solid black;
+  background: white;
+}
