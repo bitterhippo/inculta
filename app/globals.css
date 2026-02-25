@@ -3,6 +3,31 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --container-background: #8c1d18;
+  --sub-container-background: #d8c3a5;
+  --void-zone: #636363;
+  --border: #c9a44c;
+  --space-border: 0.125rem; /* 2px */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-5: 1.5rem; /* 24px */
+  --space-6: 2rem; /* 32px */
+  --space-7: 3rem; /* 48px */
+}
+
+:root {
+  --spacing-borer: var(--space-border);
+  --spacing-xs: var(--space-1);
+  --spacing-sm: var(--space-2);
+  --spacing-md: var(--space-4);
+  --spacing-lg: var(--space-6);
+
+  --layout-page-padding: var(--space-6);
+  --card-padding: var(--space-4);
+  --button-padding-x: var(--space-3);
+  --button-padding-y: var(--space-2);
 }
 
 @theme inline {
