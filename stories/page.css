@@ -5,13 +5,13 @@
   color: #333;
   font-size: 14px;
   line-height: 24px;
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 .storybook-page h2 {
   display: inline-block;
   vertical-align: top;
-  margin: 0 0 4px;
+  margin: 0 0 var(--spacing-xs);
   font-weight: 700;
   font-size: 32px;
   line-height: 1;
@@ -40,7 +40,7 @@
   margin-right: 10px;
   border-radius: 1em;
   background: #e7fdd8;
-  padding: 4px 12px;
+  padding: var(--spacing-xs) 12px;
   color: #357a14;
   font-weight: 700;
   font-size: 11px;
@@ -58,7 +58,7 @@
   display: inline-block;
   vertical-align: top;
   margin-top: 3px;
-  margin-right: 4px;
+  margin-right: var(--spacing-xs);
   width: 12px;
   height: 12px;
 }

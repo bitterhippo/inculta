@@ -6,7 +6,7 @@
   --container-background: #8c1d18;
   --sub-container-background: #d8c3a5;
   --void-zone: #636363;
-  --border: #c9a44c;
+  --border-color: #c9a44c;
   --space-border: 0.125rem; /* 2px */
   --space-1: 0.25rem; /* 4px */
   --space-2: 0.5rem; /* 8px */
@@ -18,7 +18,7 @@
 }
 
 :root {
-  --spacing-borer: var(--space-border);
+  --spacing-border: var(--space-border);
   --spacing-xs: var(--space-1);
   --spacing-sm: var(--space-2);
   --spacing-md: var(--space-4);
@@ -27,7 +27,7 @@
   --layout-page-padding: var(--space-6);
   --card-padding: var(--space-4);
   --button-padding-x: var(--space-3);
-  --button-padding-y: var(--space-2);
+  --button-padding-y: var(--space-5);
 }
 
 @theme inline {
