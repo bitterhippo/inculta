@@ -3,10 +3,10 @@ import "react";
 import styles from "./styles.module.css";
 import { DialogTypes } from "./types";
 
-export const Dialog = ({ onClose }: DialogTypes) => {
+export const Dialog = ({ children, onClose }: DialogTypes) => {
   return (
     <div className={styles.DialogOverlay} onClick={onClose}>
-      <div className={styles.DialogContainer}>lol</div>
+      <div className={styles.DialogContainer}>{children}</div>
     </div>
   );
 };
