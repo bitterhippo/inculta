@@ -10,6 +10,7 @@ import {
   Canvas,
   DraggableWrapper,
   Dialog,
+  FileUpload,
 } from "@/components";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
@@ -140,7 +141,9 @@ export default function Home() {
       </DndContext>
       {dialogOpen &&
         createPortal(
-          <Dialog onClose={() => setDialogOpen(false)} />,
+          <Dialog onClose={() => setDialogOpen(false)}>
+            <FileUpload></FileUpload>
+          </Dialog>,
           document.body,
         )}
     </>

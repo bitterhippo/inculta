@@ -8,6 +8,9 @@
 }
 
 .DialogContainer {
+  display: flex;
+  padding: var(--space-2);
+  justify-content: center;
   width: 500px;
   height: 500px;
   border: 2px solid black;

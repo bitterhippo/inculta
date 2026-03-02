@@ -4,7 +4,16 @@ import { Icon } from "./Icon/Icon";
 import { SideBar } from "./SideBar/SideBar";
 import { Canvas } from "./Canvas/Canvas";
 import { Dialog } from "./Dialog/Dialog";
+import { FileUpload } from "./FileUpload/FileUpload";
 
 //Behaviours
 import { DraggableWrapper } from "./wrappers/DraggableWrapper/DraggableWrapper";
-export { ExpandableContainer, Icon, Canvas, SideBar, DraggableWrapper, Dialog };
+export {
+  ExpandableContainer,
+  Icon,
+  Canvas,
+  SideBar,
+  DraggableWrapper,
+  Dialog,
+  FileUpload,
+};

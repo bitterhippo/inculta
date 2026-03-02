@@ -1,3 +1,5 @@
+import styles from "./styles.module.css";
+
 export const FileUpload = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -5,8 +7,14 @@ export const FileUpload = () => {
   };
 
   return (
-    <div>
-      <input type="file" accept="image" onChange={handleChange} />
+    <div className={styles.FileUploadWrapper}>
+      <input
+        className={styles.FileUploadInput}
+        type="file"
+        accept="image"
+        onChange={handleChange}
+      />
+      <div className={styles.FileUploadText}>lol</div>
     </div>
   );
 };
