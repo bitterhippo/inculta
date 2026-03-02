@@ -10,7 +10,7 @@ import {
   Canvas,
   DraggableWrapper,
   Dialog,
-  FileUpload,
+  IconButton,
 } from "@/components";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
@@ -142,7 +142,11 @@ export default function Home() {
       {dialogOpen &&
         createPortal(
           <Dialog onClose={() => setDialogOpen(false)}>
-            <FileUpload></FileUpload>
+            <IconButton
+              onClick={() => console.log("lol")}
+              label="lol"
+              icon="upload"
+            />
           </Dialog>,
           document.body,
         )}
