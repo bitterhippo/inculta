@@ -21,7 +21,7 @@ export const ExpandableContainer = ({
           <span>{categoryName}</span>
         </div>
         <div className={styles.ExpanableContainerCounterWrapper}>
-          {/* need a way to remove the utility buttons from being counted */}
+          {/* TODO: need a way to remove the utility buttons from being counted */}
           <span>{Children.count(children)}</span>
           <button className={styles.ExpandableContainerButton}>
             {expanded ? <ArrowUp size={18} /> : <ArrowDown size={18} />}
