@@ -31,7 +31,7 @@ export const FileUploadIconButton = ({
         accept="image/*"
         ref={fileInputRef}
         className={styles.FileUploadInput}
-        onChange={onFileSelect}
+        onChange={handleChange}
       />
     </>
   );

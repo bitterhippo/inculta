@@ -27,6 +27,7 @@ export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [items, setItems] = useState<PlacedItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
@@ -142,7 +143,7 @@ export default function Home() {
       {dialogOpen &&
         createPortal(
           <Dialog onClose={() => setDialogOpen(false)}>
-            <FileUploadIconButton onFileSelect={() => console.log("lol")} />
+            <FileUploadIconButton onFileSelect={setSelectedFile} />
           </Dialog>,
           document.body,
         )}
