@@ -29,6 +29,7 @@ export const FileUploadIconButton = ({
       <input
         type="file"
         accept="image/*"
+        ref={fileInputRef}
         className={styles.FileUploadInput}
         onChange={onFileSelect}
       />
