@@ -4,12 +4,12 @@ import { Icon } from "./Icon/Icon";
 import { SideBar } from "./SideBar/SideBar";
 import { Canvas } from "./Canvas/Canvas";
 import { Dialog } from "./Dialog/Dialog";
-import { IconButton } from "./IconButton/IconButton";
+import { FileUploadIconButton } from "./IconButton/FileUploadIconButton";
 
 //Behaviours
 import { DraggableWrapper } from "./wrappers/DraggableWrapper/DraggableWrapper";
 export {
-  IconButton,
+  FileUploadIconButton,
   ExpandableContainer,
   Icon,
   Canvas,

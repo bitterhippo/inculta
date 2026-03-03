@@ -1,0 +1,21 @@
+.IconButton {
+  display: flex;
+  border: 2px solid black;
+  height: 32px;
+  width: 128px;
+  justify-content: space-around;
+  cursor: pointer;
+}
+
+.IconButtonContentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm);
+  font-size: 12px;
+  gap: 8px;
+}
+
+.IconButtonText {
+  margin-top: var(--spacing-xs);
+}
