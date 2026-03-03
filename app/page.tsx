@@ -142,7 +142,7 @@ export default function Home() {
       {dialogOpen &&
         createPortal(
           <Dialog onClose={() => setDialogOpen(false)}>
-            <FileUploadIconButton onClick={() => console.log("lol")} />
+            <FileUploadIconButton onFileSelect={() => console.log("lol")} />
           </Dialog>,
           document.body,
         )}

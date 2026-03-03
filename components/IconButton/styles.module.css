@@ -19,3 +19,7 @@
 .IconButtonText {
   margin-top: var(--spacing-xs);
 }
+
+.FileUploadInput {
+  display: none;
+}
