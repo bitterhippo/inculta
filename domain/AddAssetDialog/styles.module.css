@@ -1,0 +1,15 @@
+.AddAssetDialogText {
+  font-size: 12px;
+  border: 1px solid black;
+  border-left: 0px;
+  height: var(--spacing-lg);
+  width: 100%;
+  justify-content: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  justify-content: space-around;
+  padding: var(--spacing-sm) var(--spacing-md);
+}
