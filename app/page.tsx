@@ -12,6 +12,7 @@ import {
   Dialog,
   FileUploadIconButton,
 } from "@/components";
+import { AddAssetDialog } from "../domain/index";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
@@ -30,6 +31,8 @@ export default function Home() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
   const canvasRef = useRef<HTMLDivElement>(null);
+
+  console.log(selectedFile);
 
   //TODO: Extract into helpers
   const sensors = useSensors(
@@ -140,11 +143,14 @@ export default function Home() {
           ) : null}
         </DragOverlay>
       </DndContext>
+      {/*TODO: Break this out into a domain component */}
       {dialogOpen &&
         createPortal(
-          <Dialog onClose={() => setDialogOpen(false)}>
-            <FileUploadIconButton onFileSelect={setSelectedFile} />
-          </Dialog>,
+          <AddAssetDialog
+            selectedFile={selectedFile}
+            setDialogOpen={setDialogOpen}
+            setSelectedFile={setSelectedFile}
+          />,
           document.body,
         )}
     </>
