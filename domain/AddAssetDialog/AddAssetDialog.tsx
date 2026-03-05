@@ -13,24 +13,40 @@ export const AddAssetDialog = ({
   const [previewUrl, setPreviewUrl] = useState();
 
   useEffect(() => {
-    if (!selectedFile) return;
+    if (!selectedFile) {
+      setPreviewUrl(undefined);
+      return;
+    }
 
     const url = URL.createObjectURL(selectedFile);
     setPreviewUrl(url);
 
     return () => URL.revokeObjectURL(url);
   }, [selectedFile]);
+
   return (
     <Dialog onClose={() => setDialogOpen(false)}>
-      <FileUploadIconButton onFileSelect={setSelectedFile} />
-      <span className={styles.AddAssetDialogText}>
-        {selectedFile ? selectedFile?.name : "Currently no file selected."}
-      </span>
-      {previewUrl && (
-        <div>
-          <img src={previewUrl} alt={selectedFile?.name} />
+      <div className={styles.AddAssetDialogInnerWrappper}>
+        <div className={styles.AddAssetDialogFileUploadWrapper}>
+          <FileUploadIconButton onFileSelect={setSelectedFile} />
+          <span className={styles.AddAssetDialogText}>
+            {selectedFile ? selectedFile?.name : "Currently no file selected."}
+          </span>
         </div>
-      )}
+        <div className={styles.AddAssetDialogImageContainer}>
+          {previewUrl ? (
+            <div>
+              <img
+                src={previewUrl}
+                alt={selectedFile?.name}
+                className={styles.AddAssetDialogImg}
+              />
+            </div>
+          ) : (
+            <div> No preview available - file not selected</div>
+          )}
+        </div>
+      </div>
     </Dialog>
   );
 };

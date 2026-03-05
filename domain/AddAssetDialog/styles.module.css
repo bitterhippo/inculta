@@ -1,5 +1,13 @@
+.AddAssetDialogInnerWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
 .AddAssetDialogText {
   font-size: 12px;
+  flex-shrink: 0px;
   border: 1px solid black;
   border-left: 0px;
   height: var(--spacing-lg);
@@ -7,9 +15,33 @@
   justify-content: center;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  line-clamp: 1;
+  -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
   justify-content: space-around;
   padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.AddAssetDialogFileUploadWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  margin-bottom: var(--spacing-md);
+  width: 100%;
+}
+
+.AddAssetDialogImageContainer {
+  justify-self: center;
+  align-items: center;
+  border: 1px solid black;
+  height: 128px;
+  width: 128px;
+  display: flex;
+  overflow: hidden;
+}
+
+.AddAssetDialogImg {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
