@@ -10,7 +10,12 @@ export const AddAssetDialog = ({
   setDialogOpen,
   setSelectedFile,
 }: AddAssetDialogTypes) => {
-  const [previewUrl, setPreviewUrl] = useState();
+  const [previewUrl, setPreviewUrl] = useState<string | undefined>();
+
+  const handleDialogClose = () => {
+    setSelectedFile(null);
+    setDialogOpen(false);
+  };
 
   useEffect(() => {
     if (!selectedFile) {
@@ -25,7 +30,7 @@ export const AddAssetDialog = ({
   }, [selectedFile]);
 
   return (
-    <Dialog onClose={() => setDialogOpen(false)}>
+    <Dialog onClose={handleDialogClose}>
       <div className={styles.AddAssetDialogInnerWrappper}>
         <div className={styles.AddAssetDialogFileUploadWrapper}>
           <FileUploadIconButton onFileSelect={setSelectedFile} />
