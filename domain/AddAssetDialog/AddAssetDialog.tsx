@@ -35,18 +35,15 @@ export const AddAssetDialog = ({
         </div>
         <div className={styles.AddAssetDialogImageContainer}>
           {previewUrl ? (
-            <div>
-              {/*TODO: draw this onto a canvas to prevent issues with orientation */}
-              <img
-                src={previewUrl}
-                alt={selectedFile?.name}
-                className={styles.AddAssetDialogImg}
-              />
-            </div>
+            <img
+              src={previewUrl}
+              alt={selectedFile?.name}
+              className={styles.AddAssetDialogImg}
+            />
           ) : (
-            <div className={styles.AddAssetDialogPreviewText}>
-              <span>No preview available - file not selected</span>
-            </div>
+            <span className={styles.AddAssetDialogPreviewText}>
+              No preview available - file not selected
+            </span>
           )}
         </div>
       </div>
