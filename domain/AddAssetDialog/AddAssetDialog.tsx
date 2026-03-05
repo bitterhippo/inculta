@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Dialog, FileUploadIconButton } from "@/components";
 import { AddAssetDialogTypes } from "./types";
 import styles from "./styles.module.css";
@@ -12,10 +12,10 @@ export const AddAssetDialog = ({
 }: AddAssetDialogTypes) => {
   const [previewUrl, setPreviewUrl] = useState<string | undefined>();
 
-  const handleDialogClose = () => {
+  const handleDialogClose = useCallback(() => {
     setSelectedFile(null);
     setDialogOpen(false);
-  };
+  }, []);
 
   useEffect(() => {
     if (!selectedFile) {
