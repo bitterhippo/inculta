@@ -1,4 +1,4 @@
-.ButtonStyles {
+.Button {
   background-color: var(--container-background);
   font-size: 12px;
   height: 32px;
@@ -9,12 +9,7 @@
   flex-shrink: 0;
 }
 
-.ButtonDisabledStyles {
+.Button--disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  font-size: 12px;
-  background-color: var(--container-background);
-  height: var(--spacing-md);
-  width: var(--spacing-lg);
-  flex-shrink: 0;
 }

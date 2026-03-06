@@ -87,7 +87,7 @@ export const AddAssetDialog = ({
           </div>
           <div className={styles.AddAssetDialogButtonRow}>
             <Button
-              isDisabled={!!previewUrl}
+              isDisabled={previewUrl ? true : false}
               label="Create"
               onClick={() => console.log("lol")}
             />
