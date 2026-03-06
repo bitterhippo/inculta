@@ -44,9 +44,23 @@ export const AddAssetDialog = ({
     img.onload = () => {
       canvas.width = 128;
       canvas.height = 128;
-
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      const data = imageData.data;
+
+      //TODO: research if this the appropriate "white band" by which to turn pixels translucent
+      const threshold = 240;
+      for (let i = 0; i < data.length; i += 4) {
+        const r = data[i];
+        const g = data[i + 1];
+        const b = data[i + 2];
+
+        if (r >= threshold && g >= threshold && b >= threshold) {
+          data[i + 3] = 0; // make pixel transparent
+        }
+      }
+
+      ctx.putImageData(imageData, 0, 0);
     };
   }, [previewUrl]);
 
