@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Dialog, FileUploadIconButton } from "@/components";
+import { Dialog, FileUploadIconButton, Button } from "@/components";
 import { AddAssetDialogTypes } from "./types";
 import styles from "./styles.module.css";
 
@@ -82,6 +82,11 @@ export const AddAssetDialog = ({
             </span>
           )}
         </div>
+        <Button
+          isDisabled={!!previewUrl}
+          label={"Create Asset"}
+          onClick={() => console.log("lol")}
+        ></Button>
       </div>
     </Dialog>
   );

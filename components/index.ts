@@ -5,7 +5,7 @@ import { SideBar } from "./SideBar/SideBar";
 import { Canvas } from "./Canvas/Canvas";
 import { Dialog } from "./Dialog/Dialog";
 import { FileUploadIconButton } from "./IconButton/FileUploadIconButton";
-
+import { Button } from "./Button/Button";
 //Behaviours
 import { DraggableWrapper } from "./wrappers/DraggableWrapper/DraggableWrapper";
 export {
@@ -16,4 +16,5 @@ export {
   SideBar,
   DraggableWrapper,
   Dialog,
+  Button,
 };
