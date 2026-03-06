@@ -6,7 +6,7 @@ import { ButtonProps } from "./types";
 export const Button = ({ onClick, label, isDisabled }: ButtonProps) => {
   return (
     <button
-      className={styles.ButtonStyles}
+      className={isDisabled ? styles.ButtonDisabledStyles : styles.ButtonStyles}
       onClick={onClick}
       disabled={isDisabled}
     >

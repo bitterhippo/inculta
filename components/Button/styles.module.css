@@ -2,5 +2,11 @@
   background-color: var(--container-background);
   font-size: 12px;
   color: white;
-  border-radius: 8px;
+}
+
+.ButtonDisabledStyles {
+  opacity: 0.5;
+  cursor: not-allowed;
+  font-size: 12px;
+  background-color: var(--container-background);
 }

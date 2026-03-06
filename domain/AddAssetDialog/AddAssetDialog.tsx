@@ -84,9 +84,10 @@ export const AddAssetDialog = ({
         </div>
         <Button
           isDisabled={!!previewUrl}
-          label={"Create Asset"}
+          label="Create Asset"
           onClick={() => console.log("lol")}
-        ></Button>
+        />
+        <Button label="Cancel" onClick={handleDialogClose} />
       </div>
     </Dialog>
   );
