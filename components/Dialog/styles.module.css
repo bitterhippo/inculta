@@ -8,9 +8,6 @@
 }
 
 .DialogContainer {
-  display: flex;
-  flex-direction: column;
-  padding: var(--space-2);
   width: 500px;
   height: 500px;
   border: 2px solid black;

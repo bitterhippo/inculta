@@ -1,7 +1,12 @@
 .ButtonStyles {
   background-color: var(--container-background);
   font-size: 12px;
+  height: 32px;
+  width: 64px;
   color: white;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  flex-shrink: 0;
 }
 
 .ButtonDisabledStyles {
@@ -9,4 +14,7 @@
   cursor: not-allowed;
   font-size: 12px;
   background-color: var(--container-background);
+  height: var(--spacing-md);
+  width: var(--spacing-lg);
+  flex-shrink: 0;
 }

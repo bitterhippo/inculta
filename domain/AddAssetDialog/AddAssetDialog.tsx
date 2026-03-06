@@ -66,28 +66,34 @@ export const AddAssetDialog = ({
 
   return (
     <Dialog onClose={handleDialogClose}>
-      <div className={styles.AddAssetDialogInnerWrappper}>
-        <div className={styles.AddAssetDialogFileUploadWrapper}>
-          <FileUploadIconButton onFileSelect={setSelectedFile} />
-          <span className={styles.AddAssetDialogText}>
-            {selectedFile ? selectedFile?.name : "Currently no file selected."}
-          </span>
-        </div>
-        <div className={styles.AddAssetDialogImageContainer}>
-          {previewUrl ? (
-            <canvas ref={canvasRef} className={styles.AddAssetDialogImg} />
-          ) : (
-            <span className={styles.AddAssetDialogPreviewText}>
-              No preview available - file not selected
+      <div className={styles.AddAssetDialogWrapper}>
+        <div className={styles.AddAssetDialogInnerWrapper}>
+          <div className={styles.AddAssetDialogFileUploadWrapper}>
+            <FileUploadIconButton onFileSelect={setSelectedFile} />
+            <span className={styles.AddAssetDialogText}>
+              {selectedFile
+                ? selectedFile?.name
+                : "Currently no file selected."}
             </span>
-          )}
+          </div>
+          <div className={styles.AddAssetDialogImageContainer}>
+            {previewUrl ? (
+              <canvas ref={canvasRef} className={styles.AddAssetDialogImg} />
+            ) : (
+              <span className={styles.AddAssetDialogPreviewText}>
+                No preview available - file not selected
+              </span>
+            )}
+          </div>
+          <div className={styles.AddAssetDialogButtonRow}>
+            <Button
+              isDisabled={!!previewUrl}
+              label="Create"
+              onClick={() => console.log("lol")}
+            />
+            <Button label="Cancel" onClick={handleDialogClose} />
+          </div>
         </div>
-        <Button
-          isDisabled={!!previewUrl}
-          label="Create Asset"
-          onClick={() => console.log("lol")}
-        />
-        <Button label="Cancel" onClick={handleDialogClose} />
       </div>
     </Dialog>
   );
