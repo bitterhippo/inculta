@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, FileUploadIconButton } from "@/components";
 import { AddAssetDialogTypes } from "./types";
 import styles from "./styles.module.css";
@@ -11,6 +11,8 @@ export const AddAssetDialog = ({
   setSelectedFile,
 }: AddAssetDialogTypes) => {
   const [previewUrl, setPreviewUrl] = useState<string | undefined>();
+
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const handleDialogClose = useCallback(() => {
     setSelectedFile(null);
@@ -29,6 +31,25 @@ export const AddAssetDialog = ({
     return () => URL.revokeObjectURL(url);
   }, [selectedFile]);
 
+  useEffect(() => {
+    if (!previewUrl || !canvasRef.current) return;
+
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const img = new Image();
+    img.src = previewUrl;
+
+    img.onload = () => {
+      canvas.width = 128;
+      canvas.height = 128;
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+  }, [previewUrl]);
+
   return (
     <Dialog onClose={handleDialogClose}>
       <div className={styles.AddAssetDialogInnerWrappper}>
@@ -40,11 +61,7 @@ export const AddAssetDialog = ({
         </div>
         <div className={styles.AddAssetDialogImageContainer}>
           {previewUrl ? (
-            <img
-              src={previewUrl}
-              alt={selectedFile?.name}
-              className={styles.AddAssetDialogImg}
-            />
+            <canvas ref={canvasRef} className={styles.AddAssetDialogImg} />
           ) : (
             <span className={styles.AddAssetDialogPreviewText}>
               No preview available - file not selected
