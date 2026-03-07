@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, FileUploadIconButton, Button } from "@/components";
+import { uploadToCloudinary } from "@/app/services/cloudinaryUpload";
 import { AddAssetDialogTypes } from "./types";
 import styles from "./styles.module.css";
 
@@ -11,7 +12,6 @@ export const AddAssetDialog = ({
   setSelectedFile,
 }: AddAssetDialogTypes) => {
   const [previewUrl, setPreviewUrl] = useState<string | undefined>();
-
   console.log(previewUrl);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -91,7 +91,18 @@ export const AddAssetDialog = ({
               isDisabled={previewUrl ? false : true}
               label="Create"
               //TODO: this obviously needs to best tested + broken out into a separate handler
-              onClick={() => console.log("lol")}
+              onClick={async () => {
+                // setUploading(true);
+                await canvasRef.current?.toBlob(async (blob) => {
+                  if (!blob) return;
+                  const file = new File([blob], "sticker.png", {
+                    type: "image/png",
+                  });
+                  const url = await uploadToCloudinary(file);
+                  console.log("Uploaded URL:", url);
+                });
+                // setUploading(false);
+              }}
             />
             <Button label="Cancel" onClick={handleDialogClose} />
           </div>
