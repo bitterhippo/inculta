@@ -12,7 +12,6 @@ export const AddAssetDialog = ({
   setSelectedFile,
 }: AddAssetDialogTypes) => {
   const [previewUrl, setPreviewUrl] = useState<string | undefined>();
-  console.log(previewUrl);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const handleDialogClose = useCallback(() => {
@@ -99,7 +98,10 @@ export const AddAssetDialog = ({
                     type: "image/png",
                   });
                   const url = await uploadToCloudinary(file);
+
+                  //TODO: remove the console.log from here
                   console.log("Uploaded URL:", url);
+                  handleDialogClose();
                 });
                 // setUploading(false);
               }}
