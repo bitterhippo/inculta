@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, FileUploadIconButton, Button } from "@/components";
-import { uploadImage } from "@/app/services/storageServices";
 import { AddAssetDialogTypes } from "./types";
 import styles from "./styles.module.css";
 
@@ -92,20 +91,7 @@ export const AddAssetDialog = ({
               isDisabled={previewUrl ? false : true}
               label="Create"
               //TODO: this obviously needs to best tested + broken out into a separate handler
-              onClick={async () => {
-                if (!selectedFile) return;
-
-                try {
-                  const url = await uploadImage(
-                    selectedFile,
-                    `assets/${selectedFile.name}`,
-                  );
-                  console.log("Uploaded image URL:", url);
-                  handleDialogClose();
-                } catch (err) {
-                  console.error("Upload failed:", err);
-                }
-              }}
+              onClick={() => console.log("lol")}
             />
             <Button label="Cancel" onClick={handleDialogClose} />
           </div>
