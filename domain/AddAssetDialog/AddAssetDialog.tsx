@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { Dialog, FileUploadIconButton, Button } from "@/components";
 import { uploadToCloudinary } from "@/app/services/cloudinaryUpload";
 import { AddAssetDialogTypes } from "./types";
+import { nanoid } from "nanoid";
 import styles from "./styles.module.css";
 
 export const AddAssetDialog = ({
@@ -94,7 +95,10 @@ export const AddAssetDialog = ({
                 // setUploading(true);
                 await canvasRef.current?.toBlob(async (blob) => {
                   if (!blob) return;
-                  const file = new File([blob], "sticker.png", {
+
+                  //TODO: this needs to take into account user id at some point
+                  const uniqueFileName = `sticker_${Date.now()}_${nanoid(6)}.png`;
+                  const file = new File([blob], `${uniqueFileName}`, {
                     type: "image/png",
                   });
                   const url = await uploadToCloudinary(file);
