@@ -12,6 +12,7 @@ export const AddAssetDialog = ({
 }: AddAssetDialogTypes) => {
   const [previewUrl, setPreviewUrl] = useState<string | undefined>();
 
+  console.log(previewUrl);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const handleDialogClose = useCallback(() => {
@@ -87,7 +88,7 @@ export const AddAssetDialog = ({
           </div>
           <div className={styles.AddAssetDialogButtonRow}>
             <Button
-              isDisabled={previewUrl ? true : false}
+              isDisabled={previewUrl ? false : true}
               label="Create"
               onClick={() => console.log("lol")}
             />

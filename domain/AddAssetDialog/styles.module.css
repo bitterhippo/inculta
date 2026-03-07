@@ -63,5 +63,5 @@
 
 .AddAssetDialogButtonRow {
   display: flex;
-  gap: var(--space-sm);
+  gap: var(--spacing-lg);
 }
