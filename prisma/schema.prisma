@@ -11,4 +11,14 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+  url = env(NEXT_PUBLIC_DATABASE_URL)
+}
+
+model Asset {
+  id         String   @id @default(cuid())
+  userId     String
+  campaignId String
+  imageUrl   String
+  name       String
+  createdAt  DateTime @default(now())
 }
