@@ -9,8 +9,6 @@ import {
   Icon,
   Canvas,
   DraggableWrapper,
-  Dialog,
-  FileUploadIconButton,
 } from "@/components";
 import { AddAssetDialog } from "../domain/index";
 import { PlacedItem } from "./types";

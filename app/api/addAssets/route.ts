@@ -1,8 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const { userId, campaignId, imageUrl, name } = body;
 
-  return NextResponse.json({ userId, campaignId, imageUrl, name });
+  const asset = await prisma.asset.create({
+    data: { userId, campaignId, imageUrl, name },
+  });
+
+  return NextResponse.json(asset);
 }
