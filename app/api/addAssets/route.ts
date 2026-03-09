@@ -1,15 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@prisma/client";
-
-const prisma = new PrismaClient();
+import { prisma } from "../../library/prisma";
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const { userId, campaignId, imageUrl, name } = body;
+  try {
+    const body = await req.json();
+    const { userId, campaignId, imageUrl, name } = body;
 
-  const asset = await prisma.asset.create({
-    data: { userId, campaignId, imageUrl, name },
-  });
+    const asset = await prisma.asset.create({
+      data: { userId, campaignId, imageUrl, name },
+    });
 
-  return NextResponse.json(asset);
+    return NextResponse.json(asset);
+  } catch (err) {
+    console.error("API Error:", err);
+    return NextResponse.json(
+      { error: (err as Error).message },
+      { status: 500 },
+    );
+  }
 }
