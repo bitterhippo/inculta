@@ -105,6 +105,23 @@ export const AddAssetDialog = ({
 
                   //TODO: remove the console.log from here
                   console.log("Uploaded URL:", url);
+
+                  //TODO: break this out into a util
+                  const response = await fetch("/api/addAssets", {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                      userId: "123",
+                      campaignId: "abc",
+                      imageUrl: "https://example.com/image.png",
+                      name: "Test Asset",
+                    }),
+                  });
+
+                  const data = await response.json();
+                  console.log(data);
                   handleDialogClose();
                 });
                 // setUploading(false);
