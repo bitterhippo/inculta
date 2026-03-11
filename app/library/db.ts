@@ -1,11 +1,6 @@
-import "dotenv/config";
-import pkg from "pg";
+import { createClient } from "@supabase/supabase-js";
 
-const { Pool } = pkg;
-
-const pool = new Pool({
-  connectionString: process.env.DATABASE_URL,
-});
-
-const result = await pool.query("SELECT NOW()");
-console.log(result.rows);
+export const supabase = createClient(
+  process.env.SUPABASE_URL as string,
+  process.env.SUPABASE_PUBLISHABLE_DEFAULT_KEY as string,
+);
