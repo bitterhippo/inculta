@@ -13,6 +13,7 @@ export const AddAssetDialog = ({
   setSelectedFile,
 }: AddAssetDialogTypes) => {
   const [previewUrl, setPreviewUrl] = useState<string | undefined>();
+  const [uploading, setUploading] = useState<boolean>();
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   const handleDialogClose = useCallback(() => {
@@ -88,23 +89,18 @@ export const AddAssetDialog = ({
           </div>
           <div className={styles.AddAssetDialogButtonRow}>
             <Button
-              isDisabled={previewUrl ? false : true}
+              isDisabled={previewUrl || uploading ? false : true}
               label="Create"
               //TODO: this obviously needs to best tested + broken out into a separate handler
               onClick={async () => {
-                // setUploading(true);
+                setUploading(true);
                 await canvasRef.current?.toBlob(async (blob) => {
                   if (!blob) return;
-
-                  //TODO: this needs to take into account user id at some point
                   const uniqueFileName = `sticker_${Date.now()}_${nanoid(6)}.png`;
                   const file = new File([blob], `${uniqueFileName}`, {
                     type: "image/png",
                   });
                   const url = await uploadToCloudinary(file);
-
-                  //TODO: remove the console.log from here
-                  console.log("Uploaded URL:", url);
 
                   //TODO: break this out into a util
                   const response = await fetch("/api/addAssets", {
@@ -113,18 +109,20 @@ export const AddAssetDialog = ({
                       "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
+                      id: "test",
                       userId: "123",
                       campaignId: "abc",
-                      imageUrl: "https://example.com/image.png",
+                      imageUrl: url,
                       name: "Test Asset",
                     }),
                   });
 
                   const data = await response.json();
+                  //TODO: Error handling in case the POST request here is not successful
                   console.log(data);
                   handleDialogClose();
                 });
-                // setUploading(false);
+                setUploading(false);
               }}
             />
             <Button label="Cancel" onClick={handleDialogClose} />

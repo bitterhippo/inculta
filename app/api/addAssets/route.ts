@@ -11,6 +11,7 @@ export async function POST(req: NextRequest) {
     }
     const { data, error } = await supabase.from("Asset").insert([
       {
+        id: "test",
         userId: userId,
         campaignId: campaignId,
         imageUrl: imageUrl,
