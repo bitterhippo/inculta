@@ -4,21 +4,12 @@ import { supabase } from "@/app/library/db";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { userId, campaignId, imageUrl, name } = body;
+    const { userId } = body;
 
-    {
-      /*TODO: This needs to be updated radically - it will work for testing purposes */
-    }
-    const { data, error } = await supabase.from("Asset").insert([
-      {
-        id: "test",
-        userId: userId,
-        campaignId: campaignId,
-        imageUrl: imageUrl,
-        name,
-        createdAt: new Date(),
-      },
-    ]);
+    const { data, error } = await supabase
+      .from("Asset")
+      .select("*")
+      .eq("userId", userId);
 
     if (error) {
       console.error("Supabase Error:", error);
