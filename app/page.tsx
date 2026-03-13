@@ -27,6 +27,7 @@ export default function Home() {
   const [items, setItems] = useState<PlacedItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [userData, setUserData] = useState();
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
@@ -95,6 +96,7 @@ export default function Home() {
     setActiveId(null);
   };
 
+  //TODO: Determine if this just ought to be React Query
   useEffect(() => {
     async function fetchAssets() {
       const response = await fetch("/api/getAllAssetsById", {
@@ -104,6 +106,7 @@ export default function Home() {
       });
       const data = await response.json();
       console.log(data);
+      setUserData(data);
     }
 
     fetchAssets();
@@ -121,9 +124,21 @@ export default function Home() {
           <SideBar>
             {/*TODO: Break this out into isolated component after it becomes too cubersome */}
             <ExpandableContainer categoryName="Game Assets">
-              <DraggableWrapper id="dropdown-icon" inToolbar={true}>
-                <Icon />
-              </DraggableWrapper>
+              {userData &&
+                userData.map(({ name, imageUrl }) => {
+                  return (
+                    <DraggableWrapper
+                      id={`${name}-${imageUrl}`}
+                      key={`${name}-${imageUrl}`}
+                    >
+                      <img
+                        style={{ maxHeight: "32px", maxWidth: "32px" }}
+                        src={imageUrl}
+                        alt={name}
+                      />
+                    </DraggableWrapper>
+                  );
+                })}
               <Icon
                 label={"Click me"}
                 onClick={() => setDialogOpen((prev) => !prev)}
