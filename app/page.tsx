@@ -1,7 +1,7 @@
 "use client";
 
 import { createPortal } from "react-dom";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 import {
   SideBar,
@@ -94,6 +94,20 @@ export default function Home() {
     // Reset active item for DragOverlay
     setActiveId(null);
   };
+
+  useEffect(() => {
+    async function fetchAssets() {
+      const response = await fetch("/api/getAllAssetsById", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId: "123" }),
+      });
+      const data = await response.json();
+      console.log(data);
+    }
+
+    fetchAssets();
+  }, []);
 
   return (
     <>
