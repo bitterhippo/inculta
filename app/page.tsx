@@ -31,8 +31,6 @@ export default function Home() {
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
-  console.log(selectedFile);
-
   //TODO: Extract into helpers
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -47,8 +45,6 @@ export default function Home() {
     const { active, over, delta } = event;
 
     const source = active.data.current?.source;
-
-    console.log("source", source);
 
     if (!canvasRef.current) return;
     const canvasRect = canvasRef.current?.getBoundingClientRect();
@@ -105,7 +101,6 @@ export default function Home() {
         body: JSON.stringify({ userId: "123" }),
       });
       const data = await response.json();
-      console.log(data);
       setUserData(data);
     }
 
@@ -126,10 +121,12 @@ export default function Home() {
             <ExpandableContainer categoryName="Game Assets">
               {userData &&
                 userData.map(({ name, imageUrl }) => {
+                  console.log(name, imageUrl);
                   return (
                     <DraggableWrapper
                       id={`${name}-${imageUrl}`}
                       key={`${name}-${imageUrl}`}
+                      inToolbar={true}
                     >
                       <img
                         style={{ maxHeight: "32px", maxWidth: "32px" }}
@@ -155,7 +152,11 @@ export default function Home() {
                     x={currentItem.x}
                     y={currentItem.y}
                   >
-                    <Icon key={`${currentItem?.id}-${i}`}></Icon>
+                    <img
+                      style={{ maxHeight: "32px", maxWidth: "32px" }}
+                      src={currentItem.imageUrl}
+                      alt={currentItem.name}
+                    />
                   </DraggableWrapper>
                 ))}
               </Canvas>
