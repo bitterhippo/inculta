@@ -31,8 +31,6 @@ export default function Home() {
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
-  console.log(items);
-
   //TODO: Extract into helpers
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -126,7 +124,6 @@ export default function Home() {
             <ExpandableContainer categoryName="Game Assets">
               {userData &&
                 userData.map(({ name, imageUrl }) => {
-                  console.log(name, imageUrl);
                   return (
                     <DraggableWrapper
                       id={`${name}-${imageUrl}`}

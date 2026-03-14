@@ -119,7 +119,6 @@ export const AddAssetDialog = ({
 
                   const data = await response.json();
                   //TODO: Error handling in case the POST request here is not successful
-                  console.log(data);
                   handleDialogClose();
                 });
                 setUploading(false);
