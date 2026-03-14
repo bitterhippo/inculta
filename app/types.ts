@@ -2,5 +2,5 @@ export type PlacedItem = {
   id: string;
   x: number;
   y: number;
-  imageUrl: string;
+  imageUrl?: string;
 };

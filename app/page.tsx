@@ -31,6 +31,8 @@ export default function Home() {
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
+  console.log(items);
+
   //TODO: Extract into helpers
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -46,6 +48,8 @@ export default function Home() {
 
     const source = active.data.current?.source;
 
+    console.log(event);
+
     if (!canvasRef.current) return;
     const canvasRect = canvasRef.current?.getBoundingClientRect();
     //TODO: Clean up the magic numbers (they are workable for now)
@@ -59,6 +63,7 @@ export default function Home() {
         id: String(nanoid()),
         x,
         y,
+        imageUrl,
       };
       setItems((prev) => [...prev, currentDragObject]);
     }
@@ -82,6 +87,7 @@ export default function Home() {
           id: newArr[targetItem].id,
           x: delta.x + newArr[targetItem].x,
           y: delta.y + newArr[targetItem].y,
+          imageUrl: newArr[targetItem]?.imageUrl,
         });
         newArr[targetItem] = updatedItem;
         return newArr;
@@ -153,9 +159,9 @@ export default function Home() {
                     y={currentItem.y}
                   >
                     <img
-                      style={{ maxHeight: "32px", maxWidth: "32px" }}
+                      style={{ maxHeight: "48px", maxWidth: "48px" }}
                       src={currentItem.imageUrl}
-                      alt={currentItem.name}
+                      alt={currentItem.id}
                     />
                   </DraggableWrapper>
                 ))}

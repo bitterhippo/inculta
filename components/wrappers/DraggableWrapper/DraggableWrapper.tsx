@@ -7,12 +7,14 @@ export function DraggableWrapper({
   children,
   x,
   y,
+  imageUrl,
   inToolbar,
 }: DraggableWrapperProps) {
   const { attributes, listeners, setNodeRef } = useDraggable({
     id,
     data: {
       source: inToolbar ? "palette" : "canvas",
+      imageUrl,
     } satisfies DragData,
   });
   const stylePosition = inToolbar ? "relative" : "absolute";
