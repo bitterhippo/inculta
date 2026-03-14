@@ -16,7 +16,6 @@ export async function POST(req: NextRequest) {
         userId: userId,
         campaignId: campaignId,
         imageUrl: imageUrl,
-        name,
         createdAt: new Date(),
       },
     ]);

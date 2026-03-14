@@ -123,18 +123,18 @@ export default function Home() {
             {/*TODO: Break this out into isolated component after it becomes too cubersome */}
             <ExpandableContainer categoryName="Game Assets">
               {userData &&
-                userData.map(({ name, imageUrl }) => {
+                userData.map(({ id, imageUrl }) => {
                   return (
                     <DraggableWrapper
-                      id={`${name}-${imageUrl}`}
-                      key={`${name}-${imageUrl}`}
+                      id={`${id}-${imageUrl}`}
+                      key={`${id}-${imageUrl}`}
                       inToolbar={true}
                       imageUrl={`${imageUrl}`}
                     >
                       <img
                         style={{ maxHeight: "32px", maxWidth: "32px" }}
                         src={imageUrl}
-                        alt={name}
+                        alt={id}
                       />
                     </DraggableWrapper>
                   );
