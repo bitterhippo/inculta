@@ -47,7 +47,9 @@ export default function Home() {
     const { active, over, delta } = event;
 
     const source = active.data.current?.source;
+    const imageUrl = active.data.current?.imageUrl;
 
+    console.log("imageUrl", imageUrl);
     console.log(event);
 
     if (!canvasRef.current) return;
@@ -133,6 +135,7 @@ export default function Home() {
                       id={`${name}-${imageUrl}`}
                       key={`${name}-${imageUrl}`}
                       inToolbar={true}
+                      imageUrl={`${imageUrl}`}
                     >
                       <img
                         style={{ maxHeight: "32px", maxWidth: "32px" }}
@@ -157,6 +160,7 @@ export default function Home() {
                     id={`${currentItem?.id}`}
                     x={currentItem.x}
                     y={currentItem.y}
+                    imageUrl={`${currentItem.imageUrl}`}
                   >
                     <img
                       style={{ maxHeight: "48px", maxWidth: "48px" }}
