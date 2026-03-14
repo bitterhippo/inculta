@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/app/library/db";
+import { nanoid } from "nanoid";
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,7 +12,7 @@ export async function POST(req: NextRequest) {
     }
     const { data, error } = await supabase.from("Asset").insert([
       {
-        id: "test",
+        id: nanoid(6),
         userId: userId,
         campaignId: campaignId,
         imageUrl: imageUrl,

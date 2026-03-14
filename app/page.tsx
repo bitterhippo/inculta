@@ -49,9 +49,6 @@ export default function Home() {
     const source = active.data.current?.source;
     const imageUrl = active.data.current?.imageUrl;
 
-    console.log("imageUrl", imageUrl);
-    console.log(event);
-
     if (!canvasRef.current) return;
     const canvasRect = canvasRef.current?.getBoundingClientRect();
     //TODO: Clean up the magic numbers (they are workable for now)
@@ -113,7 +110,7 @@ export default function Home() {
     }
 
     fetchAssets();
-  }, []);
+  }, [dialogOpen]);
 
   return (
     <>
