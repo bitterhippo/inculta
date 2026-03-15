@@ -1,0 +1,15 @@
+.ExpandableContainerSelectButton {
+  width: 100%;
+  margin: 0px var(--spacing-sm);
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  background-color: red;
+  border-radius: 8px;
+}
+
+.PreviewContainer {
+  height: var(--spacing-md);
+  width: var(--spacing-md);
+  border: 1px solid black;
+}
