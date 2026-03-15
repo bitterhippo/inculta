@@ -10,7 +10,7 @@ export async function POST(req: NextRequest) {
     {
       /*TODO: This needs to be updated radically - it will work for testing purposes */
     }
-    const { data, error } = await supabase.from("Asset").insert([
+    const { data, error } = await supabase.from("asset").insert([
       {
         id: nanoid(21),
         userId: userId,

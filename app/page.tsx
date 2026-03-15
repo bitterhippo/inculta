@@ -144,6 +144,12 @@ export default function Home() {
                 onClick={() => setDialogOpen((prev) => !prev)}
               />
             </ExpandableContainer>
+            <ExpandableContainer categoryName="Background">
+              <Icon
+                label="Create"
+                onClick={() => console.log("open background creation dialog")}
+              ></Icon>
+            </ExpandableContainer>
           </SideBar>
           <div className={styles.ViewContainer}>
             <div className={styles.CanvasContainer}>
@@ -168,6 +174,7 @@ export default function Home() {
           </div>
         </div>
         <DragOverlay>
+          {/* TODO: this is where the onDrag image is created */}
           {activeId ? (
             <DraggableWrapper id={activeId}>
               <Icon />

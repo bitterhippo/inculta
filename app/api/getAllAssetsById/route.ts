@@ -7,7 +7,7 @@ export async function POST(req: NextRequest) {
     const { userId } = body;
 
     const { data, error } = await supabase
-      .from("Asset")
+      .from("asset")
       .select("*")
       .eq("userId", userId);
 

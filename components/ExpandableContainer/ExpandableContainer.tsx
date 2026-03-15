@@ -12,7 +12,7 @@ export const ExpandableContainer = ({
   const [expanded, setExpanded] = useState<boolean>(false);
 
   return (
-    <>
+    <div>
       <div
         className={styles.ClickableContainer}
         onClick={() => setExpanded((prev) => !prev)}
@@ -29,6 +29,6 @@ export const ExpandableContainer = ({
         </div>
       </div>
       {expanded && <div className={styles.ContentContainer}>{children}</div>}
-    </>
+    </div>
   );
 };
