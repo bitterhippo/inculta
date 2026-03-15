@@ -1,3 +1,4 @@
 import { AddAssetDialog } from "./AddAssetDialog/AddAssetDialog";
+import { LongButton } from "./LongButton/LongButton";
 
-export { AddAssetDialog };
+export { AddAssetDialog, LongButton };

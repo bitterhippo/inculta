@@ -1,4 +1,4 @@
-export interface ExpandableContainerSelectButtonProps {
+export interface LongButtonProps {
   isChecked: boolean;
   onClick: () => void;
   label: string;

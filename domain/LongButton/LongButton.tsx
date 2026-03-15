@@ -1,12 +1,12 @@
 import styles from "./styles.module.css";
-import type { ExpandableContainerSelectButtonProps } from "./types";
+import type { LongButtonProps } from "./types";
 
-export const ExpandableContainerSelectButton = ({
+export const LongButton = ({
   onClick,
   label,
   isChecked,
   previewContainerContent,
-}: ExpandableContainerSelectButtonProps) => {
+}: LongButtonProps) => {
   return (
     <div onClick={onClick} className={styles.ExpandableContainerSelectButton}>
       <div>
