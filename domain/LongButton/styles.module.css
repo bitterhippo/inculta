@@ -1,21 +1,24 @@
 .LongButtonContainer {
-  width: 100%;
-  margin: 0px var(--spacing-sm);
+  width: 90%;
   display: flex;
   flex-direction: row;
-  gap: var(--spacing-md);
-  background-color: red;
+  height: 32px;
+  margin: 0px var(--spacing-sm);
+  padding: 0px var(--spacing-sm);
+  background-color: white;
+  opacity: 0.8;
   align-items: center;
   border-radius: 8px;
   border: 1px solid black;
+  justify-content: space-between;
 }
 
 .LongButtonPreviewContainer {
-  height: var(--spacing-md);
-  width: var(--spacing-md);
+  height: 75%;
+  width: 10%;
   border: 1px solid black;
 }
 
 .LongButtonLabel {
-  font-size: 16px;
+  font-size: 14px;
 }
