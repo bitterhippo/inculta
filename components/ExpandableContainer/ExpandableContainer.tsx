@@ -12,6 +12,8 @@ export const ExpandableContainer = ({
 }: ExpandableContainerProps) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
+  const direction = contentDirection ?? "row";
+
   return (
     <div>
       <div
@@ -29,17 +31,20 @@ export const ExpandableContainer = ({
           </button>
         </div>
       </div>
-      {expanded && (
-        <div
-          className={`${styles.ContentContainer} ${
-            contentDirection
-              ? styles.ContentContainerFlexRow
-              : styles.ContentContainerFlexColumn
-          }`}
-        >
-          {children}
-        </div>
-      )}
+      <div
+        className={`${styles.ContentContainer} ${
+          direction === "row"
+            ? styles.ContentContainerFlexRow
+            : styles.ContentContainerFlexColumn
+        }`}
+        style={{
+          display: expanded ? "flex" : "none",
+          flexDirection: direction,
+          gap: "8px",
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };
