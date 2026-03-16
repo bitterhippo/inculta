@@ -8,6 +8,7 @@ import styles from "./styles.module.css";
 export const ExpandableContainer = ({
   categoryName,
   children,
+  contentDirection,
 }: ExpandableContainerProps) => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
@@ -28,7 +29,17 @@ export const ExpandableContainer = ({
           </button>
         </div>
       </div>
-      {expanded && <div className={styles.ContentContainer}>{children}</div>}
+      {expanded && (
+        <div
+          className={`${styles.ContentContainer} ${
+            contentDirection
+              ? styles.ContentContainerFlexRow
+              : styles.ContentContainerFlexColumn
+          }`}
+        >
+          {children}
+        </div>
+      )}
     </div>
   );
 };

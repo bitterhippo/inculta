@@ -10,7 +10,7 @@ import {
   Canvas,
   DraggableWrapper,
 } from "@/components";
-import { AddAssetDialog } from "../domain/index";
+import { AddAssetDialog, LongButton } from "../domain/index";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
@@ -144,11 +144,28 @@ export default function Home() {
                 onClick={() => setDialogOpen((prev) => !prev)}
               />
             </ExpandableContainer>
-            <ExpandableContainer categoryName="Background">
-              <Icon
-                label="Create"
-                onClick={() => console.log("open background creation dialog")}
-              ></Icon>
+            <ExpandableContainer
+              contentDirection={"column"}
+              categoryName="Background"
+            >
+              <LongButton
+                onClick={() => console.log("lol")}
+                isChecked={true}
+                label={"lol"}
+                previewContainerContent="test"
+              />
+              <LongButton
+                onClick={() => console.log("lol")}
+                isChecked={true}
+                label={"lol"}
+                previewContainerContent="test"
+              />
+              <LongButton
+                onClick={() => console.log("lol")}
+                isChecked={true}
+                label={"lol"}
+                previewContainerContent="test"
+              />
             </ExpandableContainer>
           </SideBar>
           <div className={styles.ViewContainer}>

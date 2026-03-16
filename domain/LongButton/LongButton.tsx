@@ -8,12 +8,16 @@ export const LongButton = ({
   previewContainerContent,
 }: LongButtonProps) => {
   return (
-    <div onClick={onClick} className={styles.ExpandableContainerSelectButton}>
+    <div onClick={onClick} className={styles.LongButtonContainer}>
       <div>
         <input type="checkbox" checked={isChecked}></input>
       </div>
-      <div>{label}</div>
-      <div className={styles.PreviewContainer}>{previewContainerContent}</div>
+      <div className={styles.LongButtonLabel}>
+        <span>{label}</span>
+      </div>
+      <div className={styles.LongButtonPreviewContainer}>
+        {previewContainerContent}
+      </div>
     </div>
   );
 };
