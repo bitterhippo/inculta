@@ -1,5 +1,5 @@
 export interface LongButtonProps {
-  isChecked: boolean;
+  checkbox?: { isChecked: boolean };
   onClick: () => void;
   label: string;
   previewContainerContent?: string;

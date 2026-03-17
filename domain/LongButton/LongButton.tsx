@@ -4,14 +4,16 @@ import type { LongButtonProps } from "./types";
 export const LongButton = ({
   onClick,
   label,
-  isChecked,
+  checkbox,
   previewContainerContent,
 }: LongButtonProps) => {
   return (
     <div onClick={onClick} className={styles.LongButtonContainer}>
-      <div>
-        <input type="checkbox" checked={isChecked}></input>
-      </div>
+      {checkbox && (
+        <div>
+          <input type="checkbox" checked={checkbox.isChecked} />
+        </div>
+      )}
       <div className={styles.LongButtonLabel}>
         <span>{label}</span>
       </div>
