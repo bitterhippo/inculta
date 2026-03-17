@@ -32,7 +32,8 @@ export default function Home() {
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
-  console.log(userData);
+  console.log("userdata", userData);
+  console.log("selectedBackground", selectedBackground);
 
   //TODO: Extract into helpers
   const sensors = useSensors(
@@ -161,9 +162,13 @@ export default function Home() {
               />
               <LongButton
                 onClick={() =>
-                  setSelectedBackground({ backgroundImage: items[0]?.imageUrl })
+                  setSelectedBackground({
+                    backgroundImage: userData[0]?.imageUrl,
+                  })
                 }
-                isChecked={selectedBackground?.backgroundColour === "black"}
+                isChecked={
+                  selectedBackground?.backgroundImage === userData[0]?.imageUrl
+                }
                 label={"lol"}
                 previewContainerContent="image"
               />
