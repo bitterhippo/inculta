@@ -167,6 +167,7 @@ export default function Home() {
                   })
                 }
                 isChecked={
+                  userData?.length > 0 &&
                   selectedBackground?.backgroundImage === userData[0]?.imageUrl
                 }
                 label={"lol"}
