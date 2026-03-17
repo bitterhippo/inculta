@@ -6,7 +6,7 @@ import { useDroppable } from "@dnd-kit/core";
 import { CanvasProps } from "./types";
 
 export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(
-  ({ children, ...rest }, ref) => {
+  ({ children, backgroundColour, backgroundImage, ...rest }, ref) => {
     const { setNodeRef } = useDroppable({ id: "canvas" });
 
     const combinedRef = (node: HTMLDivElement | null) => {
@@ -15,8 +15,24 @@ export const Canvas = forwardRef<HTMLDivElement, CanvasProps>(
       else if (ref) ref.current = node;
     };
 
+    const backgroundStyle = backgroundImage
+      ? {
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }
+      : {
+          backgroundColor: backgroundColour ?? "white",
+        };
+
     return (
-      <div ref={combinedRef} className={styles.Canvas} {...rest}>
+      <div
+        style={backgroundStyle}
+        ref={combinedRef}
+        className={styles.Canvas}
+        {...rest}
+      >
         {children}
       </div>
     );
