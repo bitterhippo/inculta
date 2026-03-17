@@ -27,10 +27,12 @@ export default function Home() {
   const [items, setItems] = useState<PlacedItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedBackground, setSelectedBackground] = useState<string>();
+  const [selectedBackground, setSelectedBackground] = useState<object>();
   const [userData, setUserData] = useState();
 
   const canvasRef = useRef<HTMLDivElement>(null);
+
+  console.log(userData);
 
   //TODO: Extract into helpers
   const sensors = useSensors(
@@ -150,16 +152,20 @@ export default function Home() {
               categoryName="Background"
             >
               <LongButton
-                onClick={() => setSelectedBackground("white")}
-                isChecked={selectedBackground === "white"}
+                onClick={() =>
+                  setSelectedBackground({ backgroundColour: "black" })
+                }
+                isChecked={selectedBackground?.backgroundColour === "black"}
                 label={"lol"}
-                previewContainerContent="test"
+                previewContainerContent="black"
               />
               <LongButton
-                onClick={() => setSelectedBackground("black")}
-                isChecked={selectedBackground === "black"}
+                onClick={() =>
+                  setSelectedBackground({ backgroundImage: items[0]?.imageUrl })
+                }
+                isChecked={selectedBackground?.backgroundColour === "black"}
                 label={"lol"}
-                previewContainerContent="test"
+                previewContainerContent="image"
               />
               <LongButton
                 onClick={() => console.log("lol")}
@@ -170,7 +176,7 @@ export default function Home() {
           </SideBar>
           <div className={styles.ViewContainer}>
             <div className={styles.CanvasContainer}>
-              <Canvas ref={canvasRef}>
+              <Canvas ref={canvasRef} {...selectedBackground}>
                 {items.map((currentItem, i) => (
                   <DraggableWrapper
                     key={`${currentItem?.id}-${i}`}
