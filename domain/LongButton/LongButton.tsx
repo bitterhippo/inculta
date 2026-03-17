@@ -15,9 +15,11 @@ export const LongButton = ({
       <div className={styles.LongButtonLabel}>
         <span>{label}</span>
       </div>
-      <div className={styles.LongButtonPreviewContainer}>
-        {previewContainerContent}
-      </div>
+      {previewContainerContent && (
+        <div className={styles.LongButtonPreviewContainer}>
+          {previewContainerContent}
+        </div>
+      )}
     </div>
   );
 };

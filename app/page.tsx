@@ -27,6 +27,7 @@ export default function Home() {
   const [items, setItems] = useState<PlacedItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [selectedBackground, setSelectedBackground] = useState<string>();
   const [userData, setUserData] = useState();
 
   const canvasRef = useRef<HTMLDivElement>(null);
@@ -149,22 +150,21 @@ export default function Home() {
               categoryName="Background"
             >
               <LongButton
-                onClick={() => console.log("lol")}
-                isChecked={true}
+                onClick={() => setSelectedBackground("white")}
+                isChecked={selectedBackground === "white"}
+                label={"lol"}
+                previewContainerContent="test"
+              />
+              <LongButton
+                onClick={() => setSelectedBackground("black")}
+                isChecked={selectedBackground === "black"}
                 label={"lol"}
                 previewContainerContent="test"
               />
               <LongButton
                 onClick={() => console.log("lol")}
-                isChecked={true}
+                isChecked={false}
                 label={"lol"}
-                previewContainerContent="test"
-              />
-              <LongButton
-                onClick={() => console.log("lol")}
-                isChecked={true}
-                label={"lol"}
-                previewContainerContent="test"
               />
             </ExpandableContainer>
           </SideBar>
@@ -199,7 +199,6 @@ export default function Home() {
           ) : null}
         </DragOverlay>
       </DndContext>
-      {/*TODO: Break this out into a domain component */}
       {dialogOpen &&
         createPortal(
           <AddAssetDialog
