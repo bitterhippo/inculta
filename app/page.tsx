@@ -25,7 +25,10 @@ import {
 export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [items, setItems] = useState<PlacedItem[]>([]);
-  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [dialogOpen, setDialogOpen] = useState<{
+    open: boolean;
+    source: "asset" | "backdrop";
+  }>({ open: false, source: "asset" });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedBackground, setSelectedBackground] = useState<object>();
   const [userData, setUserData] = useState();
@@ -145,7 +148,12 @@ export default function Home() {
                 })}
               <Icon
                 label={"Click me"}
-                onClick={() => setDialogOpen((prev) => !prev)}
+                onClick={() =>
+                  setDialogOpen(({ open }) => ({
+                    open: !open,
+                    source: "asset",
+                  }))
+                }
               />
             </ExpandableContainer>
             <ExpandableContainer
@@ -174,9 +182,13 @@ export default function Home() {
                 previewContainerContent="image"
               />
               <LongButton
-                onClick={() => console.log("lol")}
-                isChecked={false}
-                label={"lol"}
+                onClick={() =>
+                  setDialogOpen(({ open }) => ({
+                    open: !open,
+                    source: "backdrop",
+                  }))
+                }
+                label={"Upload New Backdrop"}
               />
             </ExpandableContainer>
           </SideBar>
@@ -211,12 +223,13 @@ export default function Home() {
           ) : null}
         </DragOverlay>
       </DndContext>
-      {dialogOpen &&
+      {dialogOpen.open &&
         createPortal(
           <AddAssetDialog
             selectedFile={selectedFile}
             setDialogOpen={setDialogOpen}
             setSelectedFile={setSelectedFile}
+            source={dialogOpen.source}
           />,
           document.body,
         )}

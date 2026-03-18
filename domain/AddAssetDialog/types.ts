@@ -4,4 +4,5 @@ export type AddAssetDialogTypes = {
   selectedFile: any;
   setDialogOpen: any;
   setSelectedFile: any;
+  source?: "asset" | "backdrop";
 };

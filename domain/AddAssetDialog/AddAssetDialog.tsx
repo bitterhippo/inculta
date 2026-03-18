@@ -6,11 +6,13 @@ import { uploadToCloudinary } from "@/app/services/cloudinaryUpload";
 import { AddAssetDialogTypes } from "./types";
 import { nanoid } from "nanoid";
 import styles from "./styles.module.css";
+import { buildUploadPayload, buildUploadPayloadUrl } from "./utils";
 
 export const AddAssetDialog = ({
   selectedFile,
   setDialogOpen,
   setSelectedFile,
+  source,
 }: AddAssetDialogTypes) => {
   const [previewUrl, setPreviewUrl] = useState<string | undefined>();
   const [uploading, setUploading] = useState<boolean>();
@@ -96,25 +98,23 @@ export const AddAssetDialog = ({
                 setUploading(true);
                 await canvasRef.current?.toBlob(async (blob) => {
                   if (!blob) return;
-                  const uniqueFileName = `sticker_${Date.now()}_${nanoid(6)}.png`;
+                  const uniqueFileName = `sticker_${Date.now()}_${nanoid(11)}.png`;
                   const file = new File([blob], `${uniqueFileName}`, {
                     type: "image/png",
                   });
                   const url = await uploadToCloudinary(file);
 
-                  //TODO: break this out into a util
+                  //TODO: Replaces with actual values
+                  const payloadUrl = buildUploadPayloadUrl(source);
+                  const payload = buildUploadPayload("asset", {
+                    userId: "testId",
+                    campaignId: "testCampaign",
+                    imageUrl: url,
+                  });
                   const response = await fetch("/api/addAssets", {
                     method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                      id: "test",
-                      userId: "123",
-                      campaignId: "abc",
-                      imageUrl: url,
-                      name: "Test Asset",
-                    }),
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
                   });
 
                   const data = await response.json();
