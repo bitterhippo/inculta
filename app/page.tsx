@@ -36,7 +36,6 @@ export default function Home() {
   const canvasRef = useRef<HTMLDivElement>(null);
 
   console.log("userdata", userData);
-  console.log("selectedBackground", selectedBackground);
 
   //TODO: Extract into helpers
   const sensors = useSensors(
@@ -129,8 +128,8 @@ export default function Home() {
           <SideBar>
             {/*TODO: Break this out into isolated component after it becomes too cubersome */}
             <ExpandableContainer categoryName="Game Assets">
-              {userData &&
-                userData.map(({ id, imageUrl }) => {
+              {userData?.assetData &&
+                userData.assetData.map(({ id, imageUrl }) => {
                   return (
                     <DraggableWrapper
                       id={`${id}-${imageUrl}`}
