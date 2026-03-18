@@ -43,8 +43,6 @@ export const AddAssetDialog = ({
     const img = new Image();
     img.src = previewUrl;
 
-    console.log(img);
-
     img.onload = () => {
       canvas.width = img.width;
       canvas.height = img.height;
