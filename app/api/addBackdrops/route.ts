@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     const { data, error } = await supabase.from("backdrop").insert([
       {
         id: nanoid(21),
-        userId: userId,
+        userId: "123",
         campaignId: campaignId,
         imageUrl: imageUrl,
         label: "test",

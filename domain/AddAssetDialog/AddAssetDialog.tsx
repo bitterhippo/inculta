@@ -104,14 +104,18 @@ export const AddAssetDialog = ({
                   });
                   const url = await uploadToCloudinary(file);
 
+                  if (!source) {
+                    throw new Error("source is required here");
+                  }
+
                   //TODO: Replaces with actual values
                   const payloadUrl = buildUploadPayloadUrl(source);
-                  const payload = buildUploadPayload("asset", {
+                  const payload = buildUploadPayload(source, {
                     userId: "testId",
                     campaignId: "testCampaign",
                     imageUrl: url,
                   });
-                  const response = await fetch("/api/addAssets", {
+                  const response = await fetch(payloadUrl, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
