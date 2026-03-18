@@ -108,8 +108,9 @@ export const AddAssetDialog = ({
                     throw new Error("source is required here");
                   }
 
-                  //TODO: Replaces with actual values
                   const payloadUrl = buildUploadPayloadUrl(source);
+
+                  console.log("source", source);
                   const payload = buildUploadPayload(source, {
                     userId: "testId",
                     campaignId: "testCampaign",

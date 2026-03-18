@@ -167,19 +167,28 @@ export default function Home() {
                 label={"lol"}
                 previewContainerContent="black"
               />
-              <LongButton
-                onClick={() =>
-                  setSelectedBackground({
-                    backgroundImage: userData[0]?.imageUrl,
-                  })
-                }
-                isChecked={
-                  userData?.length > 0 &&
-                  selectedBackground?.backgroundImage === userData[0]?.imageUrl
-                }
-                label={"lol"}
-                previewContainerContent="image"
-              />
+              {userData?.backdropData &&
+                userData.backdropData.map(
+                  ({
+                    imageUrl,
+                    label,
+                    id,
+                  }: {
+                    imageUrl: string;
+                    label: string;
+                    id: string;
+                  }) => {
+                    return (
+                      <LongButton
+                        key={id}
+                        label={label}
+                        onClick={() =>
+                          setSelectedBackground({ backgroundImage: imageUrl })
+                        }
+                      />
+                    );
+                  },
+                )}
               <LongButton
                 onClick={() =>
                   setDialogOpen(({ open }) => ({
