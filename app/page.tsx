@@ -33,13 +33,20 @@ export default function Home() {
   const [selectedBackground, setSelectedBackground] = useState<object>();
   const [userData, setUserData] = useState();
   const [scale, setScale] = useState<number>(1);
+  const [pan, setPan] = useState({ x: 0, y: 0 });
+  const [isSpacePressed, setIsSpacePressed] = useState(false);
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
   console.log("userdata", userData);
 
-  const scaleMin = 0.25;
+  //Zoom Constants
+  const scaleMin = 0.5;
   const scaleMax = 3;
+
+  //Pan Ref
+  const isPanning = useRef(false);
+  const lastPos = useRef({ x: 0, y: 0 });
 
   //TODO: Extract into helpers
   const sensors = useSensors(
@@ -119,6 +126,29 @@ export default function Home() {
 
     fetchAssets();
   }, [dialogOpen]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.code === "Space") {
+        e.preventDefault(); // prevents page scroll
+        setIsSpacePressed(true);
+      }
+    };
+
+    const handleKeyUp = (e: KeyboardEvent) => {
+      if (e.code === "Space") {
+        setIsSpacePressed(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
 
   return (
     <>
@@ -216,11 +246,36 @@ export default function Home() {
                   return Math.min(Math.max(next, scaleMin), scaleMax);
                 });
               }}
+              onMouseDown={(e) => {
+                if (!isSpacePressed) return;
+
+                isPanning.current = true;
+                lastPos.current = { x: e.clientX, y: e.clientY };
+              }}
+              onMouseMove={(e) => {
+                if (!isPanning.current) return;
+
+                const dx = e.clientX - lastPos.current.x;
+                const dy = e.clientY - lastPos.current.y;
+
+                lastPos.current = { x: e.clientX, y: e.clientY };
+
+                setPan((prev) => ({
+                  x: prev.x + dx,
+                  y: prev.y + dy,
+                }));
+              }}
+              onMouseUp={() => {
+                isPanning.current = false;
+              }}
+              onMouseLeave={() => {
+                isPanning.current = false;
+              }}
             >
               <div
                 className={styles.World}
                 style={{
-                  transform: `scale(${scale})`,
+                  transform: `translate(${pan.x}px, ${pan.y}px) scale(${scale})`,
                   transformOrigin: "top left",
                 }}
               >
