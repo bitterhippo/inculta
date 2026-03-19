@@ -32,11 +32,14 @@ export default function Home() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedBackground, setSelectedBackground] = useState<object>();
   const [userData, setUserData] = useState();
-  const [scale, setScale] = useState<string>();
+  const [scale, setScale] = useState<number>(1);
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
   console.log("userdata", userData);
+
+  const scaleMin = 0.25;
+  const scaleMax = 3;
 
   //TODO: Extract into helpers
   const sensors = useSensors(
@@ -202,7 +205,18 @@ export default function Home() {
             </ExpandableContainer>
           </SideBar>
           <div className={styles.CanvasWrapper}>
-            <div className={styles.Viewport}>
+            <div
+              className={styles.Viewport}
+              onWheel={(e) => {
+                e.preventDefault();
+
+                const zoomSpeed = 0.001;
+                setScale((prev) => {
+                  let next = prev - e.deltaY * zoomSpeed;
+                  return Math.min(Math.max(next, scaleMin), scaleMax);
+                });
+              }}
+            >
               <div
                 className={styles.World}
                 style={{
