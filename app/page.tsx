@@ -32,6 +32,7 @@ export default function Home() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedBackground, setSelectedBackground] = useState<object>();
   const [userData, setUserData] = useState();
+  const [scale, setScale] = useState<string>();
 
   const canvasRef = useRef<HTMLDivElement>(null);
 
@@ -200,25 +201,33 @@ export default function Home() {
               />
             </ExpandableContainer>
           </SideBar>
-          <div className={styles.ViewContainer}>
-            <div className={styles.CanvasContainer}>
-              <Canvas ref={canvasRef} {...selectedBackground}>
-                {items.map((currentItem, i) => (
-                  <DraggableWrapper
-                    key={`${currentItem?.id}-${i}`}
-                    id={`${currentItem?.id}`}
-                    x={currentItem.x}
-                    y={currentItem.y}
-                    imageUrl={`${currentItem.imageUrl}`}
-                  >
-                    <img
-                      style={{ maxHeight: "48px", maxWidth: "48px" }}
-                      src={currentItem.imageUrl}
-                      alt={currentItem.id}
-                    />
-                  </DraggableWrapper>
-                ))}
-              </Canvas>
+          <div className={styles.CanvasWrapper}>
+            <div className={styles.Viewport}>
+              <div
+                className={styles.World}
+                style={{
+                  transform: `scale(${scale})`,
+                  transformOrigin: "top left",
+                }}
+              >
+                <Canvas ref={canvasRef} {...selectedBackground}>
+                  {items.map((currentItem, i) => (
+                    <DraggableWrapper
+                      key={`${currentItem?.id}-${i}`}
+                      id={`${currentItem?.id}`}
+                      x={currentItem.x}
+                      y={currentItem.y}
+                      imageUrl={`${currentItem.imageUrl}`}
+                    >
+                      <img
+                        style={{ maxHeight: "48px", maxWidth: "48px" }}
+                        src={currentItem.imageUrl}
+                        alt={currentItem.id}
+                      />
+                    </DraggableWrapper>
+                  ))}
+                </Canvas>
+              </div>
             </div>
           </div>
         </div>
