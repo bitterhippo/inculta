@@ -32,18 +32,16 @@ export default function Home() {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedBackground, setSelectedBackground] = useState<object>();
   const [userData, setUserData] = useState();
-  const [scale, setScale] = useState<number>(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isSpacePressed, setIsSpacePressed] = useState(false);
 
-  const canvasRef = useRef<HTMLDivElement>(null);
-
-  console.log("userdata", userData);
-
-  //Zoom Constants
+  //Zoom Logic
+  const defaultScale = 1;
+  const [scale, setScale] = useState<number>(defaultScale);
   const scaleMin = 0.5;
   const scaleMax = 3;
 
+  const canvasRef = useRef<HTMLDivElement>(null);
   //Pan Ref
   const isPanning = useRef(false);
   const lastPos = useRef({ x: 0, y: 0 });
@@ -61,22 +59,33 @@ export default function Home() {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over, delta } = event;
 
+    console.log(canvasRef);
+    console.log(event);
+
     const source = active.data.current?.source;
     const imageUrl = active.data.current?.imageUrl;
 
     if (!canvasRef.current) return;
     const canvasRect = canvasRef.current?.getBoundingClientRect();
-    //TODO: Clean up the magic numbers (they are workable for now)
-    const x = delta.x - canvasRect.left + 10;
-    const y = delta.y - canvasRect.top + 52;
+
+    const startEvent = event.activatorEvent as MouseEvent;
+
+    const startX = startEvent.clientX;
+    const startY = startEvent.clientY;
+
+    const finalX = startX + delta.x;
+    const finalY = startY + delta.y;
+
+    const canvasX = (finalX - canvasRect.left) / scale;
+    const canvasY = (finalY - canvasRect.top) / scale;
 
     //Initialize the component into state for the purpose of mapping it out
     // creates new object from palette
     if (over?.id === "canvas" && source === "palette") {
       let currentDragObject: PlacedItem = {
         id: String(nanoid()),
-        x,
-        y,
+        x: canvasX,
+        y: canvasY,
         imageUrl,
       };
       setItems((prev) => [...prev, currentDragObject]);
@@ -99,8 +108,8 @@ export default function Home() {
         let targetItem = newArr.findIndex((item) => item.id === active.id);
         let updatedItem = (newArr[targetItem] = {
           id: newArr[targetItem].id,
-          x: delta.x + newArr[targetItem].x,
-          y: delta.y + newArr[targetItem].y,
+          x: canvasX,
+          y: canvasY,
           imageUrl: newArr[targetItem]?.imageUrl,
         });
         newArr[targetItem] = updatedItem;
