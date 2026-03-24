@@ -10,7 +10,7 @@ import {
   Canvas,
   DraggableWrapper,
 } from "@/components";
-import { AddAssetDialog, LongButton } from "../features/campaignEditor/index";
+import { AddAssetDialog } from "../features/campaignEditor/index";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
@@ -239,10 +239,6 @@ export default function Home() {
                 label={"Upload New Backdrop"}
               />
             </ExpandableContainer>
-            <LongButton
-              onClick={() => console.log("save", items)}
-              label={"Save"}
-            />
           </SideBar>
           <div className={styles.CanvasWrapper}>
             <div
