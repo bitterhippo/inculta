@@ -10,7 +10,10 @@ import {
   Canvas,
   DraggableWrapper,
 } from "@/components";
-import { AddAssetDialog } from "../features/campaignEditor/index";
+import {
+  AddAssetDialog,
+  CampaignEditorSideBar,
+} from "../features/campaignEditor/index";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
@@ -165,81 +168,13 @@ export default function Home() {
         onDragCancel={() => setActiveId(null)}
       >
         <div className={styles.MainViewContainer}>
-          <SideBar>
-            {/*TODO: Break this out into isolated component after it becomes too cubersome */}
-            <ExpandableContainer categoryName="Game Assets">
-              {userData?.assetData &&
-                userData.assetData.map(({ id, imageUrl }) => {
-                  return (
-                    <DraggableWrapper
-                      id={`${id}-${imageUrl}`}
-                      key={`${id}-${imageUrl}`}
-                      inToolbar={true}
-                      imageUrl={`${imageUrl}`}
-                    >
-                      <img
-                        style={{ maxHeight: "32px", maxWidth: "32px" }}
-                        src={imageUrl}
-                        alt={id}
-                      />
-                    </DraggableWrapper>
-                  );
-                })}
-              <Icon
-                label={"Click me"}
-                onClick={() =>
-                  setDialogOpen(({ open }) => ({
-                    open: !open,
-                    source: "asset",
-                  }))
-                }
-              />
-            </ExpandableContainer>
-            <ExpandableContainer
-              contentDirection={"column"}
-              categoryName="Background"
-            >
-              <LongButton
-                onClick={() =>
-                  setSelectedBackground({ backgroundColour: "black" })
-                }
-                isChecked={selectedBackground?.backgroundColour === "black"}
-                label={"lol"}
-                previewContainerContent="black"
-              />
-              {userData?.backdropData &&
-                userData.backdropData.map(
-                  ({
-                    imageUrl,
-                    label,
-                    id,
-                  }: {
-                    imageUrl: string;
-                    label: string;
-                    id: string;
-                  }) => {
-                    return (
-                      <LongButton
-                        key={id}
-                        label={label}
-                        onClick={() =>
-                          setSelectedBackground({ backgroundImage: imageUrl })
-                        }
-                      />
-                    );
-                  },
-                )}
-              <LongButton
-                onClick={() =>
-                  setDialogOpen(({ open }) => ({
-                    open: !open,
-                    source: "backdrop",
-                  }))
-                }
-                label={"Upload New Backdrop"}
-              />
-            </ExpandableContainer>
-          </SideBar>
+          {/*TODO: Add campaign editor sidebar */}
+          <CampaignEditorSideBar
+            selectedBackground={selectedBackground}
+            setSelectedBackground={setSelectedBackground}
+            userData={userData}
+            setDialogOpen={setDialogOpen}
+          />
           <div className={styles.CanvasWrapper}>
             <div
               className={styles.Viewport}

@@ -6,6 +6,7 @@ import { Canvas } from "./Canvas/Canvas";
 import { Dialog } from "./Dialog/Dialog";
 import { FileUploadIconButton } from "./IconButton/FileUploadIconButton";
 import { Button } from "./Button/Button";
+import { LongButton } from "./LongButton/LongButton";
 //Behaviours
 import { DraggableWrapper } from "./wrappers/DraggableWrapper/DraggableWrapper";
 export {
@@ -17,4 +18,5 @@ export {
   DraggableWrapper,
   Dialog,
   Button,
+  LongButton,
 };
