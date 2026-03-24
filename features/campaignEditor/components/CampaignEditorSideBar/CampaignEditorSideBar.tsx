@@ -14,7 +14,6 @@ export const CampaignEditorSideBar = ({
 }) => {
   return (
     <SideBar>
-      {/*TODO: Break this out into isolated component after it becomes too cubersome */}
       <ExpandableContainer categoryName="Game Assets">
         {userData?.assetData &&
           userData.assetData.map(({ id, imageUrl }) => {

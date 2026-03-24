@@ -1,5 +1,5 @@
 :root {
-  --background: #ffffff;
+  --font-color: #ffffff;
   --neutral: #1a1a1a;
   --neutral-surface: #242424;
   --primary: #720917;
@@ -32,8 +32,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-noto-seriff);
+  --font-mono: var(--font-noto-seriff);
 }
 
 @media (prefers-color-scheme: dark) {

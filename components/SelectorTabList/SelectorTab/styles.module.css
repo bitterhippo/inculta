@@ -1,0 +1,6 @@
+.IconTabContainer {
+  width: 100%;
+  background-color: var(--neutral);
+  font: var(--font-color);
+  align-items: center;
+}
