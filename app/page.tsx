@@ -10,7 +10,7 @@ import {
   Canvas,
   DraggableWrapper,
 } from "@/components";
-import { AddAssetDialog, LongButton } from "../domain/index";
+import { AddAssetDialog, LongButton } from "../features/campaignEditor/index";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
