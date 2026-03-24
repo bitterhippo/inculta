@@ -3,9 +3,9 @@
   height: 100vh;
   position: relative;
   width: 400px;
-  background-color: #8c1d18;
+  background-color: var(--neutral);
   transition: width 0.2 ease;
-  border-right: 2px solid var(--border-color);
+  border-right: 2px solid var(--neutral-surface);
 }
 
 .collapsed {

@@ -3,13 +3,7 @@
 import { createPortal } from "react-dom";
 import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
-import {
-  SideBar,
-  ExpandableContainer,
-  Icon,
-  Canvas,
-  DraggableWrapper,
-} from "@/components";
+import { Icon, Canvas, DraggableWrapper } from "@/components";
 import {
   AddAssetDialog,
   CampaignEditorSideBar,
@@ -37,6 +31,8 @@ export default function Home() {
   const [userData, setUserData] = useState();
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isSpacePressed, setIsSpacePressed] = useState(false);
+
+  console.log("active", activeId);
 
   //Zoom Logic
   const defaultScale = 1;
@@ -102,6 +98,7 @@ export default function Home() {
     }
 
     //repositions an object
+    //TODO: this needs different logic as items are sliding
     if (over?.id === "canvas" && source === "canvas") {
       setItems((prev) => {
         let newArr = [...prev];
@@ -244,7 +241,7 @@ export default function Home() {
         <DragOverlay>
           {/* TODO: this is where the onDrag image is created */}
           {activeId ? (
-            <DraggableWrapper id={activeId}>
+            <DraggableWrapper id={activeId} imageUrl={activeId}>
               <Icon />
             </DraggableWrapper>
           ) : null}

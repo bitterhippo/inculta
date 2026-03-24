@@ -5,7 +5,7 @@
   padding: var(--spacing-sm) var(--spacing-md);
   cursor: pointer;
   border-radius: var(--spacing-xs);
-  border: var(--spacing-border) solid var(--border-color);
+  border: var(--spacing-border) solid var(--neutral-surface);
   background-color: #d8c3a5;
   box-shadow: 0 var(--spacing-xs) 6px rgba(0, 0, 0, 0.15);
   transition:
@@ -18,9 +18,9 @@
   position: relative;
   border-top: 0px;
   padding: var(--spacing-sm) 0px;
-  border-left: var(--spacing-border) solid var(--border-color);
-  border-right: var(--spacing-border) solid var(--border-color);
-  border-bottom: var(--spacing-border) solid var(--border-color);
+  border-left: var(--spacing-border) solid var(--neutral-surface);
+  border-right: var(--spacing-border) solid var(--neutral-surface);
+  border-bottom: var(--spacing-border) solid var(--neutral-surface);
   border-bottom-left-radius: var(--spacing-border);
   border-bottom-right-radius: var(--spacing-border);
   background-color: #d8c3a5;
