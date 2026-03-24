@@ -59,9 +59,6 @@ export default function Home() {
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over, delta } = event;
 
-    console.log(canvasRef);
-    console.log(event);
-
     const source = active.data.current?.source;
     const imageUrl = active.data.current?.imageUrl;
 
@@ -242,6 +239,10 @@ export default function Home() {
                 label={"Upload New Backdrop"}
               />
             </ExpandableContainer>
+            <LongButton
+              onClick={() => console.log("save", items)}
+              label={"Save"}
+            />
           </SideBar>
           <div className={styles.CanvasWrapper}>
             <div
