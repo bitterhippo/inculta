@@ -5,7 +5,7 @@
   width: 400px;
   background-color: var(--neutral);
   transition: width 0.2 ease;
-  border-right: 2px solid var(--neutral-surface);
+  border-right: 2px solid var(--secondary);
 }
 
 .collapsed {
