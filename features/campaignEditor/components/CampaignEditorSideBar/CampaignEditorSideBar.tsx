@@ -19,15 +19,14 @@ export const CampaignEditorSideBar = ({
   setSelectedBackground,
   selectedBackground,
 }) => {
-  const [selectorState, setSelector] = useState();
-
-  console.log("selector state", selectorState);
+  const [selectedTab, setSelectedTab] = useState();
 
   return (
     <SideBar>
       <SelectTabList
         tabListData={CampaignEditorSideBarTabListOptions}
-        selectorHandler={() => setSelector}
+        selectorHandler={() => setSelectedTab}
+        selectedTab={selectedTab}
       />
       <ExpandableContainer categoryName="Game Assets">
         {userData?.assetData &&
