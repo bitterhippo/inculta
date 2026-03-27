@@ -6,6 +6,7 @@ export const SelectorTab = ({
   iconName,
   label,
   isSelected,
+  onClick,
 }: SelectTabProps) => {
   const iconMap = {
     layers: Layers,
@@ -16,7 +17,7 @@ export const SelectorTab = ({
   const Icon = iconMap[iconName];
 
   return (
-    <div className={styles.SelectorTabIconContainer}>
+    <div className={styles.SelectorTabIconContainer} onClick={onClick}>
       <div
         className={`${styles.SelectorTabIndicator} ${
           isSelected ? styles.Selected : ""

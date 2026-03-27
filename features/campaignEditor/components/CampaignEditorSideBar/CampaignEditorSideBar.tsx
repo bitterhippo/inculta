@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import {
   SideBar,
   DraggableWrapper,
@@ -17,9 +19,16 @@ export const CampaignEditorSideBar = ({
   setSelectedBackground,
   selectedBackground,
 }) => {
+  const [selectorState, setSelector] = useState();
+
+  console.log("selector state", selectorState);
+
   return (
     <SideBar>
-      <SelectTabList tabListData={CampaignEditorSideBarTabListOptions} />
+      <SelectTabList
+        tabListData={CampaignEditorSideBarTabListOptions}
+        selectorHandler={() => setSelector}
+      />
       <ExpandableContainer categoryName="Game Assets">
         {userData?.assetData &&
           userData.assetData.map(({ id, imageUrl }) => {

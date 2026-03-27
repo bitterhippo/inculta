@@ -8,6 +8,7 @@
   height: 32px;
   width: 100%;
   align-items: center;
+  cursor: pointer;
 }
 
 .SelectorTabIndicator {
@@ -16,13 +17,11 @@
   flex-shrink: 0;
   color: var(--neutral);
   margin-right: var(--spacing-sm);
-  cursor: pointer;
 }
 
 .SelectorTabIconStyles {
   margin-right: var(--spacing-sm);
 }
-
 .Selected {
   background-color: var(--secondary);
 }
