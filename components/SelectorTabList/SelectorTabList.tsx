@@ -1,9 +1,10 @@
 import { SelectorTab } from "./SelectorTab/SelectorTab";
 import { SelectTabListProps } from "./types";
+import styles from "./styles.module.css";
 
 export const SelectTabList = ({ tabListData }: SelectTabListProps) => {
   return (
-    <div>
+    <div className={styles.SelectTabListContainer}>
       {tabListData.map(({ label, iconName, isSelected }) => {
         return (
           <SelectorTab
