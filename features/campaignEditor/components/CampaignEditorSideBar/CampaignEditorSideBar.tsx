@@ -9,20 +9,17 @@ import {
   SelectTabList,
 } from "@/components";
 
+import { CampaignEditorSideBarTabListOptions } from "./config/config";
+
 export const CampaignEditorSideBar = ({
   userData,
   setDialogOpen,
   setSelectedBackground,
   selectedBackground,
 }) => {
-  const CampaignEditorSideBarTabListOptions = [
-    { iconName: "grid", label: "Assets", isSelected: true },
-    { iconName: "layers", label: "Layers", isSelected: false },
-  ];
-
   return (
     <SideBar>
-      <SelectTabList tabListData={[...CampaignEditorSideBarTabListOptions]} />
+      <SelectTabList tabListData={CampaignEditorSideBarTabListOptions} />
       <ExpandableContainer categoryName="Game Assets">
         {userData?.assetData &&
           userData.assetData.map(({ id, imageUrl }) => {
