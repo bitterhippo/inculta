@@ -21,7 +21,7 @@ export const SelectorTab = ({
         className={`${styles.SelectorTabIndicator} ${
           isSelected ? styles.Selected : ""
         }`}
-      />
+      ></div>
       {Icon && <Icon size={18} className={styles.SelectorTabIconStyles} />}
       <span>{label}</span>
     </div>

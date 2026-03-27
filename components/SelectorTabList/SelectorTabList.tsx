@@ -9,7 +9,7 @@ export const SelectTabList = ({ tabListData }: SelectTabListProps) => {
           <SelectorTab
             label={label}
             key={`selectorTab-${label}`}
-            isSelected={true}
+            isSelected={isSelected}
             iconName={iconName}
           />
         );
