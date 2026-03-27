@@ -1,7 +1,8 @@
 import type { SelectTabProps } from "./SelectorTab/types";
+import { Dispatch, SetStateAction } from "react";
 
 export type SelectTabListProps = {
   tabListData: SelectTabProps[];
-  selectorHandler: (label: string) => void;
+  selectorHandler: Dispatch<SetStateAction<string>>;
   selectedTab: string;
 };

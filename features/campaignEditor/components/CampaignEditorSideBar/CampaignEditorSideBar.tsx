@@ -21,11 +21,13 @@ export const CampaignEditorSideBar = ({
 }) => {
   const [selectedTab, setSelectedTab] = useState();
 
+  console.log("selectedTab", selectedTab);
+
   return (
     <SideBar>
       <SelectTabList
         tabListData={CampaignEditorSideBarTabListOptions}
-        selectorHandler={() => setSelectedTab}
+        selectorHandler={setSelectedTab}
         selectedTab={selectedTab}
       />
       <ExpandableContainer categoryName="Game Assets">
