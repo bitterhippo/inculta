@@ -7,6 +7,7 @@ import { Dialog } from "./Dialog/Dialog";
 import { FileUploadIconButton } from "./IconButton/FileUploadIconButton";
 import { Button } from "./Button/Button";
 import { LongButton } from "./LongButton/LongButton";
+import { SelectTabList } from "./SelectorTabList/SelectorTabList";
 //Behaviours
 import { DraggableWrapper } from "./wrappers/DraggableWrapper/DraggableWrapper";
 export {
@@ -19,4 +20,5 @@ export {
   Dialog,
   Button,
   LongButton,
+  SelectTabList,
 };

@@ -1,9 +1,12 @@
+"use client";
+
 import {
   SideBar,
   DraggableWrapper,
   ExpandableContainer,
   Icon,
   LongButton,
+  SelectTabList,
 } from "@/components";
 
 export const CampaignEditorSideBar = ({
@@ -14,6 +17,7 @@ export const CampaignEditorSideBar = ({
 }) => {
   return (
     <SideBar>
+      <SelectTabList tabListData={[{ iconName: "grid", label: "Assets" }]} />
       <ExpandableContainer categoryName="Game Assets">
         {userData?.assetData &&
           userData.assetData.map(({ id, imageUrl }) => {

@@ -4,8 +4,15 @@ import { SelectTabListProps } from "./types";
 export const SelectTabList = ({ tabListData }: SelectTabListProps) => {
   return (
     <div>
-      {tabListData.map(({ label, iconName }) => {
-        return <SelectorTab label={label} iconName={iconName} />;
+      {tabListData.map(({ label, iconName, isSelected }) => {
+        return (
+          <SelectorTab
+            label={label}
+            key={`selectorTab-${label}`}
+            isSelected={true}
+            iconName={iconName}
+          />
+        );
       })}
     </div>
   );
