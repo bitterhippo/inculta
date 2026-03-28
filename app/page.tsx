@@ -24,15 +24,13 @@ export default function Home() {
   const [items, setItems] = useState<PlacedItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState<{
     open: boolean;
-    source: "asset" | "backdrop";
-  }>({ open: false, source: "asset" });
+    source: "assets" | "layers";
+  }>({ open: false, source: "assets" });
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [selectedBackground, setSelectedBackground] = useState<object>();
   const [userData, setUserData] = useState();
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isSpacePressed, setIsSpacePressed] = useState(false);
-
-  console.log("active", activeId);
 
   //Zoom Logic
   const defaultScale = 1;

@@ -110,7 +110,6 @@ export const AddAssetDialog = ({
 
                   const payloadUrl = buildUploadPayloadUrl(source);
 
-                  console.log("source", source);
                   const payload = buildUploadPayload(source, {
                     userId: "testId",
                     campaignId: "testCampaign",

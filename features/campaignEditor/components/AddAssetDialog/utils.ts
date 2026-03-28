@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 
 export const buildUploadPayload = (
-  type: "asset" | "backdrop",
+  type: "assets" | "layers",
   data: {
     userId: string;
     campaignId: string;
@@ -10,7 +10,7 @@ export const buildUploadPayload = (
   },
 ) => {
   switch (type) {
-    case "asset":
+    case "assets":
       return {
         id: nanoid(21),
         userId: data.userId,
@@ -18,7 +18,7 @@ export const buildUploadPayload = (
         imageUrl: data.imageUrl,
         createdAt: new Date(),
       };
-    case "backdrop":
+    case "layers":
       return {
         id: nanoid(21),
         userId: data.userId,
@@ -31,12 +31,12 @@ export const buildUploadPayload = (
 };
 
 export const buildUploadPayloadUrl = (
-  type: "asset" | "backdrop" | undefined,
+  type: "assets" | "layers" | undefined,
 ) => {
   switch (type) {
-    case "asset":
+    case "assets":
       return "/api/addAssets";
-    case "backdrop":
+    case "layers":
       return "/api/addBackdrops";
     default:
       throw new Error(`Unknown type: ${type}`);
