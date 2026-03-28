@@ -15,7 +15,7 @@ export const SelectableImageContainer = ({
         isSelected ? styles.Selected : ""
       }`}
     >
-      <img {...imgProps} />
+      <img {...imgProps} className={styles.SelectableImageContainerImage} />
     </div>
   );
 };

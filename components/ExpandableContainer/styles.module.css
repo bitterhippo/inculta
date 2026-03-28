@@ -26,14 +26,6 @@
   background-color: #d8c3a5;
 }
 
-.ContentContainerFlexColumn {
-  flex-direction: "column";
-}
-
-.ContentContainerFlexRow {
-  flex-direction: "row";
-}
-
 .ExpandableContainerButton {
   background-color: #d8c3a5;
 }

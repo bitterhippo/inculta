@@ -7,6 +7,7 @@ import {
   DraggableWrapper,
   ExpandableContainer,
   LongButton,
+  SelectableImageContainer,
   SelectTabList,
 } from "@/components";
 
@@ -59,19 +60,12 @@ export const CampaignEditorSideBar = ({
             );
           })}
       </ExpandableContainer>
-      <ExpandableContainer
-        contentDirection={"column"}
-        categoryName="Background"
-      >
-        <LongButton
-          onClick={() => setSelectedBackground({ backgroundColour: "black" })}
-          label={"lol"}
-        />
+      <ExpandableContainer contentDirection={"row"} categoryName="Background">
+        {/*TODO: Add default colors here */}
         {userData?.backdropData &&
           userData.backdropData.map(
             ({
               imageUrl,
-              label,
               id,
             }: {
               imageUrl: string;
@@ -79,12 +73,13 @@ export const CampaignEditorSideBar = ({
               id: string;
             }) => {
               return (
-                <LongButton
+                <SelectableImageContainer
                   key={id}
-                  label={label}
                   onClick={() =>
                     setSelectedBackground({ backgroundImage: imageUrl })
                   }
+                  isSelected={true}
+                  imgProps={{ src: `${imageUrl}` }}
                 />
               );
             },

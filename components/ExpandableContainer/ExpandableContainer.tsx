@@ -30,11 +30,7 @@ export const ExpandableContainer = ({
         </div>
       </div>
       <div
-        className={`${styles.ContentContainer} ${
-          direction === "row"
-            ? styles.ContentContainerFlexRow
-            : styles.ContentContainerFlexColumn
-        }`}
+        className={styles.ContentContainer}
         style={{
           display: expanded ? "flex" : "none",
           flexDirection: direction,
