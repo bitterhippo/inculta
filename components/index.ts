@@ -8,6 +8,7 @@ import { FileUploadIconButton } from "./IconButton/FileUploadIconButton";
 import { Button } from "./Button/Button";
 import { LongButton } from "./LongButton/LongButton";
 import { SelectTabList } from "./SelectorTabList/SelectorTabList";
+import { SelectableImageContainer } from "./SelectableImageContainer/SelectableImageContainer";
 //Behaviours
 import { DraggableWrapper } from "./wrappers/DraggableWrapper/DraggableWrapper";
 export {
@@ -21,4 +22,5 @@ export {
   Button,
   LongButton,
   SelectTabList,
+  SelectableImageContainer,
 };
