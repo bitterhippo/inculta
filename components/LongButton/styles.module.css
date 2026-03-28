@@ -11,5 +11,6 @@
 
 .LongButtonText {
   color: var(--font-color);
-  font: 14px solid var(--secondary);
+  font: 16px;
+  font-weight: bold;
 }

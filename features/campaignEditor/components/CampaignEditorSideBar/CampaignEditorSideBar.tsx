@@ -19,7 +19,7 @@ export const CampaignEditorSideBar = ({
   setSelectedBackground,
   selectedBackground,
 }) => {
-  const [selectedTab, setSelectedTab] = useState();
+  const [selectedTab, setSelectedTab] = useState("Assets");
 
   console.log("selectedTab", selectedTab);
 
@@ -65,9 +65,7 @@ export const CampaignEditorSideBar = ({
       >
         <LongButton
           onClick={() => setSelectedBackground({ backgroundColour: "black" })}
-          isChecked={selectedBackground?.backgroundColour === "black"}
           label={"lol"}
-          previewContainerContent="black"
         />
         {userData?.backdropData &&
           userData.backdropData.map(
