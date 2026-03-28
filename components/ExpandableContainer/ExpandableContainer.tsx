@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Children } from "react";
+import { useState } from "react";
 import { ArrowDown, ArrowUp } from "react-feather";
 import type { ExpandableContainerProps } from "./types";
 import styles from "./styles.module.css";
@@ -8,11 +8,8 @@ import styles from "./styles.module.css";
 export const ExpandableContainer = ({
   categoryName,
   children,
-  contentDirection,
 }: ExpandableContainerProps) => {
   const [expanded, setExpanded] = useState<boolean>(false);
-
-  const direction = contentDirection ?? "row";
 
   return (
     <div>
@@ -33,8 +30,6 @@ export const ExpandableContainer = ({
         className={styles.ContentContainer}
         style={{
           display: expanded ? "flex" : "none",
-          flexDirection: direction,
-          gap: "8px",
         }}
       >
         {children}

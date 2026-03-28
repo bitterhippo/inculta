@@ -1,10 +1,13 @@
 .SelectableImageContainerImage {
-  max-width: 96px;
-  max-height: 96px;
-  border: 1px solid black;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  border: 1px solid var(--neutral-surface);
   object-fit: cover;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.1),
+    0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
 .Selected {
-  outline: 2px solid var(--secondary);
+  border: 2px solid var(--secondary);
 }

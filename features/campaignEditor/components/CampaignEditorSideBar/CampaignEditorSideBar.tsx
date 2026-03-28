@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import styles from "./styles.module.css";
 
 import {
   SideBar,
@@ -60,30 +61,32 @@ export const CampaignEditorSideBar = ({
             );
           })}
       </ExpandableContainer>
-      <ExpandableContainer contentDirection={"row"} categoryName="Background">
-        {/*TODO: Add default colors here */}
-        {userData?.backdropData &&
-          userData.backdropData.map(
-            ({
-              imageUrl,
-              id,
-            }: {
-              imageUrl: string;
-              label: string;
-              id: string;
-            }) => {
-              return (
-                <SelectableImageContainer
-                  key={id}
-                  onClick={() =>
-                    setSelectedBackground({ backgroundImage: imageUrl })
-                  }
-                  isSelected={true}
-                  imgProps={{ src: `${imageUrl}` }}
-                />
-              );
-            },
-          )}
+      <ExpandableContainer categoryName="Background">
+        <div className={styles.twoColumnLayout}>
+          {/*TODO: Add default colors here */}
+          {userData?.backdropData &&
+            userData.backdropData.map(
+              ({
+                imageUrl,
+                id,
+              }: {
+                imageUrl: string;
+                label: string;
+                id: string;
+              }) => {
+                return (
+                  <SelectableImageContainer
+                    key={id}
+                    onClick={() =>
+                      setSelectedBackground({ backgroundImage: imageUrl })
+                    }
+                    isSelected={true}
+                    imgProps={{ src: `${imageUrl}` }}
+                  />
+                );
+              },
+            )}
+        </div>
       </ExpandableContainer>
     </SideBar>
   );
