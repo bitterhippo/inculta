@@ -24,8 +24,6 @@ export const CampaignEditorSideBar = ({
 
   const selectedTabDialogAccessor = selectedTab.toLowerCase();
 
-  console.log("selectedTab", selectedTab);
-
   return (
     <SideBar>
       <SelectTabList
@@ -71,6 +69,7 @@ export const CampaignEditorSideBar = ({
               userData.backdropData.map(
                 ({
                   imageUrl,
+                  label,
                   id,
                 }: {
                   imageUrl: string;
@@ -83,7 +82,9 @@ export const CampaignEditorSideBar = ({
                       onClick={() =>
                         setSelectedBackground({ backgroundImage: imageUrl })
                       }
-                      isSelected={true}
+                      isSelected={
+                        imageUrl === selectedBackground?.backgroundImage
+                      }
                       imgProps={{ src: `${imageUrl}` }}
                     />
                   );
