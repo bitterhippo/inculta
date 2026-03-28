@@ -85,6 +85,11 @@ export const CampaignEditorSideBar = ({
           </div>
         </ExpandableContainer>
       )}
+      <LongButton
+        label={"Save Project"}
+        icon={"save"}
+        onClick={() => console.log("lol")}
+      />
     </SideBar>
   );
 };

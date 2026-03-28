@@ -21,17 +21,18 @@ import {
 
 export default function Home() {
   const [activeId, setActiveId] = useState<string | null>(null);
-  const [items, setItems] = useState<PlacedItem[]>([]);
   const [dialogOpen, setDialogOpen] = useState<{
     open: boolean;
     source: "assets" | "layers";
   }>({ open: false, source: "assets" });
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [selectedBackground, setSelectedBackground] = useState<object>();
-  const [userData, setUserData] = useState();
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isSpacePressed, setIsSpacePressed] = useState(false);
-
+  //TODO: Move this to a lower level of state
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  //TODO: See how much of this can be combined
+  const [items, setItems] = useState<PlacedItem[]>([]);
+  const [selectedBackground, setSelectedBackground] = useState<object>();
+  const [userData, setUserData] = useState();
   //Zoom Logic
   const defaultScale = 1;
   const [scale, setScale] = useState<number>(defaultScale);
@@ -51,6 +52,8 @@ export default function Home() {
       },
     }),
   );
+
+  console.log(items);
 
   //TODO: Extract into helpers
   const handleDragEnd = (event: DragEndEvent) => {
