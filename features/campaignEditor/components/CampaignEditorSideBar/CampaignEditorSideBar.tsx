@@ -21,6 +21,8 @@ export const CampaignEditorSideBar = ({
 }) => {
   const [selectedTab, setSelectedTab] = useState("Assets");
 
+  const selectedTabDialogAccessor = selectedTab.toLowerCase();
+
   console.log("selectedTab", selectedTab);
 
   return (
@@ -30,7 +32,15 @@ export const CampaignEditorSideBar = ({
         selectorHandler={setSelectedTab}
         selectedTab={selectedTab}
       />
-      <LongButton label={`Create New ${selectedTab}`} />
+      <LongButton
+        label={`Create New ${selectedTab}`}
+        onClick={() =>
+          setDialogOpen(({ open }) => ({
+            open: !open,
+            source: selectedTabDialogAccessor,
+          }))
+        }
+      />
       <ExpandableContainer categoryName="Game Assets">
         {userData?.assetData &&
           userData.assetData.map(({ id, imageUrl }) => {
@@ -49,15 +59,6 @@ export const CampaignEditorSideBar = ({
               </DraggableWrapper>
             );
           })}
-        <Icon
-          label={"Click me"}
-          onClick={() =>
-            setDialogOpen(({ open }) => ({
-              open: !open,
-              source: "asset",
-            }))
-          }
-        />
       </ExpandableContainer>
       <ExpandableContainer
         contentDirection={"column"}
@@ -89,15 +90,6 @@ export const CampaignEditorSideBar = ({
               );
             },
           )}
-        <LongButton
-          onClick={() =>
-            setDialogOpen(({ open }) => ({
-              open: !open,
-              source: "backdrop",
-            }))
-          }
-          label={"Upload New Backdrop"}
-        />
       </ExpandableContainer>
     </SideBar>
   );
