@@ -42,52 +42,56 @@ export const CampaignEditorSideBar = ({
           }))
         }
       />
-      <ExpandableContainer categoryName="Game Assets">
-        {userData?.assetData &&
-          userData.assetData.map(({ id, imageUrl }) => {
-            return (
-              <DraggableWrapper
-                id={`${id}-${imageUrl}`}
-                key={`${id}-${imageUrl}`}
-                inToolbar={true}
-                imageUrl={`${imageUrl}`}
-              >
-                <img
-                  style={{ maxHeight: "32px", maxWidth: "32px" }}
-                  src={imageUrl}
-                  alt={id}
-                />
-              </DraggableWrapper>
-            );
-          })}
-      </ExpandableContainer>
-      <ExpandableContainer categoryName="Background">
-        <div className={styles.twoColumnLayout}>
-          {/*TODO: Add default colors here */}
-          {userData?.backdropData &&
-            userData.backdropData.map(
-              ({
-                imageUrl,
-                id,
-              }: {
-                imageUrl: string;
-                label: string;
-                id: string;
-              }) => {
-                return (
-                  <SelectableImageContainer
-                    key={id}
-                    onClick={() =>
-                      setSelectedBackground({ backgroundImage: imageUrl })
-                    }
-                    isSelected={true}
-                    imgProps={{ src: `${imageUrl}` }}
+      {selectedTabDialogAccessor === "assets" && (
+        <ExpandableContainer categoryName="Assets">
+          {userData?.assetData &&
+            userData.assetData.map(({ id, imageUrl }) => {
+              return (
+                <DraggableWrapper
+                  id={`${id}-${imageUrl}`}
+                  key={`${id}-${imageUrl}`}
+                  inToolbar={true}
+                  imageUrl={`${imageUrl}`}
+                >
+                  <img
+                    style={{ maxHeight: "32px", maxWidth: "32px" }}
+                    src={imageUrl}
+                    alt={id}
                   />
-                );
-              },
-            )}
-        </div>
-      </ExpandableContainer>
+                </DraggableWrapper>
+              );
+            })}
+        </ExpandableContainer>
+      )}
+      {selectedTabDialogAccessor === "layers" && (
+        <ExpandableContainer categoryName="Layers">
+          <div className={styles.twoColumnLayout}>
+            {/*TODO: Add default colors here */}
+            {userData?.backdropData &&
+              userData.backdropData.map(
+                ({
+                  imageUrl,
+                  id,
+                }: {
+                  imageUrl: string;
+                  label: string;
+                  id: string;
+                }) => {
+                  return (
+                    <SelectableImageContainer
+                      key={id}
+                      onClick={() =>
+                        setSelectedBackground({ backgroundImage: imageUrl })
+                      }
+                      isSelected={true}
+                      imgProps={{ src: `${imageUrl}` }}
+                    />
+                  );
+                },
+              )}
+          </div>
+        </ExpandableContainer>
+      )}
     </SideBar>
   );
 };

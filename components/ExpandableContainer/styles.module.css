@@ -32,6 +32,12 @@
 }
 
 .ExpandableContainerButton {
+  background-color: var(--neutral);
+}
+
+.ExpandableContainerIcon {
+  background-color: var(--neutral);
+  color: white;
 }
 
 .ExpandableContainerLabelWrapper {

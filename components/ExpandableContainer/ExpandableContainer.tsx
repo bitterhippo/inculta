@@ -22,7 +22,11 @@ export const ExpandableContainer = ({
         </div>
         <div className={styles.ExpanableContainerCounterWrapper}>
           <button className={styles.ExpandableContainerButton}>
-            {expanded ? <ArrowUp size={18} /> : <ArrowDown size={18} />}
+            {expanded ? (
+              <ArrowUp className={styles.ExpandableContainerIcon} size={18} />
+            ) : (
+              <ArrowDown className={styles.ExpandableContainerIcon} size={18} />
+            )}
           </button>
         </div>
       </div>
