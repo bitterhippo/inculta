@@ -10,4 +10,8 @@
 
 .Selected {
   border: 2px solid var(--secondary);
+  box-shadow:
+    0 0 12px rgba(199, 153, 2, 0.2),
+    0 4px 24px rgba(220, 169, 2, 0.2);
+  transform: scale(1.02);
 }

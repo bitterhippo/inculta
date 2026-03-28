@@ -67,15 +67,7 @@ export const CampaignEditorSideBar = ({
             {/*TODO: Add default colors here */}
             {userData?.backdropData &&
               userData.backdropData.map(
-                ({
-                  imageUrl,
-                  label,
-                  id,
-                }: {
-                  imageUrl: string;
-                  label: string;
-                  id: string;
-                }) => {
+                ({ imageUrl, id }: { imageUrl: string; id: string }) => {
                   return (
                     <SelectableImageContainer
                       key={id}
