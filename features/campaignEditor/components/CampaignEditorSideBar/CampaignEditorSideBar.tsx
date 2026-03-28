@@ -6,7 +6,6 @@ import {
   SideBar,
   DraggableWrapper,
   ExpandableContainer,
-  Icon,
   LongButton,
   SelectTabList,
 } from "@/components";

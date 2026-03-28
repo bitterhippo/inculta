@@ -1,0 +1,8 @@
+.SelectableImageContainerContainer {
+  height: 96px;
+  width: 96px;
+}
+
+.Selected {
+  border: 2px solid var(--secondary);
+}
