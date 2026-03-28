@@ -28,6 +28,7 @@
   --card-padding: var(--space-4);
   --button-padding-x: var(--space-3);
   --button-padding-y: var(--space-5);
+  --button-height: var(--space-7);
 }
 
 @theme inline {

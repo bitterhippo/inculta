@@ -1,27 +1,10 @@
 import styles from "./styles.module.css";
 import type { LongButtonProps } from "./types";
 
-export const LongButton = ({
-  onClick,
-  label,
-  checkbox,
-  previewContainerContent,
-}: LongButtonProps) => {
+export const LongButton = ({ onClick, label }: LongButtonProps) => {
   return (
-    <div onClick={onClick} className={styles.LongButtonContainer}>
-      {checkbox && (
-        <div>
-          <input type="checkbox" checked={checkbox.isChecked} />
-        </div>
-      )}
-      <div className={styles.LongButtonLabel}>
-        <span>{label}</span>
-      </div>
-      {previewContainerContent && (
-        <div className={styles.LongButtonPreviewContainer}>
-          {previewContainerContent}
-        </div>
-      )}
+    <div className={styles.LongButtonContainer} onClick={onClick}>
+      <span className={styles.LongButtonText}>{label}</span>
     </div>
   );
 };

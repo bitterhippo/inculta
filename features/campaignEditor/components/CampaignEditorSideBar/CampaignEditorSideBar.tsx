@@ -30,6 +30,7 @@ export const CampaignEditorSideBar = ({
         selectorHandler={setSelectedTab}
         selectedTab={selectedTab}
       />
+      <LongButton label={`Create New ${selectedTab}`} />
       <ExpandableContainer categoryName="Game Assets">
         {userData?.assetData &&
           userData.assetData.map(({ id, imageUrl }) => {
