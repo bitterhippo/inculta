@@ -87,7 +87,7 @@ export const CampaignEditorSideBar = ({
       )}
       <LongButton
         label={"Save Project"}
-        icon={"save"}
+        iconName={"save"}
         onClick={() => console.log("lol")}
       />
     </SideBar>

@@ -14,3 +14,8 @@
   font: 16px;
   font-weight: bold;
 }
+
+.LongButtonIcon {
+  color: var(--font-color);
+  margin-right: var(--spacing-sm);
+}

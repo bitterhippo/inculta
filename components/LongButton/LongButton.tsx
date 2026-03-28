@@ -11,7 +11,7 @@ export const LongButton = ({ onClick, label, iconName }: LongButtonProps) => {
 
   return (
     <div className={styles.LongButtonContainer} onClick={onClick}>
-      {Icon && <Icon size={18} />}
+      {Icon && <Icon className={styles.LongButtonIcon} size={18} />}
       <span className={styles.LongButtonText}>{label}</span>
     </div>
   );
