@@ -7,7 +7,7 @@ import { Icon, Canvas, DraggableWrapper } from "@/components";
 import {
   AddAssetDialog,
   CampaignEditorSideBar,
-} from "../features/campaignEditor/index";
+} from "../../features/campaignEditor/index";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
