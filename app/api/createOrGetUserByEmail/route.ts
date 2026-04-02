@@ -17,8 +17,15 @@ export async function POST(req: NextRequest) {
         name,
       },
     ]);
+
+    if (error) {
+      console.error("Account Creation Error:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json(data);
   } catch (err) {
-    console.log("database login error:", err);
+    console.log("Database Login Error:", err);
     return NextResponse.json(
       { error: (err as Error).message },
       { status: 500 },
