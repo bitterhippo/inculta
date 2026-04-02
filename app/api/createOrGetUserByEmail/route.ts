@@ -9,14 +9,11 @@ export async function POST(req: NextRequest) {
       user: { email, image, name },
     } = body;
 
-    const { data, error } = await supabase.from("users").insert([
-      {
-        id: nanoid(21),
-        email,
-        image,
-        name,
-      },
-    ]);
+    const { data, error } = await supabase
+      .from("users")
+      .upsert([{ id: nanoid(21), email, name, image }], {
+        onConflict: "email",
+      });
 
     if (error) {
       console.error("Account Creation Error:", error);
