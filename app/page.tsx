@@ -20,8 +20,7 @@ export default function LoginButton() {
         body: JSON.stringify({ user: session.user }),
       });
       const data = await response.json();
-      console.log("woot", data);
-      // setUser(data);
+      setUser(data);
     };
 
     createOrFetchUser();
