@@ -2,6 +2,8 @@
 
 import { signIn, signOut, useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
+import { LongButton } from "@/components";
+import styles from "./styles.module.css";
 
 export default function LoginButton() {
   const { data: session } = useSession();
@@ -26,14 +28,22 @@ export default function LoginButton() {
     createOrFetchUser();
   }, [session]);
 
-  if (session) {
+  {
     return (
-      <>
-        <p>Signed in as {session.user?.email}</p>
-        <button onClick={() => signOut()}>Sign out</button>
-      </>
+      <div className={styles.LoginScreen}>
+        <div className={styles.LoginScreenInputContainer}>
+          <div>
+            <span className={styles.TitleFont}>Inculta</span>
+          </div>
+          <LongButton
+            onClick={() => signIn("google")}
+            label={"Sign in with Google"}
+          />
+        </div>
+      </div>
     );
   }
 
-  return <button onClick={() => signIn("google")}>Sign in with Google</button>;
+  // return <button onClick={() => signIn("google")}>Sign in with Google</button>;
+  // <button onClick={() => signOut()}>Sign out</button>
 }
