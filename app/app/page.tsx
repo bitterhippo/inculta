@@ -53,8 +53,6 @@ export default function Home() {
     }),
   );
 
-  console.log(items);
-
   //TODO: Extract into helpers
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over, delta } = event;

@@ -13,14 +13,21 @@ export async function POST(req: NextRequest) {
       .from("users")
       .upsert([{ id: nanoid(21), email, name, image }], {
         onConflict: "email",
+        ignoreDuplicates: false,
       });
+
+    const { data: user } = await supabase
+      .from("users")
+      .select("*")
+      .eq("email", email)
+      .single();
 
     if (error) {
       console.error("Account Creation Error:", error);
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json(data);
+    return NextResponse.json(user);
   } catch (err) {
     console.log("Database Login Error:", err);
     return NextResponse.json(

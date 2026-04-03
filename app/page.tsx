@@ -5,13 +5,26 @@ import { useState, useEffect } from "react";
 
 export default function LoginButton() {
   const { data: session } = useSession();
+  const [user, setUser] = useState();
 
+  console.log("user", user);
   console.log("session", session);
 
   useEffect(() => {
     if (!session) return;
 
-    let createOrFetchUser = async () => {};
+    let createOrFetchUser = async () => {
+      const response = await fetch("/api/createOrGetUserByEmail", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user: session.user }),
+      });
+      const data = await response.json();
+      console.log("woot", data);
+      // setUser(data);
+    };
+
+    createOrFetchUser();
   }, [session]);
 
   if (session) {
