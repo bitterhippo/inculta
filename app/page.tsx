@@ -35,8 +35,9 @@ export default function LoginButton() {
           <div>
             <span className={styles.TitleFont}>Inculta</span>
           </div>
+          {/* TODO: the login function need to be replaced with a router*/}
           <LongButton
-            onClick={() => signIn("google")}
+            onClick={() => signIn("google", { callbackUrl: "/app" })}
             label={"Sign in with Google"}
           />
         </div>
@@ -44,6 +45,5 @@ export default function LoginButton() {
     );
   }
 
-  // return <button onClick={() => signIn("google")}>Sign in with Google</button>;
   // <button onClick={() => signOut()}>Sign out</button>
 }

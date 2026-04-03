@@ -16,12 +16,13 @@
   border: 2px solid black;
   border-top: 2px solid var(--primary);
   height: 600px;
-  width: 400px;
-  margin: var(--spacing-lg) 0px;
+  width: 300px;
+  padding: var(--spacing-lg);
+  justify-content: space-between;
 }
 
 .TitleFont {
-  font-size: 24px;
-  font-weight: 600px;
+  font-size: 48px;
+  font-weight: bold;
   color: var(--font-color);
 }
