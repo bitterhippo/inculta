@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Dialog, LongButton } from "@/components";
 import type { campaignCreationDialogProps } from "./types";
 
-export const campaignCreationDialog = ({
+export const CampaignCreationDialog = ({
   onClose,
 }: campaignCreationDialogProps) => {
   return (

@@ -3,6 +3,7 @@
 import { SideBar, ExpandableContainer, LongButton, Dialog } from "@/components";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
+import { CampaignCreationDialog } from "@/features/campaignCreation/components";
 
 export default function LoggedInUserPage() {
   const [campaignCreationDialog, campaignCreationDialogToggle] =

@@ -1,3 +1,3 @@
-import { campaignCreationDialog } from "./CampaignCreationDialog/campaignCreationDialog";
+import { CampaignCreationDialog } from "./CampaignCreationDialog/campaignCreationDialog";
 
-export { campaignCreationDialog };
+export { CampaignCreationDialog };
