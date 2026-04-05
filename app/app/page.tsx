@@ -25,7 +25,11 @@ export default function LoggedInUserPage() {
         />
         <ExpandableContainer categoryName="Available Campaigns"></ExpandableContainer>
       </SideBar>
-      {campaignCreationDialog && createPortal(<Dialog />, document.body)}
+      {campaignCreationDialog &&
+        createPortal(
+          <Dialog onClose={modalToggleHandler}></Dialog>,
+          document.body,
+        )}
     </>
   );
 }
