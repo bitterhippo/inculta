@@ -28,7 +28,9 @@ export default function LoggedInUserPage() {
       </SideBar>
       {campaignCreationDialog &&
         createPortal(
-          <Dialog onClose={modalToggleHandler}></Dialog>,
+          <CampaignCreationDialog
+            onClose={modalToggleHandler}
+          ></CampaignCreationDialog>,
           document.body,
         )}
     </>

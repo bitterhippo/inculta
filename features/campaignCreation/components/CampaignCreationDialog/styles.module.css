@@ -1,0 +1,32 @@
+.CampaignCreationDialogOuterWrapper {
+  background-color: var(--neutral);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.CampaignCreationTextContainer {
+  padding: var(--spacing-md);
+}
+
+.CampaignCreationText {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.CampaignCreationInputContainer {
+  padding: var(--spacing-md);
+}
+
+.CampaignCreationSizeSelectorContainer {
+  padding: var(--spacing-md);
+}
+
+.CampaignCreationDialogActionButtonRow {
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+}
