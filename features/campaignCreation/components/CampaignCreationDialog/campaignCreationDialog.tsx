@@ -16,7 +16,13 @@ export const CampaignCreationDialog = ({
         </div>
         {/* TODO: Inputs */}
         <div className={styles.CampaignCreationInputContainer}>
-          <input></input>
+          <p className={styles.CampaignCreationInputLabel}>
+            CRUSADE DESIGNATION
+          </p>
+          <input
+            className={styles.CampaignCreationInput}
+            placeholder="Enter Campaign Name"
+          ></input>
         </div>
         <div className={styles.CampaignCreationSizeSelectorContainer}></div>
         <div className={styles.CampaignCreationDialogActionButtonRow}>

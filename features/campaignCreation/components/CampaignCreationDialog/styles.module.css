@@ -7,7 +7,7 @@
 }
 
 .CampaignCreationTextContainer {
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
 }
 
 .CampaignCreationText {
@@ -17,7 +17,27 @@
 }
 
 .CampaignCreationInputContainer {
+  display: flex;
+  flex-direction: column;
   padding: var(--spacing-md);
+}
+
+.CampaignCreationInputLabel {
+  font-weight: bold;
+  font-size: 12px;
+  font-family: var(--font-noto-seriff);
+  color: var(--neutral-surface-text);
+}
+
+.CampaignCreationInputLabel::placeholder {
+  color: var(--neutral-surface);
+  opacity: 1;
+}
+
+.CampaignCreationInput {
+  height: 32px;
+  background-color: var(--neutral);
+  color: var(--font-color);
 }
 
 .CampaignCreationSizeSelectorContainer {
@@ -28,5 +48,5 @@
   display: flex;
   flex-direction: row;
   gap: var(--spacing-md);
-  padding: var(--spacing-md);
+  padding: var(--spacing-lg) var(--spacing-md);
 }
