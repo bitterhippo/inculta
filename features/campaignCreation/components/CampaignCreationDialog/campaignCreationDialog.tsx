@@ -6,6 +6,8 @@ import styles from "./styles.module.css";
 export const CampaignCreationDialog = ({
   onClose,
 }: campaignCreationDialogProps) => {
+  const [campaignNameText, setCampaignNameText] = useState<string>("");
+
   return (
     <Dialog onClose={onClose}>
       <div className={styles.CampaignCreationDialogOuterWrapper}>
@@ -21,7 +23,12 @@ export const CampaignCreationDialog = ({
           </p>
           <input
             className={styles.CampaignCreationInput}
-            placeholder="Enter Campaign Name"
+            onChange={(e) => setCampaignNameText(e.target.value)}
+            placeholder={
+              campaignNameText.length < 1
+                ? "ENTER CAMPAIGN NAME..."
+                : campaignNameText
+            }
           ></input>
         </div>
         <div className={styles.CampaignCreationSizeSelectorContainer}></div>
