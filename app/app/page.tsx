@@ -1,6 +1,6 @@
 "use client";
 
-import { SideBar, ExpandableContainer, LongButton, Dialog } from "@/components";
+import { SideBar, ExpandableContainer, LongButton } from "@/components";
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { CampaignCreationDialog } from "@/features/campaignCreation/components";
