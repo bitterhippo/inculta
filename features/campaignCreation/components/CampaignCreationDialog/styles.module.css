@@ -7,13 +7,14 @@
 }
 
 .CampaignCreationTextContainer {
-  padding: var(--spacing-lg) var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-md);
 }
 
 .CampaignCreationText {
   color: white;
   font-size: 32px;
   font-weight: bold;
+  border-bottom: 2px solid var(--secondary);
 }
 
 .CampaignCreationInputContainer {
@@ -27,6 +28,7 @@
   font-size: 12px;
   font-family: var(--font-noto-seriff);
   color: var(--neutral-surface-text);
+  padding-bottom: var(--spacing-sm);
 }
 
 .CampaignCreationInputLabel::placeholder {
@@ -42,8 +44,16 @@
   font-size: 12px;
 }
 
+.CampaignCreationSizeSelectorWrapper {
+  display: flex;
+  flex-direction: column;
+  padding-left: var(--spacing-md);
+}
+
 .CampaignCreationSizeSelectorContainer {
-  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: row;
+  gap: var(--spacing-xs);
 }
 
 .CampaignCreationDialogActionButtonRow {
