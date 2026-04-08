@@ -6,15 +6,22 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export async function POST(req: NextRequest) {
   try {
-    const session = await getServerSession(authOptions);
-    const userId = session?.user?.id;
+    const cookieHeader = req.headers.get("cookie") || "";
 
-    if (!userId) {
+    const session = await getServerSession({
+      req: { headers: { cookie: cookieHeader } } as any,
+      ...authOptions,
+    });
+
+    if (!session) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
+    const userId = session?.user?.id;
+
     const body = await req.json();
-    const { campaignName, campaignSize } = body || {};
+    console.log(body);
+    const { campaign_name, campaign_size } = body || {};
 
     console.log(userId);
 
@@ -22,8 +29,8 @@ export async function POST(req: NextRequest) {
       {
         id: userId,
         campaign_id: nanoid(21),
-        campaign_name: campaignName,
-        campaign_size: campaignSize,
+        campaign_name,
+        campaign_size,
       },
     ]);
 
