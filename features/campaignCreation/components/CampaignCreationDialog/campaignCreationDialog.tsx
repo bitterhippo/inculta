@@ -70,6 +70,7 @@ export const CampaignCreationDialog = ({
                     campaign_name: campaignNameText,
                     campaign_size: "sm",
                   }),
+                  credentials: "include",
                 });
 
                 if (!response.ok) {
