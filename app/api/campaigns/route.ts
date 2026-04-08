@@ -9,16 +9,18 @@ export async function POST(req: NextRequest) {
     const session = await getServerSession();
     const userId = session?.user?.id;
 
-    const { campaignName, campaignSize} = body || {};
+    const { campaignName, campaignSize } = body || {};
+
+    console.log(req);
 
     const { data, error } = await supabase.from("asset").insert([
-          {
-            id: userId,
-            campaign_id: nanoid(21),
-            campaign_name: campaignName,
-            campaign_size: campaignSize
-          },
-        ]);
+      {
+        id: userId,
+        campaign_id: nanoid(21),
+        campaign_name: campaignName,
+        campaign_size: campaignSize,
+      },
+    ]);
 
     if (error) {
       console.error("POST Campaign Error:", error);
@@ -35,9 +37,9 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET(req: NextRequest) {
-  try {
-    const body = await req.json();
-    const { userId} = body;
-  }
-}
+// export async function GET(req: NextRequest) {
+//   try {
+//     const body = await req.json();
+//     const { userId} = body;
+//   }
+// }

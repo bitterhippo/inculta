@@ -61,7 +61,27 @@ export const CampaignCreationDialog = ({
         <div className={styles.CampaignCreationDialogActionButtonRow}>
           <LongButton
             label="Create"
-            onClick={() => console.log("create campaign")}
+            onClick={async () => {
+              try {
+                const response = await fetch("/api/campaigns", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    campaign_name: campaignNameText,
+                    campaign_size: "sm",
+                  }),
+                });
+
+                if (!response.ok) {
+                  throw new Error(`Server error: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log("Campaign created:", data);
+              } catch (err) {
+                console.error("Error creating campaign:", err);
+              }
+            }}
           />
           <LongButton label="Cancel" onClick={onClose} />
         </div>
