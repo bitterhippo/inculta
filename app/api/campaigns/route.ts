@@ -2,13 +2,18 @@ import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/app/library/db";
 import { nanoid } from "nanoid";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
     const userId = session?.user?.id;
 
+    if (!userId) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const body = await req.json();
     const { campaignName, campaignSize } = body || {};
 
     console.log(userId);
