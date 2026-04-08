@@ -11,9 +11,9 @@ export async function POST(req: NextRequest) {
 
     const { campaignName, campaignSize } = body || {};
 
-    console.log(req);
+    console.log(userId);
 
-    const { data, error } = await supabase.from("asset").insert([
+    const { data, error } = await supabase.from("campaigns").insert([
       {
         id: userId,
         campaign_id: nanoid(21),
