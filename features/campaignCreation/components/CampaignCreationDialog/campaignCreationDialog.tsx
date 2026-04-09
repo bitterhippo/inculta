@@ -59,6 +59,7 @@ export const CampaignCreationDialog = ({
           </div>
         </div>
         <div className={styles.CampaignCreationDialogActionButtonRow}>
+          {/*TODO: Button needs a disable state */}
           <LongButton
             label="Create"
             onClick={async () => {
@@ -68,7 +69,7 @@ export const CampaignCreationDialog = ({
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({
                     campaign_name: campaignNameText,
-                    campaign_size: "sm",
+                    campaign_size: selectedCampaignType,
                   }),
                   credentials: "include",
                 });
@@ -77,6 +78,9 @@ export const CampaignCreationDialog = ({
                   throw new Error(`Server error: ${response.status}`);
                 }
 
+                {
+                  /*TODO: create a loading state here */
+                }
                 const data = await response.json();
                 console.log("Campaign created:", data);
               } catch (err) {

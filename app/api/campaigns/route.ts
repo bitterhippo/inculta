@@ -35,6 +35,8 @@ export async function POST(req: NextRequest) {
       console.error("POST Campaign Error:", error);
       return NextResponse.json({ status: 500 });
     }
+
+    return NextResponse.json({ status: 200 });
   } catch (err) {
     console.error("API Error:", err);
     return NextResponse.json(
