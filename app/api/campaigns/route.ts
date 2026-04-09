@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
     const { data, error } = await supabase
       .from("campaigns")
       .select("*")
-      .eq("userId", userId);
+      .eq("id", userId);
 
     if (error) {
       console.error("GET Campaign Error:", error);
