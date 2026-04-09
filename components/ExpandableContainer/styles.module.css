@@ -52,3 +52,9 @@
   justify-content: space-between;
   gap: 8px;
 }
+
+.ExpandableContainerPlaceholderText {
+  font: var(--font-color);
+  size: 16px;
+  font-weight: bold;
+}

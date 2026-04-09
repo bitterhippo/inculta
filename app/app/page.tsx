@@ -7,7 +7,7 @@ import { createPortal } from "react-dom";
 import { CampaignCreationDialog } from "@/features/campaignCreation/components";
 
 export default function LoggedInUserPage() {
-  const [campaignData, setCampaignData] = useState();
+  const [campaignData, setCampaignData] = useState([]);
   const [campaignCreationDialog, campaignCreationDialogToggle] =
     useState<boolean>(false);
 
@@ -40,7 +40,13 @@ export default function LoggedInUserPage() {
           label="Create New Campaign"
           onClick={() => modalToggleHandler()}
         />
-        <ExpandableContainer categoryName="Current Campaigns"></ExpandableContainer>
+        <ExpandableContainer categoryName="Current Campaigns">
+          {campaignData?.length < 1 ? (
+            <p>Create there are no active campaigns</p>
+          ) : (
+            <p>you have campaigns</p>
+          )}
+        </ExpandableContainer>
       </SideBar>
       {campaignCreationDialog &&
         createPortal(

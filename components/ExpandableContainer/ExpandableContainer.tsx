@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useState } from "react";
 import { ArrowDown, ArrowUp } from "react-feather";
 import type { ExpandableContainerProps } from "./types";
@@ -8,8 +9,11 @@ import styles from "./styles.module.css";
 export const ExpandableContainer = ({
   categoryName,
   children,
+  placeholder,
 }: ExpandableContainerProps) => {
   const [expanded, setExpanded] = useState<boolean>(false);
+
+  const isEmpty = React.Children.count(children) === 0;
 
   return (
     <div>
@@ -36,7 +40,13 @@ export const ExpandableContainer = ({
           display: expanded ? "flex" : "none",
         }}
       >
-        {children}
+        {!isEmpty ? (
+          children
+        ) : (
+          <p className={styles.ExpandableContainerPlaceholderText}>
+            {placeholder}
+          </p>
+        )}
       </div>
     </div>
   );
