@@ -118,7 +118,6 @@ export default function Home() {
     setActiveId(null);
   };
 
-  //TODO: Determine if this just ought to be React Query
   useEffect(() => {
     async function fetchAssets() {
       const response = await fetch("/api/getAllAssetsById", {
@@ -165,7 +164,6 @@ export default function Home() {
         onDragCancel={() => setActiveId(null)}
       >
         <div className={styles.MainViewContainer}>
-          {/*TODO: Add campaign editor sidebar */}
           <CampaignEditorSideBar
             selectedBackground={selectedBackground}
             setSelectedBackground={setSelectedBackground}

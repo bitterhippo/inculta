@@ -20,10 +20,7 @@ export async function POST(req: NextRequest) {
     const userId = session?.user?.id;
 
     const body = await req.json();
-    console.log(body);
     const { campaign_name, campaign_size } = body || {};
-
-    console.log(userId);
 
     const { data, error } = await supabase.from("campaigns").insert([
       {
@@ -38,8 +35,6 @@ export async function POST(req: NextRequest) {
       console.error("POST Campaign Error:", error);
       return NextResponse.json({ status: 500 });
     }
-
-    return NextResponse.json({ error });
   } catch (err) {
     console.error("API Error:", err);
     return NextResponse.json(
@@ -49,9 +44,37 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// export async function GET(req: NextRequest) {
-//   try {
-//     const body = await req.json();
-//     const { userId} = body;
-//   }
-// }
+export async function GET(req: NextRequest) {
+  try {
+    const cookieHeader = req.headers.get("cookie") || "";
+
+    const session = await getServerSession({
+      req: { headers: { cookie: cookieHeader } } as any,
+      ...authOptions,
+    });
+
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const userId = session?.user?.id;
+
+    const { data, error } = await supabase
+      .from("campaigns")
+      .select("*")
+      .eq("userId", userId);
+
+    if (error) {
+      console.error("GET Campaign Error:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ data });
+  } catch (err) {
+    console.error("API Error:", err);
+    return NextResponse.json(
+      { error: (err as Error).message },
+      { status: 500 },
+    );
+  }
+}
