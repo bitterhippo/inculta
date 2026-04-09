@@ -11,8 +11,6 @@ export default function LoggedInUserPage() {
   const [campaignCreationDialog, campaignCreationDialogToggle] =
     useState<boolean>(false);
 
-  const { data: session } = useSession();
-
   const modalToggleHandler = () => {
     campaignCreationDialogToggle((previousValue: boolean) => {
       return !previousValue;
@@ -24,14 +22,16 @@ export default function LoggedInUserPage() {
       const response = await fetch("/api/campaigns", {
         method: "GET",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: session?.user.id }),
+        credentials: "include",
       });
       const data = await response.json();
       setCampaignData(data);
     }
 
-    // fetchCampaignData();
+    fetchCampaignData();
   }, [campaignCreationDialog]);
+
+  console.log(campaignData);
 
   return (
     <>
