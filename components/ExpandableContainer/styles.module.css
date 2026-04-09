@@ -54,7 +54,7 @@
 }
 
 .ExpandableContainerPlaceholderText {
-  font: var(--font-color);
+  color: var(--font-color);
   size: 16px;
   font-weight: bold;
 }
