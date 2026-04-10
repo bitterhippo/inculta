@@ -8,7 +8,7 @@ import { Icon, Canvas, DraggableWrapper } from "@/components";
 import {
   AddAssetDialog,
   CampaignEditorSideBar,
-} from "../../../features/campaignEditor/index";
+} from "../../../../features/campaignEditor/index";
 import { PlacedItem } from "./types";
 import styles from "./styles.module.css";
 import {
@@ -123,7 +123,7 @@ export default function Home() {
       const response = await fetch("/api/getAllAssetsById", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId: "123" }),
+        credentials: "include",
       });
       const data = await response.json();
       setUserData(data);
