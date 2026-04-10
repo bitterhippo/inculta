@@ -46,18 +46,17 @@ export default function LoggedInUserPage() {
           placeholder="No active campaigns found"
         >
           <div className={stlyes.twoColumnLayout}>
-            {campaignData.length > 0 ? (
-              campaignData.map(({ campaign_name }) => {
-                console.log(campaign_name);
-                return (
-                  <p style={{ color: "white" }} key={`campaign_name`}>
-                    {campaign_name}
-                  </p>
-                );
-              })
-            ) : (
-              <>not lol</>
-            )}
+            {campaignData.map(({ campaign_id, campaign_name }) => {
+              return (
+                <Link
+                  key={campaign_id}
+                  href={`/app/campaign-creation/${campaign_id}`}
+                  style={{ color: "white", display: "block" }}
+                >
+                  {campaign_name}
+                </Link>
+              );
+            })}
           </div>
         </ExpandableContainer>
       </SideBar>
