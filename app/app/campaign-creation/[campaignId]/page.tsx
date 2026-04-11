@@ -3,9 +3,9 @@ import CampaignEditor from "./CampaignEditor";
 import { getAssetsByCampaignId } from "@/app/services/assets";
 
 export default async function CampaignPage({ params }) {
-  const data = await getAssetsByCampaignId(params.campaignId);
+  const { campaignId } = await params;
 
-  console.log(data);
+  const data = await getAssetsByCampaignId(campaignId);
 
   return <CampaignEditor initialUserData={data} />;
 }
