@@ -1,37 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/app/library/db";
+import { getAssetsByCampaignId } from "@/app/services/assets";
 
-export async function GET(req: NextRequest) {
-  try {
-    const body = await req.json();
+export async function GET(req) {
+  const { searchParams } = new URL(req.url);
+  const campaign_id = searchParams.get("campaign_id");
 
-    console.log("body", body);
+  const data = await getAssetsByCampaignId(campaign_id);
 
-    const { campaign_id } = body;
-
-    const [
-      { data: assetData, error: assetError },
-      { data: backdropData, error: backdropError },
-    ] = await Promise.all([
-      supabase.from("asset").select("*").eq("campaign_id", campaign_id),
-      supabase.from("backdrop").select("*").eq("campaign_id", campaign_id),
-    ]);
-
-    if (assetError || backdropError) {
-      console.error("Asset Error:", assetError);
-      console.error("Backdrop Error:", backdropError);
-      return NextResponse.json(
-        { error: assetError?.message || backdropError?.message },
-        { status: 500 },
-      );
-    }
-
-    return NextResponse.json({ backdropData, assetData });
-  } catch (err) {
-    console.error("API Error:", err);
-    return NextResponse.json(
-      { error: (err as Error).message },
-      { status: 500 },
-    );
-  }
+  return NextResponse.json(data);
 }
