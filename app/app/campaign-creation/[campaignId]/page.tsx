@@ -1,12 +1,7 @@
-import CampaignEditor from "./CampaignEditor";
-
+import CampaignEditor from "@/features/campaignEditor/components/CampaignEditor/CampaignEditor";
 import { getAssetsByCampaignId } from "@/app/services/assets";
 
-type PageProps = {
-  params: Promise<{
-    campaignId: string;
-  }>;
-};
+import type { PageProps } from "./types";
 
 export default async function CampaignPage({ params }: PageProps) {
   const { campaignId } = await params;
