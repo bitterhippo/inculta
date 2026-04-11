@@ -17,14 +17,14 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const userId = session?.user?.id;
+    const user_id = session?.user?.id;
 
     const body = await req.json();
     const { campaign_name, campaign_size } = body || {};
 
     const { data, error } = await supabase.from("campaigns").insert([
       {
-        id: userId,
+        id: user_id,
         campaign_id: nanoid(21),
         campaign_name,
         campaign_size,
@@ -59,12 +59,12 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const userId = session?.user?.id;
+    const user_id = session?.user?.id;
 
     const { data, error } = await supabase
       .from("campaigns")
       .select("*")
-      .eq("id", userId);
+      .eq("id", user_id);
 
     if (error) {
       console.error("GET Campaign Error:", error);

@@ -5,25 +5,15 @@ import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET(req: NextRequest) {
   try {
-    const cookieHeader = req.headers.get("cookie") || "";
-
-    const session = await getServerSession({
-      req: { headers: { cookie: cookieHeader } } as any,
-      ...authOptions,
-    });
-
-    if (!session) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
-
-    const userId = session?.user?.id;
+    const body = await req.json();
+    console.log(body);
 
     const [
       { data: assetData, error: assetError },
       { data: backdropData, error: backdropError },
     ] = await Promise.all([
-      supabase.from("asset").select("*").eq("user_id", userId),
-      supabase.from("backdrop").select("*").eq("user_id", userId),
+      supabase.from("asset").select("*").eq("user_id", user_id),
+      supabase.from("backdrop").select("*").eq("user_id", user_id),
     ]);
 
     if (assetError || backdropError) {
