@@ -5,4 +5,5 @@ export type AddAssetDialogTypes = {
   setDialogOpen: any;
   setSelectedFile: any;
   source?: "assets" | "layers";
+  campaign_id: string;
 };

@@ -3,7 +3,6 @@ import { nanoid } from "nanoid";
 export const buildUploadPayload = (
   type: "assets" | "layers",
   data: {
-    user_id: string;
     campaign_id: string;
     imageUrl: string;
     label?: string;
@@ -13,7 +12,6 @@ export const buildUploadPayload = (
     case "assets":
       return {
         id: nanoid(21),
-        user_id: data.user_id,
         campaign_id: data.campaign_id,
         imageUrl: data.imageUrl,
         createdAt: new Date(),
@@ -21,7 +19,6 @@ export const buildUploadPayload = (
     case "layers":
       return {
         id: nanoid(21),
-        user_id: data.user_id,
         campaign_id: data.campaign_id,
         imageUrl: data.imageUrl,
         createdAt: new Date(),

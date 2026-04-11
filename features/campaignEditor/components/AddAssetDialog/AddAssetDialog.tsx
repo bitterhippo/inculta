@@ -9,6 +9,7 @@ import styles from "./styles.module.css";
 import { buildUploadPayload, buildUploadPayloadUrl } from "./utils";
 
 export const AddAssetDialog = ({
+  campaign_id,
   selectedFile,
   setDialogOpen,
   setSelectedFile,
@@ -111,14 +112,14 @@ export const AddAssetDialog = ({
                   const payloadUrl = buildUploadPayloadUrl(source);
 
                   const payload = buildUploadPayload(source, {
-                    user_id: "testId",
-                    campaign_id: "testCampaign",
+                    campaign_id,
                     imageUrl: url,
                   });
                   const response = await fetch(payloadUrl, {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(payload),
+                    credentials: "include",
                   });
 
                   const data = await response.json();

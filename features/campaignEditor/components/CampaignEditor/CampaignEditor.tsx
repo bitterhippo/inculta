@@ -19,7 +19,13 @@ import {
   DragEndEvent,
 } from "@dnd-kit/core";
 
-export default function CampaignEditor({ initialCampaignData }: any) {
+export default function CampaignEditor({
+  initialCampaignData,
+  campaign_id,
+}: {
+  initialCampaignData: any;
+  campaign_id: string;
+}) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [dialogOpen, setDialogOpen] = useState<{
     open: boolean;
@@ -117,6 +123,7 @@ export default function CampaignEditor({ initialCampaignData }: any) {
     setActiveId(null);
   };
 
+  //TODO: This needs to be refactored to use to use router.refresh();
   useEffect(() => {
     async function fetchAssets() {
       const response = await fetch("/api/getAllAssetsById", {
@@ -251,6 +258,7 @@ export default function CampaignEditor({ initialCampaignData }: any) {
             setDialogOpen={setDialogOpen}
             setSelectedFile={setSelectedFile}
             source={dialogOpen.source}
+            campaign_id={campaign_id}
           />,
           document.body,
         )}
