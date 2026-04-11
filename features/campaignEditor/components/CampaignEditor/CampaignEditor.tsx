@@ -4,7 +4,6 @@ import { createPortal } from "react-dom";
 import { useState, useRef, useEffect } from "react";
 import { nanoid } from "nanoid";
 import { Icon, Canvas, DraggableWrapper } from "@/components";
-/*TDDO: implement a barrle file in the features */
 import {
   AddAssetDialog,
   CampaignEditorSideBar,

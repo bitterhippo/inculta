@@ -1,20 +1,3 @@
-:global(*),
-:global(::before),
-:global(::after) {
-  box-sizing: border-box;
-}
-
-:global(body),
-:global(h1),
-:global(h2),
-:global(h3),
-:global(h4),
-:global(h5),
-:global(h6),
-:global(p) {
-  margin: 0;
-}
-
 .MainViewContainer {
   display: flex;
   justify-content: row;
