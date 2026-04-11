@@ -1,19 +1,20 @@
-import { getServerSession } from "next-auth";
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/app/library/db";
-import { authOptions } from "../auth/[...nextauth]/route";
 
 export async function GET(req: NextRequest) {
   try {
     const body = await req.json();
-    console.log(body);
+
+    console.log("body", body);
+
+    const { campaign_id } = body;
 
     const [
       { data: assetData, error: assetError },
       { data: backdropData, error: backdropError },
     ] = await Promise.all([
-      supabase.from("asset").select("*").eq("user_id", user_id),
-      supabase.from("backdrop").select("*").eq("user_id", user_id),
+      supabase.from("asset").select("*").eq("campaign_id", campaign_id),
+      supabase.from("backdrop").select("*").eq("campaign_id", campaign_id),
     ]);
 
     if (assetError || backdropError) {

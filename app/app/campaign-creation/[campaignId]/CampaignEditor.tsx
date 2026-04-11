@@ -20,7 +20,7 @@ import {
   DragEndEvent,
 } from "@dnd-kit/core";
 
-export default function CampaignEditor() {
+export default function CampaignEditor({ initialCampaignData }) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [dialogOpen, setDialogOpen] = useState<{
     open: boolean;
