@@ -1,11 +1,25 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/app/library/db";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]/route";
 import { nanoid } from "nanoid";
 
 export async function POST(req: NextRequest) {
   try {
+    const cookieHeader = req.headers.get("cookie") || "";
+
+    const session = await getServerSession({
+      req: { headers: { cookie: cookieHeader } } as any,
+      ...authOptions,
+    });
+
+    if (!session) {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+
+    const user_id = session?.user?.id;
     const body = await req.json();
-    const { user_id, campaign_id, image_url, name } = body;
+    const { campaign_id, image_url, label } = body;
 
     {
       /*TODO: This needs to be updated radically - it will work for testing purposes */
@@ -13,10 +27,10 @@ export async function POST(req: NextRequest) {
     const { data, error } = await supabase.from("backdrop").insert([
       {
         id: nanoid(21),
-        user_id: "123",
-        campaign_id: campaign_id,
-        image_url: image_url,
-        label: "test",
+        user_id,
+        campaign_id,
+        image_url,
+        label,
         createdAt: new Date(),
       },
     ]);

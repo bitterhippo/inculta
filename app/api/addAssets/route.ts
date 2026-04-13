@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/app/library/db";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
+import { nanoid } from "nanoid";
 
 export async function POST(req: NextRequest) {
   try {
@@ -26,9 +27,10 @@ export async function POST(req: NextRequest) {
     }
     const { data, error } = await supabase.from("asset").insert([
       {
-        id: user_id,
-        campaign_id: campaign_id,
-        image_url: image_url,
+        id: nanoid(21),
+        user_id,
+        campaign_id,
+        image_url,
         createdAt: new Date(),
       },
     ]);
