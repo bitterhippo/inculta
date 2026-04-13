@@ -5,7 +5,7 @@ import { nanoid } from "nanoid";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { user_id, campaign_id, imageUrl, name } = body;
+    const { user_id, campaign_id, image_url, name } = body;
 
     {
       /*TODO: This needs to be updated radically - it will work for testing purposes */
@@ -15,7 +15,7 @@ export async function POST(req: NextRequest) {
         id: nanoid(21),
         user_id: "123",
         campaign_id: campaign_id,
-        imageUrl: imageUrl,
+        image_url: image_url,
         label: "test",
         createdAt: new Date(),
       },

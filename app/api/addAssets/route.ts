@@ -19,7 +19,7 @@ export async function POST(req: NextRequest) {
     const user_id = session?.user?.id;
 
     const body = await req.json();
-    const { campaign_id, imageUrl, name } = body;
+    const { campaign_id, image_url } = body;
 
     {
       /*TODO: This needs to be updated radically - it will work for testing purposes */
@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
       {
         id: user_id,
         campaign_id: campaign_id,
-        imageUrl: imageUrl,
+        image_url: image_url,
         createdAt: new Date(),
       },
     ]);

@@ -4,7 +4,7 @@ export const buildUploadPayload = (
   type: "assets" | "layers",
   data: {
     campaign_id: string;
-    imageUrl: string;
+    image_url: string;
     label?: string;
   },
 ) => {
@@ -13,14 +13,14 @@ export const buildUploadPayload = (
       return {
         id: nanoid(21),
         campaign_id: data.campaign_id,
-        imageUrl: data.imageUrl,
+        image_url: data.image_url,
         createdAt: new Date(),
       };
     case "layers":
       return {
         id: nanoid(21),
         campaign_id: data.campaign_id,
-        imageUrl: data.imageUrl,
+        image_url: data.image_url,
         createdAt: new Date(),
         label: data.label ?? "Test Asset",
       };

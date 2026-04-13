@@ -113,7 +113,7 @@ export const AddAssetDialog = ({
 
                   const payload = buildUploadPayload(source, {
                     campaign_id,
-                    imageUrl: url,
+                    image_url: url,
                   });
                   const response = await fetch(payloadUrl, {
                     method: "POST",

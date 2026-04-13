@@ -43,17 +43,17 @@ export const CampaignEditorSideBar = ({
       {selectedTabDialogAccessor === "assets" && (
         <ExpandableContainer categoryName="Assets">
           {userData?.assetData &&
-            userData.assetData.map(({ id, imageUrl }) => {
+            userData.assetData.map(({ id, image_url }) => {
               return (
                 <DraggableWrapper
-                  id={`${id}-${imageUrl}`}
-                  key={`${id}-${imageUrl}`}
+                  id={`${id}-${image_url}`}
+                  key={`${id}-${image_url}`}
                   inToolbar={true}
-                  imageUrl={`${imageUrl}`}
+                  image_url={`${image_url}`}
                 >
                   <img
                     style={{ maxHeight: "32px", maxWidth: "32px" }}
-                    src={imageUrl}
+                    src={image_url}
                     alt={id}
                   />
                 </DraggableWrapper>
@@ -67,17 +67,17 @@ export const CampaignEditorSideBar = ({
             {/*TODO: Add default colors here */}
             {userData?.backdropData &&
               userData.backdropData.map(
-                ({ imageUrl, id }: { imageUrl: string; id: string }) => {
+                ({ image_url, id }: { image_url: string; id: string }) => {
                   return (
                     <SelectableImageContainer
                       key={id}
                       onClick={() =>
-                        setSelectedBackground({ backgroundImage: imageUrl })
+                        setSelectedBackground({ backgroundImage: image_url })
                       }
                       isSelected={
-                        imageUrl === selectedBackground?.backgroundImage
+                        image_url === selectedBackground?.backgroundImage
                       }
-                      imgProps={{ src: `${imageUrl}` }}
+                      imgProps={{ src: `${image_url}` }}
                     />
                   );
                 },

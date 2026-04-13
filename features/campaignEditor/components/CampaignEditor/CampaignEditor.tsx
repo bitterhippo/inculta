@@ -64,7 +64,7 @@ export default function CampaignEditor({
     const { active, over, delta } = event;
 
     const source = active.data.current?.source;
-    const imageUrl = active.data.current?.imageUrl;
+    const image_url = active.data.current?.image_url;
 
     if (!canvasRef.current) return;
     const canvasRect = canvasRef.current?.getBoundingClientRect();
@@ -87,7 +87,7 @@ export default function CampaignEditor({
         id: String(nanoid()),
         x: canvasX,
         y: canvasY,
-        imageUrl,
+        image_url,
       };
       setItems((prev) => [...prev, currentDragObject]);
     }
@@ -112,7 +112,7 @@ export default function CampaignEditor({
           id: newArr[targetItem].id,
           x: canvasX,
           y: canvasY,
-          imageUrl: newArr[targetItem]?.imageUrl,
+          image_url: newArr[targetItem]?.image_url,
         });
         newArr[targetItem] = updatedItem;
         return newArr;
@@ -228,11 +228,11 @@ export default function CampaignEditor({
                       id={`${currentItem?.id}`}
                       x={currentItem.x}
                       y={currentItem.y}
-                      imageUrl={`${currentItem.imageUrl}`}
+                      image_url={`${currentItem.image_url}`}
                     >
                       <img
                         style={{ maxHeight: "48px", maxWidth: "48px" }}
-                        src={currentItem.imageUrl}
+                        src={currentItem.image_url}
                         alt={currentItem.id}
                       />
                     </DraggableWrapper>
@@ -245,7 +245,7 @@ export default function CampaignEditor({
         <DragOverlay>
           {/* TODO: this is where the onDrag image is created */}
           {activeId ? (
-            <DraggableWrapper id={activeId} imageUrl={activeId}>
+            <DraggableWrapper id={activeId} image_url={activeId}>
               <Icon />
             </DraggableWrapper>
           ) : null}
