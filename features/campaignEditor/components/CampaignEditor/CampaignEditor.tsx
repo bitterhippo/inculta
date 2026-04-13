@@ -20,10 +20,10 @@ import {
 } from "@dnd-kit/core";
 
 export default function CampaignEditor({
-  initialCampaignData,
+  initialUserData,
   campaign_id,
 }: {
-  initialCampaignData: any;
+  initialUserData: any;
   campaign_id: string;
 }) {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -38,7 +38,7 @@ export default function CampaignEditor({
   //TODO: See how much of this can be combined
   const [items, setItems] = useState<PlacedItem[]>([]);
   const [selectedBackground, setSelectedBackground] = useState<object>();
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState(initialUserData);
   //Zoom Logic
   const defaultScale = 1;
   const [scale, setScale] = useState<number>(defaultScale);
@@ -49,6 +49,8 @@ export default function CampaignEditor({
   //Pan Ref
   const isPanning = useRef(false);
   const lastPos = useRef({ x: 0, y: 0 });
+
+  console.log("campaignEditor", userData);
 
   //TODO: Extract into helpers
   const sensors = useSensors(

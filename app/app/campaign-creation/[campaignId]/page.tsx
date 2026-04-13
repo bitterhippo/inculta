@@ -8,5 +8,7 @@ export default async function CampaignPage({ params }: PageProps) {
 
   const data = await getAssetsByCampaignId(campaignId);
 
+  console.log("userData - server", data);
+
   return <CampaignEditor initialUserData={data} campaign_id={campaignId} />;
 }

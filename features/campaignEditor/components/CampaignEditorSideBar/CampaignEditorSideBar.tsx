@@ -24,6 +24,8 @@ export const CampaignEditorSideBar = ({
 
   const selectedTabDialogAccessor = selectedTab.toLowerCase();
 
+  console.log("userData", userData);
+
   return (
     <SideBar>
       <SelectTabList
