@@ -1,9 +1,10 @@
 .IconButton {
   display: flex;
-  border: 1px solid black;
+  border: 2px solid var(--secondary);
   height: var(--spacing-lg);
   width: 128px;
   justify-content: space-around;
+  background-color: var(--surface);
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -19,8 +20,12 @@
 
 .IconButtonText {
   margin-top: var(--spacing-xs);
+  color: var(--secondary);
 }
 
 .FileUploadInput {
   display: none;
+}
+.IconButtonIcon {
+  color: var(--secondary);
 }

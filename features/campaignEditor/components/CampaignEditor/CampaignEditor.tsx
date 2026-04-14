@@ -125,21 +125,6 @@ export default function CampaignEditor({
     setActiveId(null);
   };
 
-  //TODO: This needs to be refactored to use to use router.refresh();
-  useEffect(() => {
-    async function fetchAssets() {
-      const response = await fetch("/api/getAllAssetsById", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      });
-      const data = await response.json();
-      setUserData(data);
-    }
-
-    fetchAssets();
-  }, [dialogOpen]);
-
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.code === "Space") {

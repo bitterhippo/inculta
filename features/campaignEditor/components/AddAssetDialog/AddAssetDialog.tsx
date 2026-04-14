@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Dialog, FileUploadIconButton, Button } from "@/components";
+import { Dialog, FileUploadIconButton, Button, LongButton } from "@/components";
 import { uploadToCloudinary } from "@/app/services/cloudinaryUpload";
 import { AddAssetDialogTypes } from "./types";
 import { nanoid } from "nanoid";
@@ -74,7 +74,10 @@ export const AddAssetDialog = ({
       <div className={styles.AddAssetDialogWrapper}>
         <div className={styles.AddAssetDialogInnerWrapper}>
           <div className={styles.AddAssetDialogFileUploadWrapper}>
-            <FileUploadIconButton onFileSelect={setSelectedFile} />
+            <FileUploadIconButton
+              text="Select Source"
+              onFileSelect={setSelectedFile}
+            />
             <span className={styles.AddAssetDialogText}>
               {selectedFile
                 ? selectedFile?.name
@@ -91,10 +94,10 @@ export const AddAssetDialog = ({
             )}
           </div>
           <div className={styles.AddAssetDialogButtonRow}>
-            <Button
+            {/*TODO: add disabled state to LongButton  */}
+            <LongButton
               isDisabled={previewUrl || uploading ? false : true}
-              label="Create"
-              //TODO: this obviously needs to best tested + broken out into a separate handler
+              label="Upload Asset"
               onClick={async () => {
                 setUploading(true);
                 await canvasRef.current?.toBlob(async (blob) => {
@@ -123,13 +126,12 @@ export const AddAssetDialog = ({
                   });
 
                   const data = await response.json();
-                  //TODO: Error handling in case the POST request here is not successful
                   handleDialogClose();
                 });
                 setUploading(false);
               }}
             />
-            <Button label="Cancel" onClick={handleDialogClose} />
+            <LongButton label="Abort" onClick={handleDialogClose} />
           </div>
         </div>
       </div>

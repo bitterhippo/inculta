@@ -24,14 +24,17 @@ export const CampaignEditorSideBar = ({
 
   const selectedTabDialogAccessor = selectedTab.toLowerCase();
 
-  console.log("userData", userData);
-
   return (
     <SideBar>
       <SelectTabList
         tabListData={CampaignEditorSideBarTabListOptions}
         selectorHandler={setSelectedTab}
         selectedTab={selectedTab}
+      />
+      <LongButton
+        label={"Save Project"}
+        iconName={"save"}
+        onClick={() => console.log("lol")}
       />
       <LongButton
         label={`Create New ${selectedTab}`}
@@ -87,11 +90,6 @@ export const CampaignEditorSideBar = ({
           </div>
         </ExpandableContainer>
       )}
-      <LongButton
-        label={"Save Project"}
-        iconName={"save"}
-        onClick={() => console.log("lol")}
-      />
     </SideBar>
   );
 };
