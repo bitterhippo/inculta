@@ -72,3 +72,10 @@
   flex-direction: column;
   gap: var(--spacing-md);
 }
+
+.AddAsetDialogTitleText {
+  color: white;
+  font-size: 32px;
+  font-weight: bold;
+  border-bottom: 2px solid var(--secondary);
+}

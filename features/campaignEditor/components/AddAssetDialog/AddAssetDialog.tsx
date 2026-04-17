@@ -24,6 +24,9 @@ export const AddAssetDialog = ({
     setDialogOpen(false);
   }, []);
 
+  const getTitle = (source: string) =>
+    source === "assets" ? "Create New Asset" : "Create New Backdrop";
+
   useEffect(() => {
     if (!selectedFile) {
       setPreviewUrl(undefined);
@@ -73,6 +76,7 @@ export const AddAssetDialog = ({
     <Dialog onClose={handleDialogClose}>
       <div className={styles.AddAssetDialogWrapper}>
         <div className={styles.AddAssetDialogInnerWrapper}>
+          <h2 className={styles.AddAsetDialogTitleText}>{getTitle(source)}</h2>
           <div className={styles.AddAssetDialogImageContainer}>
             {previewUrl ? (
               <canvas ref={canvasRef} className={styles.AddAssetDialogImg} />
