@@ -73,24 +73,24 @@ export const AddAssetDialog = ({
     <Dialog onClose={handleDialogClose}>
       <div className={styles.AddAssetDialogWrapper}>
         <div className={styles.AddAssetDialogInnerWrapper}>
-          <div className={styles.AddAssetDialogFileUploadWrapper}>
-            <FileUploadIconButton
-              text="Select Source"
-              onFileSelect={setSelectedFile}
-            />
-            <span className={styles.AddAssetDialogText}>
-              {selectedFile
-                ? selectedFile?.name
-                : "Currently no file selected."}
-            </span>
-          </div>
           <div className={styles.AddAssetDialogImageContainer}>
             {previewUrl ? (
               <canvas ref={canvasRef} className={styles.AddAssetDialogImg} />
             ) : (
-              <span className={styles.AddAssetDialogPreviewText}>
-                No preview available - file not selected
-              </span>
+              <div className={styles.AddAssetDialogFileUploadWrapper}>
+                <FileUploadIconButton
+                  text="Select Source"
+                  onFileSelect={setSelectedFile}
+                />
+                <span className={styles.AddAssetDialogText}>
+                  {selectedFile
+                    ? selectedFile?.name
+                    : "Currently no file selected."}
+                </span>
+                <span className={styles.AddAssetDialogPreviewText}>
+                  No preview available - file not selected
+                </span>
+              </div>
             )}
           </div>
           <div className={styles.AddAssetDialogButtonRow}>

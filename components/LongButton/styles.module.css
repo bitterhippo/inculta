@@ -7,12 +7,14 @@
   background-color: var(--primary);
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .LongButtonText {
   color: var(--font-color);
   font: 16px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .LongButtonIcon {
