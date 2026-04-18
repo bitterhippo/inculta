@@ -50,8 +50,6 @@ export default function CampaignEditor({
   const isPanning = useRef(false);
   const lastPos = useRef({ x: 0, y: 0 });
 
-  console.log("campaignEditor", userData);
-
   //TODO: Extract into helpers
   const sensors = useSensors(
     useSensor(PointerSensor, {

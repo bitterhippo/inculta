@@ -9,9 +9,6 @@ export default function LoginButton() {
   const { data: session } = useSession();
   const [user, setUser] = useState();
 
-  console.log("user", user);
-  console.log("session", session);
-
   useEffect(() => {
     if (!session) return;
 

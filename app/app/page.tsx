@@ -18,8 +18,6 @@ export default function LoggedInUserPage() {
     });
   };
 
-  console.log(campaignData);
-
   useEffect(() => {
     async function fetchCampaignData() {
       const response = await fetch("/api/campaigns", {

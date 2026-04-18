@@ -2,7 +2,12 @@ import styles from "./styles.module.css";
 import type { LongButtonProps } from "./types";
 import { Save } from "react-feather";
 
-export const LongButton = ({ onClick, label, iconName }: LongButtonProps) => {
+export const LongButton = ({
+  onClick,
+  label,
+  iconName,
+  isDisabled,
+}: LongButtonProps) => {
   const iconMap = {
     save: Save,
   };
