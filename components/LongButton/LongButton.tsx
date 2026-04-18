@@ -15,9 +15,17 @@ export const LongButton = ({
   const Icon = iconName ? iconMap[iconName] : undefined;
 
   return (
-    <div className={styles.LongButtonContainer} onClick={onClick}>
+    <button
+      className={`${styles.LongButtonContainer} ${isDisabled ? styles.isDisabled : ""}`}
+      onClick={onClick}
+      disabled={isDisabled}
+    >
       {Icon && <Icon className={styles.LongButtonIcon} size={18} />}
-      <span className={styles.LongButtonText}>{label}</span>
-    </div>
+      <span
+        className={`${styles.LongButtonText} ${isDisabled ? styles.isDisabledText : ""}`}
+      >
+        {label}
+      </span>
+    </button>
   );
 };

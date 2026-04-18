@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  border: none;
 }
 
 .LongButtonText {
@@ -20,4 +21,15 @@
 .LongButtonIcon {
   color: var(--font-color);
   margin-right: var(--spacing-sm);
+}
+
+.isDisabled {
+  background: none;
+  border: 2px solid var(--neutral-surface);
+  cursor: not-allowed;
+}
+
+.isDisabledText {
+  color: var(--neutral-surface);
+  cursor: not-allowed;
 }
