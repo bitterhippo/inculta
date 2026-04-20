@@ -6,3 +6,10 @@
   justify-content: center;
   padding: var(--spacing-sm);
 }
+
+.CampaignEditorSideBarContentsWrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
