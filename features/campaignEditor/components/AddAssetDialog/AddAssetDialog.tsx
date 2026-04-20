@@ -70,6 +70,9 @@ export const AddAssetDialog = ({
 
       ctx.putImageData(imageData, 0, 0);
     };
+    return () => {
+      URL.revokeObjectURL(previewUrl);
+    };
   }, [previewUrl]);
 
   return (
