@@ -43,13 +43,11 @@
 }
 
 .AddAssetDialogImageContainer {
-  border: 4px solid #333;
-  box-shadow: inset 0 0 0 2px white;
+  display: flex;
+  border: 2px dashed var(--neutral-surface);
   justify-self: center;
   align-items: center;
-  display: flex;
   overflow: hidden;
-  border: 1px solid black;
   height: 128px;
   width: 128px;
 }

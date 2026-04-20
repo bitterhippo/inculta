@@ -98,7 +98,6 @@ export const AddAssetDialog = ({
             )}
           </div>
           <div className={styles.AddAssetDialogButtonRow}>
-            {/*TODO: add disabled state to LongButton  */}
             <LongButton
               isDisabled={previewUrl || uploading ? false : true}
               label="Upload Asset"
