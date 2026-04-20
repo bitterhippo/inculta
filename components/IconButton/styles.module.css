@@ -19,7 +19,6 @@
 }
 
 .IconButtonText {
-  margin-top: var(--spacing-xs);
   color: var(--secondary);
 }
 

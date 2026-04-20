@@ -6,6 +6,7 @@ import styles from "./styles.module.css";
 export const FileUploadIconButton = ({
   text,
   onFileSelect,
+  displayIcon,
 }: FileUploadIconButtonTypes) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -23,7 +24,9 @@ export const FileUploadIconButton = ({
     <>
       <button onClick={handleClick} className={styles.IconButton}>
         <div className={styles.IconButtonContentWrapper}>
-          <Upload size={"16px"} className={styles.IconButtonIcon} />
+          {displayIcon && (
+            <Upload size={"16px"} className={styles.IconButtonIcon} />
+          )}
           <span className={styles.IconButtonText}>{text}</span>
         </div>
       </button>

@@ -1,4 +1,5 @@
 export interface FileUploadIconButtonTypes {
   text: string;
-  onFileSelect: (file: File) => void; // receives the selected file
+  onFileSelect: (file: File) => void;
+  displayIcon?: boolean;
 }
