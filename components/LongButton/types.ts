@@ -1,6 +1,6 @@
 export interface LongButtonProps {
   onClick: () => void;
   label: string;
-  iconName?: "save";
+  iconName?: "save" | "arrowLeftCircle";
   isDisabled?: boolean;
 }

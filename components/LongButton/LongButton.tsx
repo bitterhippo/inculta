@@ -1,6 +1,6 @@
 import styles from "./styles.module.css";
 import type { LongButtonProps } from "./types";
-import { Save } from "react-feather";
+import { ArrowLeftCircle, Save } from "react-feather";
 
 export const LongButton = ({
   onClick,
@@ -10,6 +10,7 @@ export const LongButton = ({
 }: LongButtonProps) => {
   const iconMap = {
     save: Save,
+    arrowLeftCircle: ArrowLeftCircle,
   };
 
   const Icon = iconName ? iconMap[iconName] : undefined;
