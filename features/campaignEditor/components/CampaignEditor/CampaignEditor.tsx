@@ -31,16 +31,15 @@ export default function CampaignEditor({
     open: boolean;
     source: "assets" | "layers";
   }>({ open: false, source: "assets" });
-  const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isSpacePressed, setIsSpacePressed] = useState(false);
   //TODO: Move this to a lower level of state
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  //TODO: See how much of this can be combined
-  const [items, setItems] = useState<PlacedItem[]>([]);
-  const [selectedBackground, setSelectedBackground] = useState<object>();
+  // const [items, setItems] = useState<PlacedItem[]>([]);
+  // const [selectedBackground, setSelectedBackground] = useState<object>();
   const [userData, setUserData] = useState(initialUserData);
   //Zoom Logic
   const defaultScale = 1;
+  const [pan, setPan] = useState({ x: 0, y: 0 });
   const [scale, setScale] = useState<number>(defaultScale);
   const scaleMin = 0.5;
   const scaleMax = 3;
@@ -89,12 +88,12 @@ export default function CampaignEditor({
         y: canvasY,
         image_url,
       };
-      setItems((prev) => [...prev, currentDragObject]);
+      setCampaignState.items((prev) => [...prev, currentDragObject]);
     }
 
     // removes an object after it is draggedd off canvas
     if (over?.id !== "canvas" && source === "canvas") {
-      setItems((prev) => {
+      setCampaignState.items?((prev) => {
         let newArr = prev.filter(
           (item) => String(item.id) !== String(active.id),
         );
@@ -105,7 +104,7 @@ export default function CampaignEditor({
     //repositions an object
     //TODO: this needs different logic as items are sliding
     if (over?.id === "canvas" && source === "canvas") {
-      setItems((prev) => {
+      setCampaignState((prev) => {
         let newArr = [...prev];
         let targetItem = newArr.findIndex((item) => item.id === active.id);
         let updatedItem = (newArr[targetItem] = {
@@ -156,8 +155,8 @@ export default function CampaignEditor({
       >
         <div className={styles.MainViewContainer}>
           <CampaignEditorSideBar
-            selectedBackground={selectedBackground}
-            setSelectedBackground={setSelectedBackground}
+            selectedBackground={campaignState}
+            setSelectedBackground={setCampaignState}
             userData={userData}
             setDialogOpen={setDialogOpen}
           />
@@ -206,8 +205,8 @@ export default function CampaignEditor({
                   transformOrigin: "top left",
                 }}
               >
-                <Canvas ref={canvasRef} {...selectedBackground}>
-                  {items.map((currentItem, i) => (
+                <Canvas ref={canvasRef} {...campaignState.background}>
+                  {campaignState.items.map((currentItem, i) => (
                     <DraggableWrapper
                       key={`${currentItem?.id}-${i}`}
                       id={`${currentItem?.id}`}
