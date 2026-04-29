@@ -14,4 +14,5 @@ export type Action =
   | { type: "addItem"; payload: PlacedItem }
   | { type: "setBackground"; payload: string }
   | { type: "removeItem"; payload: string }
-  | { type: "loadCampaign"; payload: CampaignState };
+  | { type: "loadCampaign"; payload: CampaignState }
+  | { type: "moveItem"; payload: string };

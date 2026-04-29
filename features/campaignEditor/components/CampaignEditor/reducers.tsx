@@ -9,6 +9,9 @@ export function campaignReducer(
   state: CampaignState,
   action: Action,
 ): CampaignState {
+  console.log("ACTION:", action);
+  console.log("STATE BEFORE:", state);
+
   switch (action.type) {
     case "addItem":
       return {
@@ -26,6 +29,20 @@ export function campaignReducer(
       return {
         ...state,
         items: state.items.filter((item) => item.id !== action.payload),
+      };
+
+    case "moveItem":
+      return {
+        ...state,
+        items: state.items.map((item) =>
+          item.id === action.payload.id
+            ? {
+                ...item,
+                x: action.payload.x,
+                y: action.payload.y,
+              }
+            : item,
+        ),
       };
 
     case "loadCampaign":

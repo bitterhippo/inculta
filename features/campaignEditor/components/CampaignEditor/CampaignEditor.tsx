@@ -93,17 +93,12 @@ export default function CampaignEditor({
         y: canvasY,
         image_url,
       };
-      setCampaignState.items((prev) => [...prev, currentDragObject]);
+     dispatch({ type: "addItem", payload: currentDragObject});
     }
 
     // removes an object after it is draggedd off canvas
     if (over?.id !== "canvas" && source === "canvas") {
-      setCampaignState.items?((prev) => {
-        let newArr = prev.filter(
-          (item) => String(item.id) !== String(active.id),
-        );
-        return newArr;
-      });
+      dispatch({ type: "removeItem", payload: { active.id }})
     }
 
     //repositions an object
