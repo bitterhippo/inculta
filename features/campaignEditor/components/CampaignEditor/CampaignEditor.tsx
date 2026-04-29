@@ -1,7 +1,8 @@
 "use client";
 
 import { createPortal } from "react-dom";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useReducer } from "react";
+import { initialState, campaignReducer } from "./reducers";
 import { nanoid } from "nanoid";
 import { Icon, Canvas, DraggableWrapper } from "@/components";
 import {
@@ -26,6 +27,10 @@ export default function CampaignEditor({
   initialUserData: any;
   campaign_id: string;
 }) {
+   const [campaignState, dispatch] = useReducer(
+    campaignReducer,
+    initialState
+  );
   const [activeId, setActiveId] = useState<string | null>(null);
   const [dialogOpen, setDialogOpen] = useState<{
     open: boolean;
